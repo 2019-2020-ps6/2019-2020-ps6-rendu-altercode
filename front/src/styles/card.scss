@@ -1,6 +1,6 @@
 @import "./variables";
 
-.card {
+.card { // gros carré autour de chaque quiz
   background: $white;
   border-radius: 2px;
   display: inline-block;
@@ -10,7 +10,7 @@
   padding: 0 1em 1em 1em;
 }
 
-.button-card {
+.button-card { // tous les boutons-card
   background-color: $white;
   border: solid 1px $blue;
   color: $blue;
