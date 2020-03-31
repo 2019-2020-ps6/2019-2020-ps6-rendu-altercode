@@ -39,8 +39,6 @@ router.post('/', (req, res) => {
       const answers = req.body.answers.map((answer) => Answer.create({ ...answer, questionId: question.id }))
       question = { ...question, answers }
     }
-    // const quiz = Quiz.getById(req.params.id)
-    // Quiz.update(req.params.id, {...quiz, question})
     res.status(201).json(question)
   } catch (err) {
     manageAllErrors(res, err)

@@ -16,6 +16,7 @@ export class QuizListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.quizService.setQuizzesFromUrl();
   }
 
   quizSelected(quizSelected: Quiz) {
@@ -23,7 +24,8 @@ export class QuizListComponent implements OnInit {
   }
 
   deleteQuiz(quiz: Quiz) {
-   // this.quizService.deleteQuestions(quiz);
+    console.log(quiz);
+    this.quizService.deleteQuestions(quiz);
     this.quizService.deleteQuiz(quiz);
   }
 }

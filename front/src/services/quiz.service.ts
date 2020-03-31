@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, of, Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import {HttpClient} from '@angular/common/http';
@@ -74,10 +74,12 @@ export class QuizService {
   deleteQuestions(quiz: Quiz) {
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/';
     const lgth = quiz.questions.length;
+    console.log('deleteQuestions  lgth : ' + lgth + ' quiz ' + quiz);
     for (let i = lgth - 1; i >= 0 ; i--) {
       this.deleteAnswers(quiz, quiz.questions[i]);
-      this.http.delete<Question>(questionUrl + quiz.questions[i].id, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+      this.http.delete<Question>(questionUrl + quiz.questions[i].id, this.httpOptions).subscribe(() => this.setQuizzesFromUrl());
     }
+    console.log('Good delete question');
   }
 
   deleteAnswers(quiz: Quiz, question: Question) {
@@ -85,7 +87,8 @@ export class QuizService {
       + '/';
     const lgth = question.answers.length;
     for (let i = lgth - 1; i >= 0 ; i--) {
-      this.http.delete<Answer>( answerUrl + question.answers[i].id, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+      this.http.delete<Answer>( answerUrl + question.answers[i].id, this.httpOptions).subscribe(() => this.setQuizzesFromUrl());
     }
+    console.log('Good delete answer');
   }
 }
