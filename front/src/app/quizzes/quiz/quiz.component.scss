@@ -1,5 +1,12 @@
 @import '../../../styles/card.scss';
+// Prend le css de card
 
 h1 {
-    // Add some CSS here! What if you try to change the background?
+  // Add some CSS here! What if you try to change the background?
+}
+
+.button-card{ // bouton Edit / Delete / Save
+  text-align: center;
+
+  font-size: 17px;
 }
