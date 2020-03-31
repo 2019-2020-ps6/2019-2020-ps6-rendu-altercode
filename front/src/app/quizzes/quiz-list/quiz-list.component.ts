@@ -18,13 +18,12 @@ export class QuizListComponent implements OnInit {
   ngOnInit() {
   }
 
-  quizSelected(selected: boolean) {
-    console.log('event received from child:', selected);
+  quizSelected(quizSelected: Quiz) {
+
   }
 
   deleteQuiz(quiz: Quiz) {
-    console.log(quiz);
+   // this.quizService.deleteQuestions(quiz);
     this.quizService.deleteQuiz(quiz);
-
   }
 }

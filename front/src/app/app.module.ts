@@ -13,6 +13,7 @@ import {EditQuizComponent} from './quizzes/edit-quiz/edit-quiz.component';
 import { QuestionComponent } from './questions/question/question.component';
 import { QuestionFormComponent } from './questions/question-form/question-form.component';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
+import { PlayQuizComponent } from './quizzes/play-quiz/play-quiz.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { QuestionListComponent } from './questions/question-list/question-list.c
     EditQuizComponent,
     QuestionComponent,
     QuestionFormComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    PlayQuizComponent,
   ],
   imports: [
     BrowserModule,

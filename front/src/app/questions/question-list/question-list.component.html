@@ -1,1 +1,6 @@
-<p>question-list works!</p>
+<div class="question-list">
+  <div class="question" *ngFor="let question of quiz.questions">
+    <app-question [question] ="question"></app-question>
+    <button type="submit" class="button-card" (click) = "deleteQuestion(question)">Delete</button>
+  </div>
+</div>

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Quiz} from '../../../models/quiz.model';
+import {QuizService} from '../../../services/quiz.service';
+import {Question} from '../../../models/question.model';
 
 @Component({
   selector: 'app-question-list',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionListComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  quiz: Quiz;
+
+  constructor(private quizService: QuizService) { }
 
   ngOnInit() {
   }
 
+  deleteQuestion(question: Question){
+    this.quizService.deleteAnswers(this.quiz, question);
+    this.quizService.deleteQuestion(this.quiz, question);
+  }
 }

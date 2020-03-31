@@ -1,1 +1,38 @@
-<p>question-form works!</p>
+<div class="card">
+  <h2>Create a new question</h2>
+  <br>
+  <form class="question-form" [formGroup]="questionForm">
+    <label for="label">
+      Title <br>
+      <input class="input-custom" type="text" id="label" [formControlName]="'label'" required>
+    </label>
+    <br>
+    <label for="urlImgQ">
+      URL de l'image <br>
+      <input class="input-custom" type="text" id="urlImgQ" [formControlName]="'urlImgQ'">
+    </label>
+    <br>
+    <button class="button-card" (click)="addAnswer()">Add Answer</button>
+    <div class="answer" [formArrayName]="'answers'">
+      <div *ngFor="let address of answers.controls; let i = index">
+        <div class="answer-form" [formGroupName]="i">
+          <label>
+            Answer
+            <input type="text" [formControlName]="'value'" required>
+            <br>
+            Correct
+            <input type="checkbox"  [formControlName]="'isCorrect'">
+          </label>
+          <label for="urlImg">
+            URL de l'image <br>
+            <input class="input-custom" type="text" id="urlImg" [formControlName]="'urlImg'">
+          </label>
+        </div>
+      </div>
+    </div>
+    <br>
+    <button type="submit" class="button-card" (click)="addQuestion()">Create</button>
+  </form>
+  <br>
+</div>
+

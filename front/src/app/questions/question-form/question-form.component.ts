@@ -1,31 +1,59 @@
-import { Component, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
+import { QuizService } from '../../../services/quiz.service';
+import { Quiz } from '../../../models/quiz.model';
+import { Question} from '../../../models/question.model';
 
 @Component({
   selector: 'app-question-form',
   templateUrl: './question-form.component.html',
   styleUrls: ['./question-form.component.scss']
 })
+
 export class QuestionFormComponent implements OnInit {
 
-  private questionForm: FormGroup;
+  @Input()
+  quiz: Quiz;
 
-  constructor(public formBuilder: FormBuilder) {
+  public questionForm: FormGroup;
+
+  constructor(public formBuilder: FormBuilder, private quizService: QuizService) {
     this.initializeQuestionForm();
   }
 
-  initializeQuestionForm() {
+  private initializeQuestionForm() {
     this.questionForm = this.formBuilder.group({
-      label: [''],
-      answers: this.formBuilder.array([])
+      label: ['', Validators.required],
+      urlImgQ: [''],
+      answers: this.formBuilder.array([], Validators.required)
     });
   }
 
-  get answer() {
-    return this.questionForm.get('answer') as FormArray;
+  ngOnInit() {
   }
 
-  ngOnInit() {
+  get answers() {
+    return this.questionForm.get('answers') as FormArray;
+  }
+
+  private createAnswer() {
+    return this.formBuilder.group({
+      value: ['', Validators.required],
+      isCorrect: false,
+      urlImg: ['']
+    });
+  }
+
+  addAnswer() {
+    this.answers.push(this.createAnswer());
+  }
+
+  addQuestion() {
+    if (this.questionForm.valid) {
+      const question = this.questionForm.getRawValue() as Question;
+      this.quizService.addQuestion(this.quiz, question);
+      this.initializeQuestionForm();
+    }
   }
 
 }

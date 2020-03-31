@@ -6,6 +6,8 @@ const AnswersRouter = require('./answers')
 const { filterQuestionsFromQuizz, getQuestionFromQuiz } = require('./manager')
 
 const router = new Router({ mergeParams: true })
+router.use('/:questionId/answers', AnswersRouter)
+
 
 router.get('/', (req, res) => {
   try {
@@ -31,12 +33,14 @@ router.post('/', (req, res) => {
     // Check if quizId exists, if not it will throw a NotFoundError
     Quiz.getById(req.params.quizId)
     const quizId = parseInt(req.params.quizId, 10)
-    let question = Question.create({ label: req.body.label, quizId })
+    let question = Question.create({ ...req.body, quizId })
     // If answers have been provided in the request, we create the answer and update the response to send.
     if (req.body.answers && req.body.answers.length > 0) {
       const answers = req.body.answers.map((answer) => Answer.create({ ...answer, questionId: question.id }))
-      question = {...question, answers}
+      question = { ...question, answers }
     }
+    // const quiz = Quiz.getById(req.params.id)
+    // Quiz.update(req.params.id, {...quiz, question})
     res.status(201).json(question)
   } catch (err) {
     manageAllErrors(res, err)
@@ -46,7 +50,7 @@ router.post('/', (req, res) => {
 router.put('/:questionId', (req, res) => {
   try {
     const question = getQuestionFromQuiz(req.params.quizId, req.params.questionId)
-    let updatedQuestion = Question.update(req.params.questionId, { label: req.body.label, quizId: question.quizId })
+    const updatedQuestion = Question.update(req.params.questionId, { ...req.body, quizId: question.quizId})
     res.status(200).json(updatedQuestion)
   } catch (err) {
     manageAllErrors(res, err)
@@ -55,7 +59,7 @@ router.put('/:questionId', (req, res) => {
 
 router.delete('/:questionId', (req, res) => {
   try {
-    // Check if the question id exists & if the question has the same quizId as the one provided in the url. 
+    // Check if the question id exists & if the question has the same quizId as the one provided in the url.
     getQuestionFromQuiz(req.params.quizId, req.params.questionId)
     Question.delete(req.params.questionId)
     res.status(204).end()
