@@ -1,0 +1,44 @@
+[
+  {
+    "value": "Oui",
+    "isCorrect": true,
+    "urlImg": "",
+    "questionId": 1585576017574,
+    "id": 1585576017576
+  },
+  {
+    "value": "Non",
+    "isCorrect": false,
+    "urlImg": "",
+    "questionId": 1585576017574,
+    "id": 1585576017577
+  },
+  {
+    "value": "Pourquoi pas",
+    "isCorrect": true,
+    "urlImg": "",
+    "questionId": 1585576042923,
+    "id": 1585576042924
+  },
+  {
+    "value": "Oh non",
+    "isCorrect": false,
+    "urlImg": "",
+    "questionId": 1585576042923,
+    "id": 1585576042925
+  },
+  {
+    "value": "Réponse 1",
+    "isCorrect": true,
+    "urlImg": "",
+    "questionId": 1585635978584,
+    "id": 1585635978588
+  },
+  {
+    "value": "Réponse 2 ",
+    "isCorrect": false,
+    "urlImg": "",
+    "questionId": 1585635978584,
+    "id": 1585635978591
+  }
+]
