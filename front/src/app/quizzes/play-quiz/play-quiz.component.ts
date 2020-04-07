@@ -13,7 +13,7 @@ export class PlayQuizComponent implements OnInit {
 
   public quiz: Quiz;
   public questions: Question[];
-  private index = 0;
+  index = 0;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService) {
     this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);

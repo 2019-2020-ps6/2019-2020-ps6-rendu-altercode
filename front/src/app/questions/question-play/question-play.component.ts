@@ -1,6 +1,7 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {Question} from '../../../models/question.model';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {PopUpComponent} from './pop-up.component';
 
 export interface DialogData {
   questionString: string;
@@ -15,19 +16,19 @@ export interface DialogData {
 })
 export class QuestionPlayComponent implements OnInit {
 
-  questionString: string;
-  reponseString: string;
-
   @Input()
   question: Question;
 
-  constructor(public dialog: MatDialog) {
+  constructor(private dialog: MatDialog) {
   }
 
-  openDialog(): void {
+  openDialog(i): void {
     const dialogRef = this.dialog.open(PopUpComponent, {
       width: '250px',
-      data: {question: this.questionString, reponse: this.reponseString}
+      data: {questionString: this.question.label, reponseString: this.question.answers[i].value}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 
@@ -35,24 +36,9 @@ export class QuestionPlayComponent implements OnInit {
   }
 
   checkIfGood(i) {
-    if (this.question.answers[i].isCorrect === true) {
-      this.openDialog();
+    if (this.question.answers[parseInt(i, 10)].isCorrect === true) {
+      this.openDialog(i);
     }
   }
 }
 
-@Component({
-  selector: 'app-pop-up',
-  templateUrl: './pop-up.component.html',
-})
-export class PopUpComponent {
-
-  constructor(
-    public dialogRef: MatDialogRef<PopUpComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
