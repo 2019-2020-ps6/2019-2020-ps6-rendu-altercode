@@ -6,7 +6,7 @@
     <img src="{{question.urlImgQ}}" alt="Image question">
   </div>
   <div class="answer" *ngFor="let answer of question.answers; let i=index">
-    <button mat-raised-button class="button-card" (click)="checkIfGood(i)">{{answer.value}}</button><br>
+    <button mat-raised-button class="button-card" (click)="checkIfGood(i,answer.id)" id="{{answer.id}}">{{answer.value}}</button><br>
     <div *ngIf="answer.urlImg.length > 0">
       <img src="{{answer.urlImg}}" alt="Image réponse">
     </div>

@@ -1,18 +1,13 @@
 [
   {
-    "name": "Quizz 1",
-    "theme": "PS6",
-    "id": 1585572395649
-  },
-  {
     "name": "Quizz 2",
     "theme": "PS6",
     "id": 1585635931622
   },
   {
-    "name": "Qu'elle est le créateur des pop up ",
-    "theme": "thème",
+    "name": "Qu'elle est le créateur des pop up",
+    "theme": "PS6",
     "questions": [],
-    "id": 1586244422344
+    "id": 1586250199696
   }
 ]
