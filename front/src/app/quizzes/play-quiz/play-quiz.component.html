@@ -3,7 +3,7 @@
 
   <div *ngIf="quiz">
     <h2>{{quiz.name}}</h2>
-    <app-question [question]="quiz.questions[index]"></app-question>
+    <app-question-play [question]="quiz.questions[index]"></app-question-play>
   </div>
 
   <button *ngIf="index < quiz.questions.length - 1; else Else" class="button-card" (click) = "nextQuestion()">Next</button>

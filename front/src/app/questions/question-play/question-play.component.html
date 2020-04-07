@@ -1,0 +1,15 @@
+<div class="card">
+  <h2>
+    {{question.label}}
+  </h2>
+  <div *ngIf="question.urlImgQ.length > 0">
+    <img src="{{question.urlImgQ}}" alt="Image question">
+  </div>
+  <div class="answer" *ngFor="let answer of question.answers; let i=index">
+    <button class="button-card" id="i">{{answer.value}}</button><br>
+    <div *ngIf="answer.urlImg.length > 0">
+      <img src="{{answer.urlImg}}" alt="Image réponse">
+    </div>
+    <br>
+  </div>
+</div>

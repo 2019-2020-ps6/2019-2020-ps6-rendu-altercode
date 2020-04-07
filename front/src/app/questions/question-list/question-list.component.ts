@@ -18,7 +18,7 @@ export class QuestionListComponent implements OnInit {
   ngOnInit() {
   }
 
-  deleteQuestion(question: Question){
+  deleteQuestion(question: Question) {
     this.quizService.deleteAnswers(this.quiz, question);
     this.quizService.deleteQuestion(this.quiz, question);
   }

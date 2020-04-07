@@ -14,6 +14,10 @@ import { QuestionComponent } from './questions/question/question.component';
 import { QuestionFormComponent } from './questions/question-form/question-form.component';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
 import { PlayQuizComponent } from './quizzes/play-quiz/play-quiz.component';
+import { QuestionPlayComponent } from './questions/question-play/question-play.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PopUpComponent } from './questions/question-play/question-play.component';
+
 
 @NgModule({
   declarations: [
@@ -26,13 +30,19 @@ import { PlayQuizComponent } from './quizzes/play-quiz/play-quiz.component';
     QuestionComponent,
     QuestionFormComponent,
     QuestionListComponent,
+    QuestionPlayComponent,
     PlayQuizComponent,
+    PopUpComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    PopUpComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
