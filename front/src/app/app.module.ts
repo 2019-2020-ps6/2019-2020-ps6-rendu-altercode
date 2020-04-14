@@ -19,6 +19,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PopUpComponent } from './questions/question-play/pop-up.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { HomeComponent } from './home/home.component';
+import {PatientComponent} from './patients/patient/patient.component';
+import {PatientFormComponent} from './patients/patient-form/patient-form.component';
+import {PatientListComponent} from './patients/patient-list/patient-list.component';
+import {PatientConfigComponent} from './patients/patient-profile/patient-config/patient-config.component';
+import {PatientInfosComponent} from './patients/patient-profile/patient-infos/patient-infos.component';
+import {PatientStatComponent} from './patients/patient-profile/patient-stat/patient-stat.component';
+import {PatientProfileComponent} from './patients/patient-profile/patient-profile.component';
+import {EditPatientComponent} from './patients/edit-patient/edit-patient.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +43,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     QuestionPlayComponent,
     PlayQuizComponent,
     PopUpComponent,
+    HomeComponent,
+    PatientComponent,
+    PatientFormComponent,
+    PatientListComponent,
+    PatientConfigComponent,
+    PatientInfosComponent,
+    PatientStatComponent,
+    PatientProfileComponent,
+    EditPatientComponent
   ],
   imports: [
     BrowserModule,

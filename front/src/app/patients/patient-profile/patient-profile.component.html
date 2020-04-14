@@ -1,0 +1,28 @@
+<div *ngIf="patient !== undefined">
+  <div class="card m-3">
+    <h2 class = "card-header">{{patient.name}} {{patient.surname}}</h2>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col">
+          <button class="btn" routerLink="/patient-config">Configuration apparence</button><br>
+          <button class="btn" routerLink="/patient-infos/{{patient.id}}">Informations patient</button><br>
+          <button class="btn" routerLink="/patient-list">Passer en Espace Patient</button><br>
+          <button class="btn" routerLink="/patient-stat">Statistiques</button><br>
+          <button class="btn" routerLink="/patient-list">Gestion Quiz Patient</button>
+        </div>
+        <div class="form group col">
+          <div class="card m-3">
+            <h2 class="card-header">{{patient.name}} {{patient.surname}}</h2>
+            <div class="card-body text-center">
+              <div *ngIf="patient.urlImg.length > 0">
+                <img src="{{patient.urlImg}}" alt="Image patient" width="301px">
+              </div>
+              <div>{{getAge(patient)}} ans</div>
+              <div>Quiz favoris : </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

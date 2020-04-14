@@ -1,0 +1,10 @@
+<button type="submit" class="button-card" (click)="addPatient()">Ajouter Patient</button>
+<div class="patient-list">
+    <div class="card" *ngFor="let patient of patientList" routerLink="/patient-profile/{{patient.id}}">
+      <h2>{{patient.name}} {{patient.surname}}</h2>
+      <div *ngIf="patient.urlImg.length > 0">
+        <img src="{{patient.urlImg}}" alt="Image patient" height="400px" width="300px">
+      </div>
+      <div>{{getAge(patient)}}</div>
+    </div>
+</div>

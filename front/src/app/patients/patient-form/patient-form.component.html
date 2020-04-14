@@ -1,0 +1,48 @@
+<div class="card m-3">
+  <h2 class="card-header">Ajouter Patient</h2>
+  <div class="card-body">
+    <form class="patient-form" [formGroup]="patientForm">
+      <div class="form-row">
+        <div class="form-group col">
+          <label for="name"> Nom </label>
+          <input class="form-control" type="text" id="name" [formControlName]="'name'">
+        </div>
+        <div class="form group col">
+          <label for="surname"> Prénom </label>
+          <input class="form-control" type="text" id="surname" [formControlName]="'surname'">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <label for="date"> Date de naissance </label>
+          <input class="form-control" type="text" id="date" [formControlName]="'date'" placeholder="YYYY-MM-DD">
+        </div>
+        <div class="form-group col">
+          <label for="urlImg"> URL de la photo </label>
+          <input class="form-control" type="text" id="urlImg" [formControlName]="'urlImg'">
+        </div>
+      </div>
+      <div class="form-group text-center">
+        <label>Sexe</label>
+        <div>
+          <input type="radio" value="homme" [formControlName]="'sexe'"> Homme
+          <input type="radio" value="femme" [formControlName]="'sexe'"> Femme
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <label for="pathology">Pathologie</label>
+          <textarea id="pathology" class="form-control" [formControlName]="'pathology'"></textarea>
+        </div>
+        <div class="form-group col">
+          <label for="personality">Personnalité</label>
+          <textarea id="personality" class="form-control" [formControlName]="'personality'"></textarea>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary mr-1" (click)="addPatient()">Créer patient</button>
+        <button class="btn btn-secondary" routerLink="/patient-list">Annuler</button>
+      </div>
+    </form>
+  </div>
+</div>

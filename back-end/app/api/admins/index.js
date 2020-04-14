@@ -1,21 +1,21 @@
 const { Router } = require('express')
 
-const { User } = require('../../models')
+const { Admin } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
 
 const router = new Router()
 
 router.get('/', (req, res) => {
   try {
-    res.status(200).json(User.get())
+    res.status(200).json(Admin.get())
   } catch (err) {
     manageAllErrors(res, err)
   }
 })
 
-router.get('/:userId', (req, res) => {
+router.get('/:adminId', (req, res) => {
   try {
-    res.status(200).json(User.getById(req.params.userId))
+    res.status(200).json(Admin.getById(req.params.adminId))
   } catch (err) {
     manageAllErrors(res, err)
   }
@@ -23,24 +23,24 @@ router.get('/:userId', (req, res) => {
 
 router.post('/', (req, res) => {
   try {
-    const user = User.create({ ...req.body })
+    const user = Admin.create({ ...req.body })
     res.status(201).json(user)
   } catch (err) {
     manageAllErrors(res, err)
   }
 })
 
-router.put('/:userId', (req, res) => {
+router.put('/:adminId', (req, res) => {
   try {
-    res.status(200).json(User.update(req.params.userId, req.body))
+    res.status(200).json(Admin.update(req.params.adminId, req.body))
   } catch (err) {
     manageAllErrors(res, err)
   }
 })
 
-router.delete('/:userId', (req, res) => {
+router.delete('/:adminId', (req, res) => {
   try {
-    User.delete(req.params.userId)
+    Admin.delete(req.params.adminId)
     res.status(204).end()
   } catch (err) {
     manageAllErrors(res, err)
