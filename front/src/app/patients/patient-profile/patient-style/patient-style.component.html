@@ -1,0 +1,39 @@
+<div *ngIf="patient !== undefined">
+  <div class="card m-3">
+    <div class="card-header">
+      <h1>Configuration apparence</h1>
+    </div>
+    <div class="card-body">
+      <form class="config-form" [formGroup]="configForm">
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="typePolice">Police :</label>
+            <select class="form-control" id="typePolice" [formControlName]="'typePolice'">
+              <option selected>--Police</option>
+              <option value="Times New Roman">Times New Roman</option>
+              <option value="Sans Serif">Sans Serif</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col" id ="test">
+            <label for="heightPolice">Taille Texte</label>
+            <input class="custom-range" type="range" id="heightPolice" min="0" max="100" [formControlName]="'heightPolice'">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="colorBody">Couleur de fond</label>
+            <input class="form-control" type="color" id="colorBody" [formControlName]="'colorBody'">
+          </div>
+          <div class="form-group col">
+            <label for="colorPolice">Couleur de police</label>
+            <input class="form-control" type="color" id="colorPolice" [formControlName]="'colorPolice'">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mr-1" (click)="updateConfig()">Valider</button>
+        <button class="btn btn-secondary" routerLink="/patient-profile/{{patient.id}}">Annuler</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,13 +1,16 @@
 const { Router } = require('express')
-
+const StyleRouter = require('./styles')
 const { Patient } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
+const { buildPatient, buildPatients } = require('./manager')
 
 const router = new Router()
+router.use('/:patientId/styles', StyleRouter)
 
 router.get('/', (req, res) => {
   try {
-    res.status(200).json(Patient.get())
+    const patients = buildPatients()
+    res.status(200).json(patients)
   } catch (err) {
     manageAllErrors(res, err)
   }
@@ -15,7 +18,8 @@ router.get('/', (req, res) => {
 
 router.get('/:patientId', (req, res) => {
   try {
-    res.status(200).json(Patient.getById(req.params.patientId))
+    const patient = buildPatient(req.params.patientId)
+    res.status(200).json(patient)
   } catch (err) {
     manageAllErrors(res, err)
   }
@@ -23,8 +27,8 @@ router.get('/:patientId', (req, res) => {
 
 router.post('/', (req, res) => {
   try {
-    const user = Patient.create({ ...req.body })
-    res.status(201).json(user)
+    const patient = Patient.create({ ...req.body })
+    res.status(201).json(patient)
   } catch (err) {
     manageAllErrors(res, err)
   }

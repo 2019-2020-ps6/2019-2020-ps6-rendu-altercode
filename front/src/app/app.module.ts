@@ -23,7 +23,7 @@ import { HomeComponent } from './home/home.component';
 import {PatientComponent} from './patients/patient/patient.component';
 import {PatientFormComponent} from './patients/patient-form/patient-form.component';
 import {PatientListComponent} from './patients/patient-list/patient-list.component';
-import {PatientConfigComponent} from './patients/patient-profile/patient-config/patient-config.component';
+import {PatientStyleComponent} from './patients/patient-profile/patient-style/patient-style.component';
 import {PatientInfosComponent} from './patients/patient-profile/patient-infos/patient-infos.component';
 import {PatientStatComponent} from './patients/patient-profile/patient-stat/patient-stat.component';
 import {PatientProfileComponent} from './patients/patient-profile/patient-profile.component';
@@ -47,7 +47,7 @@ import {EditPatientComponent} from './patients/edit-patient/edit-patient.compone
     PatientComponent,
     PatientFormComponent,
     PatientListComponent,
-    PatientConfigComponent,
+    PatientStyleComponent,
     PatientInfosComponent,
     PatientStatComponent,
     PatientProfileComponent,

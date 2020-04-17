@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
-import {Patient} from '../models/patient.model';
+import {Patient, Style} from '../models/patient.model';
 import {BehaviorSubject, Subject} from 'rxjs';
 
 @Injectable({
@@ -45,5 +45,10 @@ export class PatientService {
   updatePatient(patient: Patient, patientId: string) {
     const urlWithId = this.patientUrl + '/' + patientId;
     this.http.put<Patient>(urlWithId, patient, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
+  }
+
+  updateConfig(style: Style, patient: Patient) {
+    const urlWithId = this.patientUrl + '/' + patient.id + '/styles/' + patient.style[0].id;
+    this.http.put<Style>(urlWithId, style, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
   }
 }
