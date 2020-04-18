@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const StyleRouter = require('./styles')
-const { Patient } = require('../../models')
+const { Patient, Style } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
 const { buildPatient, buildPatients } = require('./manager')
 
@@ -28,6 +28,10 @@ router.get('/:patientId', (req, res) => {
 router.post('/', (req, res) => {
   try {
     const patient = Patient.create({ ...req.body })
+    // eslint-disable-next-line no-unused-vars
+    const style = Style.create({
+      typePolice: 'Times New Roman', heightPolice: 50, colorBody: '#ffffff ', colorPolice: ' #000000', patientId: patient.id,
+    })
     res.status(201).json(patient)
   } catch (err) {
     manageAllErrors(res, err)

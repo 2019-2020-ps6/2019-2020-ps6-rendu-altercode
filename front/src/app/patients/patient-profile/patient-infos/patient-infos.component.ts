@@ -28,6 +28,7 @@ export class PatientInfosComponent implements OnInit {
   }
 
   deletePatient() {
+    this.patientService.deleteStyle(this.patient);
     this.patientService.deletePatient(this.patient);
   }
 }

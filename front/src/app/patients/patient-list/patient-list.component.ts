@@ -25,10 +25,6 @@ export class PatientListComponent implements OnInit {
     this.router.navigate(['/patient-form']);
   }
 
-  deletePatient(patient: Patient) {
-    this.patientService.deletePatient(patient);
-  }
-
   getAge(patient: Patient) {
     const date1 = new Date();
     const date2 = new Date(patient.date);

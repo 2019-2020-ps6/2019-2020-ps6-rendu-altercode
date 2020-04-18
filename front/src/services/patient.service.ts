@@ -25,7 +25,6 @@ export class PatientService {
     });
   }
 
-
   addPatient(patient: Patient) {
     this.http.post<Patient>(this.patientUrl, patient, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
   }
@@ -45,6 +44,11 @@ export class PatientService {
   updatePatient(patient: Patient, patientId: string) {
     const urlWithId = this.patientUrl + '/' + patientId;
     this.http.put<Patient>(urlWithId, patient, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
+  }
+
+  deleteStyle(patient: Patient) {
+    const urlWithId = this.patientUrl + '/' + patient.id + '/styles/' + patient.style[0].id;
+    this.http.delete<Style>(urlWithId, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
   }
 
   updateConfig(style: Style, patient: Patient) {

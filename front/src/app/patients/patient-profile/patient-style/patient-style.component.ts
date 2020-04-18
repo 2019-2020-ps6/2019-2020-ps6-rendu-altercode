@@ -25,6 +25,7 @@ export class PatientStyleComponent implements OnInit {
   }
 
   private initializeConfigForm() {
+    console.log(this.patient.style[0].colorBody);
     this.configForm = this.formBuilder.group({
       typePolice: [this.patient.style[0].typePolice, Validators.required],
       heightPolice: [this.patient.style[0].heightPolice.toString(), Validators.required],
