@@ -11,9 +11,13 @@ import {PatientService} from '../../../../services/patient.service';
 export class PatientInfosComponent implements OnInit {
 
   public patient: Patient;
+  public color;
 
   constructor(private route: ActivatedRoute, private patientService: PatientService) {
-    this.patientService.patientSelected$.subscribe((patient) => this.patient = patient);
+    this.patientService.patientSelected$.subscribe((patient) => {
+      this.patient = patient;
+      this.color = this.patient.style[0].colorPolice;
+    });
   }
 
   ngOnInit() {

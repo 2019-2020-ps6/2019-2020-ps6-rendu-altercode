@@ -1,17 +1,18 @@
-<!-- Formulaire de création de quiz -->
-<div class="card">
-  <h2>Create a new Quiz</h2>
+<h2 class="card-header">Créer un quiz</h2>
+<div class="card-body">
   <form class="quiz-form" [formGroup]="quizForm">
-    <label for="name">
-      Title <br>
-      <input class="input-custom" type="text" id="name" [formControlName]="'name'">
-    </label>
-    <br>
-    <label for="theme">
-      Thème <br>
-      <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
-    </label>
-    <br>
-    <button type="submit" class="button-card" (click)="addQuiz()">Create</button>
+    <div class="form-row justify-content-lg-center">
+      <div class="col-lg-auto text-center">
+        <label for="name">Titre</label>
+        <input class="form-control" type="text" id="name" [formControlName]="'name'">
+      </div>
+      <div class="col-lg-auto text-center mt-lg-1">
+        <label for="urlImg">Url image</label>
+        <input class="form-control" type="text" id="urlImg" [formControlName]="'urlImg'">
+      </div>
+    </div>
+    <div class="row justify-content-lg-center">
+      <div class="col-lg-auto mt-3"><button type="submit" class="btn" (click)="addQuiz()">Create</button></div>
+    </div>
   </form>
 </div>

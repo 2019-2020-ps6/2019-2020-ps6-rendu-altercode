@@ -1,7 +1,7 @@
-<div class="card">
-  <h2>{{quiz.name}}</h2>
-  <h3>{{quiz.theme}}</h3>
-  <a routerLink="/play-quiz/{{quiz.id}}"><button class="button-card">Select</button></a>
-  <button class="button-card" (click)="deleteQuiz()">Delete</button>
-  <a routerLink="/edit-quiz/{{quiz.id}}"><button class="button-card">Edit</button></a>
+<div class="row" *ngIf="quiz.urlImg.length > 0">
+  <div class="col-lg-8 offset-2 mb-lg-4"><img src="{{quiz.urlImg}}" alt="Image patient" class="img-thumbnail"></div>
 </div>
+
+
+
+

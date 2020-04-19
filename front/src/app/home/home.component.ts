@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
       console.log(admin.connectId + ' ' + admin.pwd);
       console.log(adminToConnect.connectId + ' ' + adminToConnect.pwd);
       if (admin.connectId === adminToConnect.connectId && admin.pwd === adminToConnect.pwd) {
-        this.router.navigate(['/quiz-list']);
+        this.router.navigate(['/patient-list']);
       }
     }
   }

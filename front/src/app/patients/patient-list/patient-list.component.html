@@ -1,10 +1,22 @@
-<button type="submit" class="button-card" (click)="addPatient()">Ajouter Patient</button>
-<div class="patient-list">
-    <div class="card" *ngFor="let patient of patientList" routerLink="/patient-profile/{{patient.id}}">
-      <h2>{{patient.name}} {{patient.surname}}</h2>
-      <div *ngIf="patient.urlImg.length > 0">
-        <img src="{{patient.urlImg}}" alt="Image patient" height="400px" width="300px">
-      </div>
-      <div>{{getAge(patient)}}</div>
+<div class="card m-3 p-0">
+  <div class="card-header">
+    <div class="row">
+      <h1 class="col-lg-3">Gestion Patient</h1>
+      <button type="submit" class="btn btn-outline-dark col-lg-2 offset-4" (click)="addPatient()">Ajouter Patient</button>
+      <button type="submit" class="btn btn-outline-dark col-lg-2" style="margin-left: 10px" routerLink="/quiz-list">Gestion quiz</button>
     </div>
+  </div>
+  <div class="card-body">
+    <div class="patient-list row">
+      <div class="patient card col-lg-3 p-0" *ngFor="let patient of patientList" routerLink="/patient-profile/{{patient.id}}">
+        <h2 class = "card-header text-center">{{patient.name}} {{patient.surname}}</h2>
+        <div class="card-body">
+          <div class="row" *ngIf="patient.urlImg.length > 0">
+            <div class="col-lg-12 mb-lg-2"><img src="{{patient.urlImg}}" alt="Image patient" class="img-thumbnail"></div>
+          </div>
+          <div class="row justify-content-center">Age : {{getAge(patient)}} ans</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

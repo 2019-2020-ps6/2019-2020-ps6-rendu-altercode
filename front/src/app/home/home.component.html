@@ -1,16 +1,22 @@
-<div class="card">
-  <h1>Connexion</h1>
-  <form class="quiz-form" [formGroup]="connectForm">
-    <label for="connectId">
-      Identifiant : <br>
-      <input class="input-custom" type="text" id="connectId" [formControlName]="'connectId'" required>
-    </label>
-    <br>
-    <label for="pwd">
-      Mot de passe : <br>
-      <input class="input-custom" type="password" id="pwd" [formControlName]="'pwd'" required>
-    </label>
-    <br>
-    <button type="submit" class="button-card" (click) = "tryConnect()">Connexion</button>
-  </form>
+<div class="col-lg-4 offset-4">
+  <div class="home card p-0">
+    <h1 class="card-header text-center">Connexion</h1>
+    <div class="card-body">
+      <form class="quiz-form" [formGroup]="connectForm">
+        <div class="form-row justify-content-lg-center">
+          <label for="connectId">Identifiant : </label>
+          <input class="form-control" type="text" id="connectId" [formControlName]="'connectId'" required>
+        </div>
+        <br>
+        <div class="form-row justify-content-lg-center">
+          <label for="pwd">Mot de passe : </label>
+          <input class="form-control" type="password" id="pwd" [formControlName]="'pwd'" required>
+        </div>
+        <br>
+        <div class="form-row justify-content-lg-center">
+          <button type="submit" class="btn btn-success" (click) = "tryConnect()">Connexion</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

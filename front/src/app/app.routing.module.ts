@@ -22,6 +22,7 @@ const routes: Routes = [
   {path: 'patient-infos/:id', component: PatientInfosComponent},
   {path: 'edit-patient/:id', component: EditPatientComponent},
   {path: 'patient-style/:id', component: PatientStyleComponent},
+  {path: 'patient-quiz/:id', component: QuizListComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
