@@ -100,18 +100,5 @@
     ],
     "quizId": 1586250199696,
     "id": 1001586252905819
-  },
-  {
-    "label": "Test",
-    "urlImgQ": "",
-    "answers": [
-      {
-        "value": "Test",
-        "isCorrect": true,
-        "urlImg": "Okay"
-      }
-    ],
-    "quizId": 1585635931622,
-    "id": 601586769729384
   }
 ]

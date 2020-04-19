@@ -1,15 +1,16 @@
-<div class="card">
-  <h2>
-    {{question.label}}
-  </h2>
-  <div *ngIf="question.urlImgQ.length > 0">
-    <img src="{{question.urlImgQ}}" alt="Image question">
-  </div>
-  <div class="answer" *ngFor="let answer of question.answers; let i=index">
-    {{i}} - {{answer.value}}<br>
-    <div *ngIf="answer.urlImg.length > 0">
-      <img src="{{answer.urlImg}}" alt="Image réponse">
-    </div>
-    <br>
+<div class="row justify-content-center">
+  <h2>{{question.label}}</h2>
+</div>
+<div class="row" *ngIf="question.urlImgQ.length > 0">
+  <div class="col-lg-8 offset-2 mb-lg-4"><img src="{{question.urlImgQ}}" alt="Image question" class="img-thumbnail"></div>
+</div>
+<div class="row">
+  <div class="answer col-lg-6" *ngFor="let answer of question.answers; let i=index">
+      <div class="row">
+        {{i}} -  {{answer.value}}
+      </div>
+      <div class="row" *ngIf="answer.urlImg.length > 0">
+        <div class="col-lg-8 offset-2 mb-lg-4"><img src="{{answer.urlImg}}" alt="Image reponse" class="img-thumbnail"></div>
+      </div>
   </div>
 </div>
