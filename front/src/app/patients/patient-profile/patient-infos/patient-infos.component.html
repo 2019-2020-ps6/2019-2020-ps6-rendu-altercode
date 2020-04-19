@@ -1,8 +1,8 @@
-<div *ngIf="patient !== undefined">
+<div  *ngIf="patient !== undefined">
   <div class="card m-3">
     <div class="card-header">
       <div class="row">
-        <h1 class="col-lg-3" [ngStyle]="{'color': color}">{{patient.name}} {{patient.surname}}</h1>
+        <h1 id="recup" class="col-lg-3">{{patient.name}} {{patient.surname}}</h1>
         <button class="btn btn-default col-lg-2 offset-7" routerLink="/patient-profile/{{patient.id}}">Retour Patient</button>
       </div>
     </div>
@@ -21,8 +21,8 @@
               <div>Personnalité : {{patient.personality}}</div>
               <div>Pathologie : {{patient.pathology}}</div><br>
               <div class="text-center">
-                <button class="btn btn-primary mr-1" routerLink="/edit-patient/{{patient.id}}">Modifier</button>
-                <button class="btn btn-secondary" (click) = "deletePatient()" routerLink="/patient-list">Supprimer</button>
+                <button [ngStyle]="{'color':'white'}" class="btn btn-primary mr-1" routerLink="/edit-patient/{{patient.id}}">Modifier</button>
+                <button [ngStyle]="{'color':'white'}" class="btn btn-secondary" (click) = "deletePatient()" routerLink="/patient-list">Supprimer</button>
               </div>
             </div>
           </div>

@@ -13,11 +13,14 @@ export class EditPatientComponent implements OnInit {
 
   public patient: Patient;
   public patientForm: FormGroup;
+  public color;
 
   // tslint:disable-next-line:max-line-length
   constructor(public formBuilder: FormBuilder, private route: ActivatedRoute, public router: Router, private patientService: PatientService) {
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
+      this.color = this.patient.style[0].colorPolice;
+      document.documentElement.style.setProperty('--couleur', this.color);
       this.initializePatientForm();
     });
   }

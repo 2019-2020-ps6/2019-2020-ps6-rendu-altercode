@@ -28,6 +28,7 @@ import {PatientInfosComponent} from './patients/patient-profile/patient-infos/pa
 import {PatientStatComponent} from './patients/patient-profile/patient-stat/patient-stat.component';
 import {PatientProfileComponent} from './patients/patient-profile/patient-profile.component';
 import {EditPatientComponent} from './patients/edit-patient/edit-patient.component';
+import {CreateAdminComponent} from './home/createAdmin/createAdmin';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {EditPatientComponent} from './patients/edit-patient/edit-patient.compone
     PatientInfosComponent,
     PatientStatComponent,
     PatientProfileComponent,
-    EditPatientComponent
+    EditPatientComponent,
+    CreateAdminComponent
   ],
   imports: [
     BrowserModule,

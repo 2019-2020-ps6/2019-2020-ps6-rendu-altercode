@@ -10,6 +10,7 @@ import {PatientProfileComponent} from './patients/patient-profile/patient-profil
 import {PatientInfosComponent} from './patients/patient-profile/patient-infos/patient-infos.component';
 import {EditPatientComponent} from './patients/edit-patient/edit-patient.component';
 import {PatientStyleComponent} from './patients/patient-profile/patient-style/patient-style.component';
+import {CreateAdminComponent} from './home/createAdmin/createAdmin';
 
 const routes: Routes = [
   {path: 'quiz-list', component: QuizListComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'edit-patient/:id', component: EditPatientComponent},
   {path: 'patient-style/:id', component: PatientStyleComponent},
   {path: 'patient-quiz/:id', component: QuizListComponent},
+  {path: 'createAdmin', component: CreateAdminComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 

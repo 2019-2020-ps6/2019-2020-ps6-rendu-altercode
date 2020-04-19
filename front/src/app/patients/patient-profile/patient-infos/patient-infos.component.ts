@@ -17,6 +17,7 @@ export class PatientInfosComponent implements OnInit {
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
       this.color = this.patient.style[0].colorPolice;
+      document.documentElement.style.setProperty('--couleur', this.color);
     });
   }
 

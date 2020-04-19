@@ -1,0 +1,19 @@
+:root {
+  --couleur: #488cff;
+}
+$couleur : var(--couleur);
+div{
+  color: $couleur;
+}
+h1{
+  color: $couleur;
+}
+textarea{
+  color: $couleur;
+}
+input{
+  color: $couleur;
+}
+button{
+  color: $couleur;
+}
