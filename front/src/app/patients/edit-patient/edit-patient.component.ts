@@ -31,7 +31,7 @@ export class EditPatientComponent implements OnInit {
       surname: [this.patient.surname, Validators.required],
       date: [this.patient.date, Validators.required],
       urlImg: [this.patient.urlImg],
-      sexe: ['', Validators.required],
+      sexe: [this.patient.sexe, Validators.required],
       pathology: [this.patient.pathology, Validators.required],
       personality: [this.patient.personality]
     });

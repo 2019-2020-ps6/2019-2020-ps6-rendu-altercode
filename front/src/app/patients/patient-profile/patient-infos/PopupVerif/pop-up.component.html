@@ -1,7 +1,7 @@
-<div mat-dialog-content>
-  <p>Vous êtes sur de vouloir supprimer ? {{data.name}}</p><br>
+<div class="row" mat-dialog-content>
+  <p>Êtes-vous sûr de vouloir supprimer ? {{data.name}}</p><br>
 </div>
-<div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data.result" (click)="onNoClick()">Non</button>
-  <button mat-button [mat-dialog-close]="data.result" (click)="onYesClick()">Oui</button>
+<div class="row justify-content-center" mat-dialog-actions>
+  <button class="btn btn-secondary mr-2"mat-button [mat-dialog-close]="data.result" (click)="onNoClick()">Non</button>
+  <button class="btn btn-success" mat-button [mat-dialog-close]="data.result" (click)="onYesClick()">Oui</button>
 </div>
