@@ -18,15 +18,13 @@
     "sexe": "homme",
     "pathology": "Alzheimer",
     "personality": "Caractère sportif et viril",
-    "quizzes": [
-      1586250199696
-    ],
+    "quizzes": [],
     "id": 601587229630251,
     "style": [
       {
         "typePolice": "Times New Roman",
-        "heightPolice": "50",
-        "colorBody": "#ffffff ",
+        "heightPolice": 67,
+        "colorBody": "#ffffff",
         "colorPolice": "#000000",
         "patientId": 601587229630251,
         "id": 301587229630294
