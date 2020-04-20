@@ -10,5 +10,6 @@ module.exports = new BaseModel('Patient', {
   pathology: Joi.string().required(),
   personality: Joi.string().required(),
   urlImg: Joi.string().empty(''),
-  style: Style,
+  style: Joi.array(),
+  quizzes: Joi.array().empty(''),
 })

@@ -1,3 +1,5 @@
+import {Quiz} from './quiz.model';
+
 export interface Style {
   colorBody: string;
   colorPolice: string;
@@ -17,5 +19,6 @@ export interface Patient {
   personality: string;
   urlImg: string;
   style: Style;
+  quizzes: string[];
 }
 

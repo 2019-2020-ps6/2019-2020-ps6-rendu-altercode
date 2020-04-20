@@ -5,5 +5,4 @@ module.exports = new BaseModel('Quiz', {
   name: Joi.string().required(),
   urlImg: Joi.string().empty(''),
   questions: Joi.array(),
-  patients: Joi.array(),
 })

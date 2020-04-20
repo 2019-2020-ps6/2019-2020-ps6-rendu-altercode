@@ -6,6 +6,5 @@ export interface Quiz {
     name: string;
     urlImg: string;
     questions: Question[];
-    patients: Patient[];
 }
 

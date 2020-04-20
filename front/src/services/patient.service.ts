@@ -42,6 +42,7 @@ export class PatientService {
   }
 
   updatePatient(patient: Patient, patientId: string) {
+    console.log(patient);
     const urlWithId = this.patientUrl + '/' + patientId;
     this.http.put<Patient>(urlWithId, patient, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
   }

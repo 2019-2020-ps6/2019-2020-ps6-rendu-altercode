@@ -40,10 +40,6 @@ export class PatientStyleComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.patientService.setSelectedPatient(id);
-
-    /* $(window).click( () => {
-      alert('JQuery est installé');
-    }); */
   }
 
   updateConfig() {

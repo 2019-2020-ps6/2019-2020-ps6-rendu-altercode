@@ -1,10 +1,10 @@
-const { Patient } = require('../../models')
+const { Patient} = require('../../models')
 const { filterStylesFromPatient } = require('./styles/manager')
 
 const buildPatient = (patientId) => {
   const patient = Patient.getById(patientId)
   const style = filterStylesFromPatient(patient.id)
-  return { ...patient, style }
+  return { ...patient, style}
 }
 
 /**
