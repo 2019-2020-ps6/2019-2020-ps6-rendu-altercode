@@ -1,16 +1,34 @@
 :root {
-  --couleur: #488cff;
+  --couleur: #000000;
+  --bodyCouleur: #FFFFFF;
 }
 $couleur : var(--couleur);
+$bodyCouleur : var(--bodyCouleur);
 div{
+  background-color: $bodyCouleur;
   color: $couleur;
 }
 h1{
+  background-color: $bodyCouleur;
   color: $couleur;
 }
 textarea{
+  background-color: $bodyCouleur;
   color: $couleur;
 }
 input{
+  background-color: $bodyCouleur;
   color: $couleur;
 }
+button{
+  color: $couleur;
+}
+option{
+  background-color: $bodyCouleur;
+  color: $couleur;
+}
+select{
+  background-color: $bodyCouleur;
+  color: $couleur;
+}
+

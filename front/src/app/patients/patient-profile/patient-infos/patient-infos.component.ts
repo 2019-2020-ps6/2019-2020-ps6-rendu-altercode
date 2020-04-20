@@ -2,6 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Patient} from '../../../../models/patient.model';
 import {PatientService} from '../../../../services/patient.service';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {PopUpVerifComponent} from './PopupVerif/pop-up.component';
+import {Router} from '@angular/router';
+
+export interface DialogData {
+  name: string;
+  result: boolean;
+}
 
 @Component({
   selector: 'app-patient-infos',
@@ -12,8 +20,9 @@ export class PatientInfosComponent implements OnInit {
 
   public patient: Patient;
   public color;
+  private result;
 
-  constructor(private route: ActivatedRoute, private patientService: PatientService) {
+  constructor(public dialog: MatDialog, private route: ActivatedRoute, private patientService: PatientService, public router: Router) {
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
       this.color = this.patient.style[0].colorPolice;
@@ -32,9 +41,26 @@ export class PatientInfosComponent implements OnInit {
     return ((date1.getTime() - date2.getTime()) / 31536000000).toFixed(0);
   }
 
+  openPop(): void {
+      const dialogRef = this.dialog.open(PopUpVerifComponent, {
+        width: '250px',
+        data: {name: this.patient.name + ' ' + this.patient.surname}
+      });
+      dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.result = result;
+      console.log(this.result);
+      this.deletePatient();
+    });
+  }
+
   deletePatient() {
-    this.patientService.deleteStyle(this.patient);
-    this.patientService.deletePatient(this.patient);
+    if (this.result) {
+      this.patientService.deleteStyle(this.patient);
+      this.patientService.deletePatient(this.patient);
+    } else {
+    }
+    this.router.navigate(['/patient-list']);
   }
 }
 
