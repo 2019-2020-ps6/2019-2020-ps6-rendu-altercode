@@ -20,17 +20,16 @@ export class QuizListComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService) {
     this.quizService.quizzes$.subscribe((quiz) => this.quizList = quiz);
-    console.log(this.quizList);
+    this.patientService.patientSelected$.subscribe( (patient) => this.patient = patient);
   }
 
   ngOnInit() {
     this.quizService.setQuizzesFromUrl();
+    const id = this.route.snapshot.paramMap.get('id');
+    this.patientService.setSelectedPatient(id);
     if (this.router.url.includes('patient-quiz')) {
       console.log('Nous sommes dans l écran de gestion des quiz.');
       this.mode = 'patient-quiz';
-      const id = this.route.snapshot.paramMap.get('id');
-      this.patientService.setSelectedPatient(id);
-      this.patientService.patientSelected$.subscribe( (patient) => this.patient = patient);
     } else if (this.router.url.includes('quiz-list')) {
       console.log('Nous sommes dans l écran de la liste des quiz.');
       this.mode = 'quiz-list';

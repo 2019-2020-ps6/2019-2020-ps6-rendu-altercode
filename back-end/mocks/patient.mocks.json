@@ -35,13 +35,27 @@
     ]
   },
   {
-    "name": "aze",
-    "surname": "zer",
-    "date": "1998-04-15",
-    "urlImg": "https://images.sftcdn.net/images/t_app-cover-l,f_auto/p/befbcde0-9b36-11e6-95b9-00163ed833e7/260663710/the-test-fun-for-friends-screenshot.jpg",
+    "name": "vb n",
+    "surname": " bn,",
+    "date": "v bn",
+    "urlImg": "",
     "sexe": "homme",
-    "pathology": "zer",
-    "personality": "fdgf",
-    "id": 301587397412286
+    "pathology": "ghbnj",
+    "personality": "bn",
+    "quizzes": [
+      801587403042715,
+      1585635931622
+    ],
+    "id": 501587407252874,
+    "style": [
+      {
+        "typePolice": "Times New Roman",
+        "heightPolice": 50,
+        "colorBody": "#ffffff ",
+        "colorPolice": " #000000",
+        "patientId": 501587407252874,
+        "id": 401587407252877
+      }
+    ]
   }
 ]

@@ -25,7 +25,8 @@ export class PatientFormComponent implements OnInit {
       urlImg: [''],
       sexe: ['', Validators.required],
       pathology: ['', Validators.required],
-      personality: ['']
+      personality: [''],
+      quizzes: [[]],
     });
   }
 
