@@ -2,6 +2,6 @@
   <p>Vous êtes sur de vouloir supprimer ? {{data.name}}</p><br>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Non</button>
-  <button mat-button (click)="onYesClick()">Oui</button>
+  <button mat-button [mat-dialog-close]="data.result" (click)="onNoClick()">Non</button>
+  <button mat-button [mat-dialog-close]="data.result" (click)="onYesClick()">Oui</button>
 </div>

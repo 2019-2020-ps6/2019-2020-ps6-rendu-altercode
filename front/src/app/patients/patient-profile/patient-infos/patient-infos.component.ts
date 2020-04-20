@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 
 export interface DialogData {
   name: string;
-  result: string;
+  result: boolean;
 }
 
 @Component({
@@ -44,18 +44,18 @@ export class PatientInfosComponent implements OnInit {
   openPop(): void {
       const dialogRef = this.dialog.open(PopUpVerifComponent, {
         width: '250px',
-        data: {name: this.patient.name + ' ' + this.patient.surname, result: this.result}
+        data: {name: this.patient.name + ' ' + this.patient.surname}
       });
       dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.result = result;
-      console.log(result);
+      console.log(this.result);
       this.deletePatient();
     });
   }
 
   deletePatient() {
-    if (this.result === 'true') {
+    if (this.result) {
       this.patientService.deleteStyle(this.patient);
       this.patientService.deletePatient(this.patient);
     } else {

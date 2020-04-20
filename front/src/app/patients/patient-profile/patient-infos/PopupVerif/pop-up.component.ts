@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogClose, MatDialogRef} from '@angular/material/dialog';
 import {DialogData} from '../patient-infos.component';
 
 @Component({
@@ -14,12 +14,10 @@ export class PopUpVerifComponent {
   }
 
   onNoClick(): void {
-    this.data.result = 'false';
-    this.dialogRef.close();
+    this.dialogRef.close(false);
   }
 
   onYesClick(): void {
-    this.data.result = 'true';
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 }

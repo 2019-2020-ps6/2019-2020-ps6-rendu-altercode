@@ -2,8 +2,8 @@
   {
     "typePolice": "Times New Roman",
     "heightPolice": "5",
-    "colorBody": "#c0c0c0",
-    "colorPolice": "#000040",
+    "colorBody": "#ffffff",
+    "colorPolice": "#000000",
     "patientId": 201587115968911,
     "id": 401587117963632
   },
@@ -14,13 +14,5 @@
     "colorPolice": "#00ff00",
     "patientId": 601587229630251,
     "id": 301587229630294
-  },
-  {
-    "typePolice": "Times New Roman",
-    "heightPolice": 50,
-    "colorBody": "#ffffff ",
-    "colorPolice": " #000000",
-    "patientId": 101587365681932,
-    "id": 101587365681990
   }
 ]
