@@ -12,49 +12,33 @@ import {PatientService} from '../../services/patient.service';
 })
 export class PatientSpaceComponent implements OnInit {
 
+  public quizListTot: Quiz[] = [];
   public quizList: Quiz[] = [];
   public isChecked: boolean;
   public patient: Patient;
 
+  // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService) {
-    this.quizService.quizzes$.subscribe((quiz) => this.quizList = quiz);
-    this.patientService.patientSelected$.subscribe( (patient) => this.patient = patient);
+    this.quizService.quizzes$.subscribe((quiz) => {
+      this.quizListTot = quiz;
+
+    });
   }
+
 
   ngOnInit() {
     this.quizService.setQuizzesFromUrl();
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
     this.patientService.setSelectedPatient(id);
-  }
-
-  checkValue(isChecked: any, quizId: string) {
-    if (isChecked) {
-      this.patient.quizzes.push(quizId);
-    } else {
-      const quiz = (element) => element === quizId;
-      this.patient.quizzes.splice(this.patient.quizzes.findIndex(quiz), 1);
-    }
-  }
-
-  valideQuizzes() {
-    this.patientService.updatePatient(this.patient, this.patient.id);
-  }
-
-  quizChecked(quiz: Quiz) {
-    if (this.patient.quizzes.includes(quiz.id)) {
-      return true;
-    }
-    return false;
-  }
-
-  quizSelected(quizSelected: Quiz) {
-
-  }
-
-  deleteQuiz(quiz: Quiz) {
-    console.log(quiz);
-    this.quizService.deleteQuestions(quiz);
-    this.quizService.deleteQuiz(quiz);
+    this.patientService.patientSelected$.subscribe( (patient) => {
+      this.patient = patient;
+      this.quizListTot.forEach( (x1) => {
+        if (this.patient.quizzes.indexOf(x1.id) !== -1) {
+          this.quizList.push(x1);
+        }
+      });
+      console.log(this.quizList);
+      console.log(this.quizListTot);
+    });
   }
 }

@@ -17,8 +17,10 @@ export class QuizListComponent implements OnInit {
   public isChecked: boolean;
   public patient: Patient;
 
+  // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService) {
     this.quizService.quizzes$.subscribe((quiz) => this.quizList = quiz);
+    console.log(this.quizList);
   }
 
   ngOnInit() {
