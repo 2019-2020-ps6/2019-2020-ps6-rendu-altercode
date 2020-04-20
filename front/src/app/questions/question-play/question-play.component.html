@@ -1,14 +1,16 @@
-<div class="card">
-  <h2>
-    {{question.label}}
-  </h2>
-  <div *ngIf="question.urlImgQ.length > 0">
-    <img src="{{question.urlImgQ}}" alt="Image question">
-  </div>
-  <div class="answer" *ngFor="let answer of question.answers; let i=index">
-    <button mat-raised-button class="button-card" (click)="checkIfGood(i,answer.id)" id="{{answer.id}}">{{answer.value}}</button><br>
-    <div *ngIf="answer.urlImg.length > 0">
-      <img src="{{answer.urlImg}}" alt="Image réponse">
+<div class="row justify-content-center mb-3">
+  <h2 class="col-auto">{{question.label}}</h2>
+</div>
+<div class="row justify-content-center mb-3" *ngIf="question.urlImgQ.length > 0">
+  <div class="col-lg-8 mb-lg-4"><img src="{{question.urlImgQ}}" alt="Image question" class="img-thumbnail"></div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-lg-4 mb-3" *ngFor="let answer of question.answers; let i=index">
+    <div class="row" *ngIf="answer.urlImg.length > 0">
+      <div class="col-lg-8 mb-lg-4"><img src="{{answer.urlImg}}" alt="Image question" class="img-thumbnail"></div>
+    </div>
+    <div class="row justify-content-center">
+      <button mat-raised-button class= "col-auto btn-outline-primary" (click)="checkIfGood(i,answer.id)" id="{{answer.id}}">{{answer.value}}</button>
     </div>
     <br>
   </div>

@@ -1,7 +1,9 @@
-<div mat-dialog-content>
-  <p>La reponse à : {{data.questionString}}</p><br>
-  <p> est bien : {{data.reponseString}}</p>
+<div class="row justify-content-center" mat-dialog-content>
+  <p class="col-lg-auto">La réponse à : {{data.questionString}}</p>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Ok</button>
+<div class="row justify-content-center">
+  <p class="col-lg-auto"> est bien : {{data.reponseString}}</p>
+</div>
+<div class="row justify-content-center" mat-dialog-actions>
+  <button class="btn btn-primary col-lg-auto" mat-button (click)="onNoClick()">Ok</button>
 </div>

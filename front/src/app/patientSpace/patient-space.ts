@@ -18,14 +18,14 @@ export class PatientSpaceComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService) {
     this.quizService.quizzes$.subscribe((quiz) => this.quizList = quiz);
+    this.patientService.patientSelected$.subscribe( (patient) => this.patient = patient);
   }
 
   ngOnInit() {
     this.quizService.setQuizzesFromUrl();
-    console.log('Nous sommes dans l écran de gestion des quiz.');
     const id = this.route.snapshot.paramMap.get('id');
+    console.log(id);
     this.patientService.setSelectedPatient(id);
-    this.patientService.patientSelected$.subscribe( (patient) => this.patient = patient);
   }
 
   checkValue(isChecked: any, quizId: string) {

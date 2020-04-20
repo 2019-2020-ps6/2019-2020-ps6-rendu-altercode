@@ -1,51 +1,25 @@
 <div [ngSwitch]="mode">
-  <div *ngSwitchCase="'quiz-list'" class="card m-3">
-    <div class="card-header">
-      <div class="row">
-        <h2 class = "col-lg-3">Gestion Quiz</h2>
-        <button type="submit" class="btn btn-outline-dark col-lg-2 offset-7" routerLink="/patient-list">Retour Accueil</button>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="quiz-list">
+    <div *ngSwitchCase="'quiz-list'" class="card m-3">
+      <div class="card-header">
         <div class="row">
-          <div class="card col-lg-4 p-0">
-            <app-quiz-form></app-quiz-form>
-          </div>
-          <div class="quiz card col-lg-3 p-0" *ngFor="let quiz of quizList">
-            <h2 class = "card-header text-center">{{quiz.name}}</h2>
-            <div class="card-body">
-              <app-quiz [quiz]="quiz"></app-quiz>
-              <div class="row justify-content-lg-center">
-                  <!-- <button class="btn" routerLink="/play-quiz/{{quiz.id}}">Select</button> -->
-                <div class="col-lg-auto"><button class="btn" routerLink="/edit-quiz/{{quiz.id}}">Edit</button></div>
-                <div class="col-lg-auto"><button class="btn" (click)="deleteQuiz(quiz)">Delete</button></div>
-              </div>
-            </div>
-          </div>
+          <h2 class = "col-lg-3">Gestion Quiz</h2>
+          <button type="submit" class="btn btn-outline-dark col-lg-2 offset-7" routerLink="/patient-list">Retour Accueil</button>
         </div>
       </div>
-    </div>
-  </div>
-    <div *ngIf="patient !== undefined">
-      <div *ngSwitchCase="'patient-quiz'" class="card m-3">
-        <div class="card-header">
+      <div class="card-body">
+        <div class="quiz-list">
           <div class="row">
-            <h2 class = "col-lg-3">Gestion Quiz</h2>
-            <button type="submit" class="btn btn-outline-success col-lg-2 offset-5" routerLink="/patient-profile/{{patient.id}}" (click)="valideQuizzes()">Valider</button>
-            <button type="submit" class="btn btn-outline-dark col-lg-2" routerLink="/patient-profile/{{patient.id}}">Retour</button>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="row">
+            <div class="card col-lg-4 p-0">
+              <app-quiz-form></app-quiz-form>
+            </div>
             <div class="quiz card col-lg-3 p-0" *ngFor="let quiz of quizList">
               <h2 class = "card-header text-center">{{quiz.name}}</h2>
               <div class="card-body">
                 <app-quiz [quiz]="quiz"></app-quiz>
-                <div class="row form-check">
-                  <input #defaultCheck1 class="form-check-input" type="checkbox" (change)="checkValue(defaultCheck1.checked, quiz.id)" *ngIf="quizChecked(quiz)" checked>
-                  <input #defaultCheck1 class="form-check-input" type="checkbox" (change)="checkValue(defaultCheck1.checked, quiz.id)" *ngIf="!quizChecked(quiz)">
-                  <label class="form-check-label">Utiliser ce quiz</label>
+                <div class="row justify-content-lg-center">
+                    <!-- <button class="btn" routerLink="/play-quiz/{{quiz.id}}">Select</button> -->
+                  <div class="col-lg-auto"><button class="btn" routerLink="/edit-quiz/{{quiz.id}}">Edit</button></div>
+                  <div class="col-lg-auto"><button class="btn" (click)="deleteQuiz(quiz)">Delete</button></div>
                 </div>
               </div>
             </div>
@@ -53,4 +27,30 @@
         </div>
       </div>
     </div>
-</div>
+      <div *ngIf="patient !== undefined">
+        <div *ngSwitchCase="'patient-quiz'" class="card m-3">
+          <div class="card-header">
+            <div class="row">
+              <h2 class = "col-lg-3">Gestion Quiz</h2>
+              <button type="submit" class="btn btn-outline-success col-lg-2 offset-5" routerLink="/patient-profile/{{patient.id}}" (click)="valideQuizzes()">Valider</button>
+              <button type="submit" class="btn btn-outline-dark col-lg-2" routerLink="/patient-profile/{{patient.id}}">Retour</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="quiz card col-lg-3 p-0" *ngFor="let quiz of quizList">
+                <h2 class = "card-header text-center">{{quiz.name}}</h2>
+                <div class="card-body">
+                  <app-quiz [quiz]="quiz"></app-quiz>
+                  <div class="row form-check">
+                    <input #defaultCheck1 class="form-check-input" type="checkbox" (change)="checkValue(defaultCheck1.checked, quiz.id)" *ngIf="quizChecked(quiz)" checked>
+                    <input #defaultCheck2 class="form-check-input" type="checkbox" (change)="checkValue(defaultCheck2.checked, quiz.id)" *ngIf="!quizChecked(quiz)">
+                    <label class="form-check-label">Utiliser ce quiz</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

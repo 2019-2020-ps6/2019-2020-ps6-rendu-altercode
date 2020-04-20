@@ -16,7 +16,7 @@ import {PatientSpaceComponent} from './patientSpace/patient-space';
 const routes: Routes = [
   {path: 'quiz-list', component: QuizListComponent},
   {path: 'edit-quiz/:id', component: EditQuizComponent},
-  {path: 'play-quiz/:id', component: PlayQuizComponent},
+  {path: 'patient/:patientId/play-quiz/:quizId', component: PlayQuizComponent},
   {path: 'home', component: HomeComponent},
   {path: 'patient-list', component: PatientListComponent},
   {path: 'patient-form', component: PatientFormComponent},
