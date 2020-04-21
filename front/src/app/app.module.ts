@@ -31,6 +31,7 @@ import {EditPatientComponent} from './patients/edit-patient/edit-patient.compone
 import {CreateAdminComponent} from './home/createAdmin/createAdmin';
 import {PopUpVerifComponent} from './patients/patient-profile/patient-infos/PopupVerif/pop-up.component';
 import {PatientSpaceComponent} from './patientSpace/patient-space';
+import {PopUpIdComponent} from './patientSpace/pop-up-id/pop-up-id.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {PatientSpaceComponent} from './patientSpace/patient-space';
     PlayQuizComponent,
     PopUpComponent,
     PopUpVerifComponent,
+    PopUpIdComponent,
     HomeComponent,
     PatientComponent,
     PatientFormComponent,
