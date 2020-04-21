@@ -61,33 +61,5 @@
     "urlImg": "",
     "questionId": 501586250679381,
     "id": 201586250679385
-  },
-  {
-    "value": "réponse 1",
-    "isCorrect": true,
-    "urlImg": "https://images.sftcdn.net/images/t_app-cover-l,f_auto/p/befbcde0-9b36-11e6-95b9-00163ed833e7/260663710/the-test-fun-for-friends-screenshot.jpg",
-    "questionId": 101587403130637,
-    "id": 801587403130640
-  },
-  {
-    "value": "réponse 2",
-    "isCorrect": false,
-    "urlImg": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Flickr_-_europeanpeoplesparty_-_EPP_Summit_October_2010_%28105%29.jpg",
-    "questionId": 101587403130637,
-    "id": 301587403130644
-  },
-  {
-    "value": "Réponse 1",
-    "isCorrect": true,
-    "urlImg": "",
-    "questionId": 701587403680139,
-    "id": 301587403680140
-  },
-  {
-    "value": "Réponse 2",
-    "isCorrect": false,
-    "urlImg": "",
-    "questionId": 701587403680139,
-    "id": 601587403680141
   }
 ]

@@ -33,29 +33,5 @@
         "id": 301587229630294
       }
     ]
-  },
-  {
-    "name": "vb n",
-    "surname": " bn,",
-    "date": "v bn",
-    "urlImg": "",
-    "sexe": "homme",
-    "pathology": "ghbnj",
-    "personality": "bn",
-    "quizzes": [
-      801587403042715,
-      1585635931622
-    ],
-    "id": 501587407252874,
-    "style": [
-      {
-        "typePolice": "Times New Roman",
-        "heightPolice": 50,
-        "colorBody": "#ffffff ",
-        "colorPolice": " #000000",
-        "patientId": 501587407252874,
-        "id": 401587407252877
-      }
-    ]
   }
 ]
