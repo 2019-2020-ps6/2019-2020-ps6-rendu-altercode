@@ -2,7 +2,7 @@
   <h2 class="col-auto">{{question.label}}</h2>
 </div>
 <div class="row justify-content-center mb-3" *ngIf="question.urlImgQ.length > 0">
-  <div class="col-lg-8 mb-lg-4"><img src="{{question.urlImgQ}}" alt="Image question" class="img-thumbnail"></div>
+  <div class="col-lg-8 mb-lg-4"><img id="photo" src="{{question.urlImgQ}}" alt="Image question" class="img-thumbnail" height="320" width="640"></div>
 </div>
 <div class="row justify-content-center">
   <div class="col-lg-4 mb-3" *ngFor="let answer of question.answers; let i=index">
