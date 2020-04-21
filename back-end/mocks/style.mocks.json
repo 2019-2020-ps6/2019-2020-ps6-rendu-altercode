@@ -9,7 +9,7 @@
   },
   {
     "typePolice": "Times New Roman",
-    "heightPolice": 67,
+    "heightPolice": "67",
     "colorBody": "#ffffff",
     "colorPolice": "#000000",
     "patientId": 601587229630251,
