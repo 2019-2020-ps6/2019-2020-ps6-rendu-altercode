@@ -1,68 +1,5 @@
 [
   {
-    "value": "Oui",
-    "isCorrect": true,
-    "urlImg": "",
-    "questionId": 1585576017574,
-    "id": 1585576017576
-  },
-  {
-    "value": "Réponse 1",
-    "isCorrect": true,
-    "urlImg": "",
-    "questionId": 1585635978584,
-    "id": 1585635978588
-  },
-  {
-    "value": "Réponse 2 ",
-    "isCorrect": false,
-    "urlImg": "",
-    "questionId": 1585635978584,
-    "id": 1585635978591
-  },
-  {
-    "value": "Réponse 1",
-    "isCorrect": true,
-    "urlImg": "",
-    "questionId": 1585643270399,
-    "id": 1585643270405
-  },
-  {
-    "value": "Réponse 2",
-    "isCorrect": false,
-    "urlImg": "",
-    "questionId": 1585643270399,
-    "id": 1585643270408
-  },
-  {
-    "value": "Réponse 1",
-    "isCorrect": true,
-    "urlImg": "https://images.sftcdn.net/images/t_app-cover-l,f_auto/p/befbcde0-9b36-11e6-95b9-00163ed833e7/260663710/the-test-fun-for-friends-screenshot.jpg",
-    "questionId": 1585643571326,
-    "id": 1585643571331
-  },
-  {
-    "value": "Leo",
-    "isCorrect": true,
-    "urlImg": "",
-    "questionId": 501586250679381,
-    "id": 501586250679384
-  },
-  {
-    "value": "Jerome",
-    "isCorrect": false,
-    "urlImg": "",
-    "questionId": 501586250679381,
-    "id": 501586250679385
-  },
-  {
-    "value": "Alex",
-    "isCorrect": false,
-    "urlImg": "",
-    "questionId": 501586250679381,
-    "id": 201586250679385
-  },
-  {
     "value": "réponse 1",
     "isCorrect": true,
     "urlImg": "https://images.sftcdn.net/images/t_app-cover-l,f_auto/p/befbcde0-9b36-11e6-95b9-00163ed833e7/260663710/the-test-fun-for-friends-screenshot.jpg",
@@ -215,5 +152,6 @@
     "urlImg": "",
     "questionId": 201587449759264,
     "id": 701587449759268
+>>>>>>> f4b866febc376b85c57322001d4d6a07e22a7bdf
   }
 ]
