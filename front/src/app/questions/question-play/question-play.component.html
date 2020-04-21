@@ -1,16 +1,16 @@
 <div class="row justify-content-center mb-3">
   <h2 class="col-auto">{{question.label}}</h2>
 </div>
-<div class="row justify-content-center mb-3" *ngIf="question.urlImgQ.length > 0">
-  <div class="col-lg-8 mb-lg-4"><img id="photo" src="{{question.urlImgQ}}" alt="Image question" class="img-thumbnail" height="320" width="640"></div>
+<div class="row mb-3 justify-content-center" *ngIf="question.urlImgQ.length > 0">
+  <div class="col-lg-auto mb-lg-4"><img id="photo" src="{{question.urlImgQ}}" alt="Image question" class="img-thumbnail" height="320" width="640"></div>
 </div>
 <div class="row justify-content-center">
-  <div class="col-lg-4 mb-3" *ngFor="let answer of question.answers; let i=index">
+  <div class="col-lg-auto mr-3 mb-3" *ngFor="let answer of question.answers; let i=index">
     <div class="row" *ngIf="answer.urlImg.length > 0">
-      <div class="col-lg-8 mb-lg-4"><img src="{{answer.urlImg}}" alt="Image question" class="img-thumbnail"></div>
+      <div class="col-lg-auto mb-lg-4"><img src="{{answer.urlImg}}" alt="Image question" class="img-thumbnail"></div>
     </div>
-    <div class="row justify-content-center">
-      <button mat-raised-button class= "col-auto btn-outline-primary" (click)="checkIfGood(i,answer.id)" id="{{answer.id}}">{{answer.value}}</button>
+    <div class="row">
+      <button mat-raised-button class= "col-lg-auto btn-outline-primary" (click)="checkIfGood(i,answer.id)" id="{{answer.id}}">{{answer.value}}</button>
     </div>
     <br>
   </div>
