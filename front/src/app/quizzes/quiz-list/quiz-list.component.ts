@@ -16,6 +16,7 @@ export class QuizListComponent implements OnInit {
   public mode: string;
   public isChecked: boolean;
   public patient: Patient;
+  public allCheck = false;
 
   // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService) {
@@ -43,6 +44,11 @@ export class QuizListComponent implements OnInit {
       const quiz = (element) => element === quizId;
       this.patient.quizzes.splice(this.patient.quizzes.findIndex(quiz), 1);
     }
+    if (this.patient.quizzes.length === this.quizList.length) {
+      this.allCheck = true;
+    } else {
+      this.allCheck = false;
+    }
   }
 
   valideQuizzes() {
@@ -64,5 +70,18 @@ export class QuizListComponent implements OnInit {
     console.log(quiz);
     this.quizService.deleteQuestions(quiz);
     this.quizService.deleteQuiz(quiz);
+  }
+
+  checkAll() {
+    if (this.allCheck) {
+      this.patient.quizzes.splice(0, this.patient.quizzes.length);
+      this.allCheck = false;
+    } else {
+      this.quizList.forEach((quiz) => {
+        this.patient.quizzes.push(quiz.id);
+      });
+      this.allCheck = true;
+    }
+
   }
 }
