@@ -35,6 +35,9 @@
               <button type="submit" class="btn btn-outline-success col-lg-2 offset-5" routerLink="/patient-profile/{{patient.id}}" (click)="valideQuizzes()">Valider</button>
               <button type="submit" class="btn btn-outline-dark col-lg-2" routerLink="/patient-profile/{{patient.id}}">Retour</button>
             </div>
+            <div class="row">
+              <button type="submit" class="btn btn-outline-dark" (click)="checkAll()">Tout selectionner / désélectionner</button>
+            </div>
           </div>
           <div class="card-body">
             <div class="row">
