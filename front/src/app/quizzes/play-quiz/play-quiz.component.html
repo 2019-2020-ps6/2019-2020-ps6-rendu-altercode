@@ -1,18 +1,18 @@
 <div *ngIf="quiz !== undefined && patient !== undefined">
   <div class="row">
-    <button class="btn btn-secondary col-lg-2 offset-10 mt-2" routerLink="/patient-space/{{patient.id}}">Retour</button>
+    <button class="btn btn-secondary col-lg-2 offset-9 mt-2" routerLink="/patient-space/{{patient.id}}">Retour</button>
   </div>
-  <div class="row justify-content-center">
-    <div class="card m-3 col-lg-auto p-0">
-      <div class="card-header">
+  <div class="row justify-content-center h-100">
+    <div class="card m-3 col-lg-11 p-0 h-100">
+      <div class="card-header h-10">
         <div class="row justify-content-center">
-          <h1 class="col-auto text-center m-0">{{quiz.name}}</h1>
+          <h1 class="col text-center m-0">{{quiz.name}}</h1>
         </div>
       </div>
       <div class="card-body">
         <app-question-play [question]="quiz.questions[index]"></app-question-play>
         <div class="row justify-content-center">
-          <button *ngIf="index < quiz.questions.length - 1; else Else" class="btn btn-primary col-lg-3" (click) = "nextQuestion()">Next</button>
+          <button *ngIf="index < quiz.questions.length - 1; else Else" class="btn btn-primary col-lg-3" (click) = "nextQuestion()">Suivant</button>
           <ng-template #Else>
             <button class="btn btn-success col-lg-3" routerLink="/patient-space/{{patient.id}}">Terminer</button>
           </ng-template>

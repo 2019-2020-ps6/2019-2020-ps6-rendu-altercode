@@ -14,18 +14,18 @@ export class PatientStyleComponent implements OnInit {
 
   public patient: Patient;
   public configForm: FormGroup;
-  private color;
-  private colorBody;
+  private colorP;
+  private colorB;
 
   // tslint:disable-next-line:max-line-length
   constructor(public formBuilder: FormBuilder, private route: ActivatedRoute, public router: Router, private patientService: PatientService) {
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
       this.initializeConfigForm();
-      this.color = this.patient.style[0].colorPolice;
-      document.documentElement.style.setProperty('--couleur', this.color);
-      this.colorBody = this.patient.style[0].colorBody;
-      document.documentElement.style.setProperty('--bodyCouleur', this.colorBody);
+      this.colorP = this.patient.style[0].colorPolice;
+      document.documentElement.style.setProperty('--couleur', this.colorP);
+      this.colorB = this.patient.style[0].colorBody;
+      document.documentElement.style.setProperty('--bodyCouleur', this.colorB);
     });
 
   }

@@ -14,7 +14,7 @@ export class PopUpIdComponent {
   public adminList: Admin[] = [];
 
   constructor(public formBuilder: FormBuilder, public adminService: AdminService, public router: Router, public dialogRef: MatDialogRef<PopUpIdComponent>) {
-    this.adminService.getAdmins()
+    this.adminService.getAdmins();
     this.adminService.admins$.subscribe((admin) => this.adminList = admin);
     this.connectForm = this.formBuilder.group({
       connectId: [''],

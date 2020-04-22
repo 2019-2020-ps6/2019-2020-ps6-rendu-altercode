@@ -34,6 +34,7 @@ export class PatientService {
     this.http.get<Patient>(urlWithId).subscribe((patient) => {
       this.patientSelected$.next(patient);
     });
+    console.log('test');
   }
 
   deletePatient(patient: Patient) {

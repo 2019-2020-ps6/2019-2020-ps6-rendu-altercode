@@ -15,7 +15,6 @@ export interface DialogData {
   styleUrls: ['./question-play.component.scss']
 })
 export class QuestionPlayComponent implements OnInit {
-
   @Input()
   question: Question;
 
@@ -39,11 +38,6 @@ export class QuestionPlayComponent implements OnInit {
     if (this.question.answers[parseInt(i, 10)].isCorrect === true) {
       this.openDialog(i);
     } else {
-      console.log(this.question.answers[0])
-      console.log(this.question.answers[1])
-      console.log(this.question.answers[2])
-      console.log(this.question.answers[4])
-      console.log(id)
       const monInput = document.getElementById(id);
       monInput.parentNode.removeChild(monInput);
     }

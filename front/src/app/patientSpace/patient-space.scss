@@ -1,3 +1,7 @@
-.quiz-list {
-  display: flex;
+$couleur : var(--couleur);
+$bodyCouleur : var(--bodyCouleur);
+
+.card-body :not(button){
+  background-color: $bodyCouleur;
+  color: $couleur;
 }

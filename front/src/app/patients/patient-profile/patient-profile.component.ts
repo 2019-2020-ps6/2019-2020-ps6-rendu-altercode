@@ -11,13 +11,10 @@ import {PatientService} from '../../../services/patient.service';
 export class PatientProfileComponent implements OnInit {
 
   public patient: Patient;
-  private color;
 
   constructor(private route: ActivatedRoute, private patientService: PatientService) {
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
-      this.color = this.patient.style[0].colorPolice;
-      document.documentElement.style.setProperty('--couleur', this.color);
     });
   }
 

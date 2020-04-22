@@ -13,7 +13,11 @@
               <app-quiz-form></app-quiz-form>
             </div>
             <div class="quiz card col-lg-3 p-0" *ngFor="let quiz of quizList">
-              <h2 class = "card-header text-center">{{quiz.name}}</h2>
+              <div class="card-header">
+                <div class="row text-center justify-content-center">
+                  <h2 class="col mb-0">{{quiz.name}}</h2>
+                </div>
+              </div>
               <div class="card-body">
                 <app-quiz [quiz]="quiz"></app-quiz>
                 <div class="row justify-content-lg-center">

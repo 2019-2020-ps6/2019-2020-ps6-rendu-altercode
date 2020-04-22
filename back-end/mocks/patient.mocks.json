@@ -8,7 +8,8 @@
     "personality": "Bg mais pas très fûté",
     "urlImg": "https://scontent.fcdg1-1.fna.fbcdn.net/v/t31.0-8/p960x960/11406593_120106168321744_1080553252874860740_o.jpg?_nc_cat=101&_nc_sid=7aed08&_nc_ohc=5gGW_n3tz1wAX-b-rqt&_nc_ht=scontent.fcdg1-1.fna&_nc_tp=6&oh=87d2362b00cf69f0f0c0dea59b169c92&oe=5EC0BAE1",
     "quizzes": [
-      1001587449298949
+      1001587449298949,
+      801587403042715
     ],
     "id": 201587115968911,
     "style": [
@@ -32,7 +33,8 @@
     "personality": "Caractère sportif et viril",
     "quizzes": [
       801587403042715,
-      1585635931622
+      1585635931622,
+      1001587449298949
     ],
     "id": 601587229630251,
     "style": [
@@ -40,10 +42,21 @@
         "typePolice": "Times New Roman",
         "heightPolice": "67",
         "colorBody": "#ffffff",
-        "colorPolice": "#000000",
+        "colorPolice": "#8080ff",
         "patientId": 601587229630251,
         "id": 301587229630294
       }
     ]
+  },
+  {
+    "name": "sgds",
+    "surname": "df",
+    "date": "1998-04-15",
+    "urlImg": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Flickr_-_europeanpeoplesparty_-_EPP_Summit_October_2010_%28105%29.jpg",
+    "sexe": "femme",
+    "pathology": "a",
+    "personality": "a",
+    "quizzes": [],
+    "id": 701587567460120
   }
 ]

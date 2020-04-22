@@ -1,8 +1,8 @@
 <div class="card m-3">
   <div class="card-header">
     <div class="row">
-      <h1 class = "col-lg-3">{{quiz.name}}</h1>
-      <button class="btn btn-outline-dark col-lg-2 offset-7" routerLink="/quiz-list">Retour</button>
+      <h1 class = "col-lg-6">{{quiz.name}}</h1>
+      <button class="btn btn-outline-dark col-lg-2 offset-4" routerLink="/quiz-list">Retour</button>
     </div>
   </div>
   <div class="card-body">
@@ -30,6 +30,9 @@
       </div>
       <div class="answer col-lg-3 ml-3" [formArrayName]="'answers'" *ngFor="let address of answers.controls; let i = index">
         <div class="answer-form" [formGroupName]="i">
+          <div class="row mb-2">
+            <h2>Réponse {{i+1}}</h2>
+          </div>
           <div class="row mb-2">
             <label>Answer</label>
             <input type="text" class="form-control" [formControlName]="'value'" required>

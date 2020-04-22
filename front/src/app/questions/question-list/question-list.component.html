@@ -1,5 +1,10 @@
 <div class="question-list row">
   <div class="question card col-lg-4 p-0" *ngFor="let question of quiz.questions">
+    <div class="card-header">
+      <div class="row justify-content-center text-center">
+        <h2 class="col mb-0">{{question.label}}</h2>
+      </div>
+    </div>
     <div class="card-body">
       <app-question [question] ="question"></app-question>
       <div class="form-row justify-content-center mt-3">

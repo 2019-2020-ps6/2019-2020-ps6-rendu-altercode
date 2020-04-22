@@ -1,6 +1,10 @@
 <div *ngIf="patient !== undefined">
   <div class="card m-3">
-    <h2 class = "card-header">{{patient.name}} {{patient.surname}}</h2>
+    <div class="card-header">
+      <div class="row">
+        <h1 class="col text-center m-0">{{patient.name}} {{patient.surname}}</h1>
+      </div>
+    </div>
     <div class="card-body">
       <div class="form-row">
         <div class="col-lg-3 offset-1">
@@ -14,10 +18,14 @@
         </div>
         <div class="col-lg-4 offset-3">
           <div class="card mt-lg-0">
-            <h2 class="card-header">{{patient.name}} {{patient.surname}}</h2>
+            <div class="card-header">
+              <div class="row">
+                <h2 class="col text-center m-0">{{patient.name}} {{patient.surname}}</h2>
+              </div>
+            </div>
             <div class="card-body">
-              <div class="row" *ngIf="patient.urlImg.length > 0">
-                <div class="col-lg-12 mb-lg-2"><img src="{{patient.urlImg}}" alt="Image patient" class="img-thumbnail"></div>
+              <div class="row justify-content-center mb-2" style="height: 350px" *ngIf="patient.urlImg.length > 0">
+                <img src="{{patient.urlImg}}" alt="Image patient" class="h-100 col-lg-10 img-thumbnail" style="max-width: 350px;">
               </div>
               <div class="row justify-content-lg-center">
                 {{getAge(patient)}} ans

@@ -1,16 +1,14 @@
-<div class="row justify-content-center">
-  <h2>{{question.label}}</h2>
-</div>
-<div class="row" *ngIf="question.urlImgQ.length > 0">
-  <div class="col-lg-8 offset-2 mb-lg-4"><img src="{{question.urlImgQ}}" alt="Image question" class="img-thumbnail"></div>
+<div class="row justify-content-center mb-3" style="height: 172px" *ngIf="question.urlImgQ.length > 0">
+  <img src="{{question.urlImgQ}}" alt="Image question" class="h-100 col-lg-10 img-thumbnail" style="max-width: 250px;">
 </div>
 <div class="row">
-  <div class="answer col-lg-6" *ngFor="let answer of question.answers; let i=index">
-      <div class="row">
-        {{i}} -  {{answer.value}}
+  <div class="answer col-lg-6" style="min-width: 30%;" *ngFor="let answer of question.answers; let i=index">
+      <div class="row justify-content-center">
+        <p class="col-lg-1 p-0">{{i + 1}} - </p><p class="col text-center">{{answer.value}}</p>
       </div>
-      <div class="row" *ngIf="answer.urlImg.length > 0">
-        <div class="col-lg-8 offset-2 mb-lg-4"><img src="{{answer.urlImg}}" alt="Image reponse" class="img-thumbnail"></div>
+      <div class="row justify-content-center mb-2" style="height: 100px" *ngIf="answer.urlImg.length > 0">
+        <img src="{{answer.urlImg}}" alt="Image réponse" class="h-100 col-lg-10 img-thumbnail" style="max-width: 200px;">
       </div>
   </div>
 </div>
+

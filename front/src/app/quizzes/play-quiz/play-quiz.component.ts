@@ -12,7 +12,8 @@ import {Patient} from '../../../models/patient.model';
   styleUrls: ['./play-quiz.component.scss']
 })
 export class PlayQuizComponent implements OnInit {
-
+  private colorP;
+  private colorB;
   public quiz: Quiz;
   public patient: Patient;
   public questions: Question[];
@@ -20,7 +21,13 @@ export class PlayQuizComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, public patientService: PatientService) {
     this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
-    this.patientService.patientSelected$.subscribe((patient) => this.patient = patient);
+    this.patientService.patientSelected$.subscribe((patient) => {
+      this.patient = patient;
+      this.colorP = this.patient.style[0].colorPolice;
+      this.colorB = this.patient.style[0].colorBody;
+      document.documentElement.style.setProperty('----bodyCouleur', this.colorB);
+      document.documentElement.style.setProperty('--couleur', this.colorP);
+    });
   }
 
   ngOnInit() {
