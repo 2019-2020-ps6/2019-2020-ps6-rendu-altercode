@@ -56,4 +56,8 @@ export class QuestionFormComponent implements OnInit {
     }
   }
 
+  deleteAnswer(answers: FormArray, i: number) {
+    answers.controls.splice(i, 1);
+  }
+
 }

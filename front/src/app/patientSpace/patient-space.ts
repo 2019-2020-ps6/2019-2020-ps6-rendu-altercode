@@ -4,6 +4,8 @@ import { Quiz } from '../../models/quiz.model';
 import { Patient } from '../../models/patient.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PatientService} from '../../services/patient.service';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {PopUpIdComponent} from './pop-up-id/pop-up-id.component';
 
 @Component({
   selector: 'app-patient-space',
@@ -18,7 +20,7 @@ export class PatientSpaceComponent implements OnInit {
   public patient: Patient;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService) {
+  constructor(public dialog: MatDialog, private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService) {
     this.quizService.quizzes$.subscribe((quiz) => {
       this.quizListTot = quiz;
 
@@ -39,6 +41,13 @@ export class PatientSpaceComponent implements OnInit {
       });
       console.log(this.quizList);
       console.log(this.quizListTot);
+    });
+  }
+
+  openPop() {
+    const dialogRef = this.dialog.open(PopUpIdComponent, {
+      width: '250px',
+      data: {}
     });
   }
 }

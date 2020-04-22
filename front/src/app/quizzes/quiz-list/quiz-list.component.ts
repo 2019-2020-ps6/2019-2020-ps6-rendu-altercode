@@ -26,10 +26,10 @@ export class QuizListComponent implements OnInit {
 
   ngOnInit() {
     this.quizService.setQuizzesFromUrl();
-    const id = this.route.snapshot.paramMap.get('id');
-    this.patientService.setSelectedPatient(id);
     if (this.router.url.includes('patient-quiz')) {
       console.log('Nous sommes dans l écran de gestion des quiz.');
+      const id = this.route.snapshot.paramMap.get('id');
+      this.patientService.setSelectedPatient(id);
       this.mode = 'patient-quiz';
     } else if (this.router.url.includes('quiz-list')) {
       console.log('Nous sommes dans l écran de la liste des quiz.');

@@ -3,7 +3,7 @@
     <div class="card-header">
      <div class="row p-0">
       <h2 class = "col-lg-3">Gestion Quiz</h2>
-      <button type="submit" class="btn btn-outline-dark col-lg-2 offset-7" routerLink="/patient-list">Retour Accueil</button>
+      <button type="submit" class="btn btn-outline-dark col-lg-2 offset-7" (click)="openPop()">Retour Accueil</button>
      </div>
     </div>
   <div class="card-body">
@@ -14,7 +14,7 @@
           <div class="card-body">
             <app-quiz [quiz]="quiz"></app-quiz>
             <div class="row justify-content-lg-center">
-              <div class="col-lg-auto"><button class="btn" routerLink="/patient/{{patient.id}}/play-quiz/{{quiz.id}}">Play</button></div>
+              <div class="col-lg-auto"><button class="btn" routerLink="/patient/{{patient.id}}/play-quiz/{{quiz.id}}">Jouer</button></div>
             </div>
           </div>
         </div>
