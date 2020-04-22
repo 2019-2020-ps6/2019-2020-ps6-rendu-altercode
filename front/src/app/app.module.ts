@@ -57,7 +57,7 @@ import {PatientSpaceComponent} from './patientSpace/patient-space';
     PatientProfileComponent,
     EditPatientComponent,
     CreateAdminComponent,
-    PatientSpaceComponent
+    PatientSpaceComponent,
   ],
   imports: [
     BrowserModule,
