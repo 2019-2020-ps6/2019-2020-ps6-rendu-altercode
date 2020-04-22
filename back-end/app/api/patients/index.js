@@ -1,11 +1,13 @@
 const { Router } = require('express')
 const StyleRouter = require('./styles')
-const { Patient, Style } = require('../../models')
+const StatisticsRouter = require('./statistics')
+const { Patient, Style, Statistics } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
 const { buildPatient, buildPatients } = require('./manager')
 
 const router = new Router()
 router.use('/:patientId/styles', StyleRouter)
+router.use('/:patientId/statistics', StatisticsRouter)
 
 router.get('/', (req, res) => {
   try {
@@ -32,6 +34,14 @@ router.post('/', (req, res) => {
     const style = Style.create({
       typePolice: 'Times New Roman', heightPolice: 50, colorBody: '#ffffff ', colorPolice: ' #000000', patientId: patient.id,
     })
+    const stat = Statistics.create({
+      patientId: 0,
+      nbQuizDone: 0,
+      nbMissClick: 0,
+      nbWrongAnswer: 0,
+      nbGoodAnswer: 0,
+    })
+    patient.statistics = stat
     res.status(201).json(patient)
   } catch (err) {
     manageAllErrors(res, err)

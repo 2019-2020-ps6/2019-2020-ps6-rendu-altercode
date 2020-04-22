@@ -21,6 +21,15 @@
         "patientId": 201587115968911,
         "id": 401587117963632
       }
+    ],
+    "statistics": [
+      {
+        "patientId": 0,
+        "nbQuizDone": 0,
+        "nbMissClick": 0,
+        "nbWrongAnswer": 0,
+        "nbGoodAnswer": 0
+      }
     ]
   },
   {
@@ -44,6 +53,15 @@
         "colorPolice": "#000000",
         "patientId": 601587229630251,
         "id": 301587229630294
+      }
+    ],
+    "statistics": [
+      {
+        "patientId": 0,
+        "nbQuizDone": 0,
+        "nbMissClick": 0,
+        "nbWrongAnswer": 0,
+        "nbGoodAnswer": 0
       }
     ]
   },
@@ -70,5 +88,16 @@
         "id": 401587407252877
       }
     ]
+  },
+  {
+    "name": "TES",
+    "surname": "Girard",
+    "date": "1950-12-12",
+    "urlImg": "",
+    "sexe": "homme",
+    "pathology": "zz",
+    "personality": "zz",
+    "quizzes": [],
+    "id": 201587460963321
   }
 ]
