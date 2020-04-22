@@ -33,16 +33,17 @@
     "personality": "Caractère sportif et viril",
     "quizzes": [
       801587403042715,
-      1585635931622,
-      1001587449298949
+      1001587449298949,
+      1001587578256166,
+      301587578269780
     ],
     "id": 601587229630251,
     "style": [
       {
         "typePolice": "Times New Roman",
         "heightPolice": "67",
-        "colorBody": "#ffffff",
-        "colorPolice": "#8080ff",
+        "colorBody": "#00ff00",
+        "colorPolice": "#ff0000",
         "patientId": 601587229630251,
         "id": 301587229630294
       }

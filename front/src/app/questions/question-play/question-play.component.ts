@@ -15,6 +15,7 @@ export interface DialogData {
   styleUrls: ['./question-play.component.scss']
 })
 export class QuestionPlayComponent implements OnInit {
+
   @Input()
   question: Question;
 
