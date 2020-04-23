@@ -20,6 +20,6 @@ export interface Patient {
   urlImg: string;
   style: Style;
   quizzes: string[];
-  statistics: Statistics[]
+  statistics: Statistics[];
 }
 

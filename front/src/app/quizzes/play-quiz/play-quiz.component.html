@@ -10,11 +10,11 @@
         </div>
       </div>
       <div class="card-body">
-        <app-question-play [question]="quiz.questions[index]"></app-question-play>
+        <app-question-play [question]="quiz.questions[index]" (nextQuestionAuto)="nextQuestionAuto($event)"></app-question-play>
         <div class="row justify-content-center">
           <button *ngIf="index < quiz.questions.length - 1; else Else" class="btn btn-primary col-lg-3" (click) = "nextQuestion()">Suivant</button>
           <ng-template #Else>
-            <button class="btn btn-success col-lg-3" routerLink="/patient-space/{{patient.id}}">Terminer</button>
+            <button id="button-end" class="btn btn-success col-lg-3" routerLink="/patient/{{patient.id}}/play-quiz/{{quiz.id}}/success-page" style="visibility: hidden">Terminer</button>
           </ng-template>
         </div>
       </div>

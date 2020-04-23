@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {DialogData} from './question-play.component';
 
@@ -6,15 +6,30 @@ import {DialogData} from './question-play.component';
   selector: 'app-pop-up',
   templateUrl: './pop-up.component.html',
 })
-export class PopUpComponent {
-
+export class PopUpComponent implements OnInit, OnDestroy {
+  timer;
   constructor(
     public dialogRef: MatDialogRef<PopUpComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-    console.log('coucou');
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  ngOnInit() {
+    this.startTimer();
+  }
+
+  startTimer() {
+    this.timer = setTimeout(() => {
+      this.dialogRef.close();
+    }, 5000);
+  }
+
+  ngOnDestroy() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
   }
 }

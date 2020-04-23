@@ -1,6 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {QuizService} from '../../../services/quiz.service';
 import {Question} from '../../../models/question.model';
 import {PatientService} from '../../../services/patient.service';
@@ -11,7 +11,8 @@ import {Patient} from '../../../models/patient.model';
   templateUrl: './play-quiz.component.html',
   styleUrls: ['./play-quiz.component.scss']
 })
-export class PlayQuizComponent implements OnInit {
+export class PlayQuizComponent implements OnInit, OnDestroy {
+  timer;
   private colorP;
   private colorB;
   public quiz: Quiz;
@@ -19,7 +20,7 @@ export class PlayQuizComponent implements OnInit {
   public questions: Question[];
   index = 0;
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService, public patientService: PatientService) {
+  constructor(private route: ActivatedRoute, private router: Router, private quizService: QuizService, public patientService: PatientService) {
     this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
@@ -38,8 +39,32 @@ export class PlayQuizComponent implements OnInit {
   }
 
   nextQuestion() {
-    this.index++;
+    if (this.index < this.quiz.questions.length - 1) {
+      this.index++;
+    } else {
+      this.router.navigate(['/patient/' + this.patient.id + '/play-quiz/' + this.quiz.id + '/success-page']);
+    }
   }
 
+  nextQuestionAuto(bool: boolean) {
+    const button = document.getElementById('button-end');
+    button.style.setProperty('visibility', 'visible');
+    this.startTimer();
+  }
+
+  startTimer() {
+    const ind = this.index;
+    this.timer = setTimeout(() => {
+      if (this.index === ind ) {
+        this.nextQuestion();
+      }
+    }, 10000);
+  }
+
+  ngOnDestroy() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+  }
 }
 

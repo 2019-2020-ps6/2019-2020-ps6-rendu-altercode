@@ -10,14 +10,6 @@ import { Quiz } from '../../../models/quiz.model';
   styleUrls: ['./quiz-form.component.scss']
 })
 export class QuizFormComponent implements OnInit {
-
-  // Note: We are using here ReactiveForms to create our form. Be careful when you look for some documentation to
-  // avoid TemplateDrivenForm (another type of form)
-
-  /**
-   * QuizForm: Object which manages the form in our component.
-   * More information about Reactive Forms: https://angular.io/guide/reactive-forms#step-1-creating-a-formgroup-instance
-   */
   public quizForm: FormGroup;
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
@@ -26,19 +18,22 @@ export class QuizFormComponent implements OnInit {
       name: ['', Validators.required],
       urlImg: [''],
     });
-    // You can also add validators to your inputs such as required, maxlength or even create your own validator!
-    // More information: https://angular.io/guide/reactive-forms#simple-form-validation
-    // Advanced validation: https://angular.io/guide/form-validation#reactive-form-validation
   }
 
   ngOnInit() {
   }
 
   addQuiz() {
-    const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
-    console.log('Add quiz: ', quizToCreate);
-    quizToCreate.questions = [];
-    this.quizService.addQuiz(quizToCreate);
+    if (this.quizForm.valid) {
+      const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
+      if (quizToCreate.urlImg === '') {
+        // tslint:disable-next-line:max-line-length
+        quizToCreate.urlImg = 'https://images.clipartlogo.com/files/istock/previews/1015/101577815-quiz-sign-icon-questions-and-answers-game.jpg';
+      }
+      console.log('Add quiz: ', quizToCreate);
+      quizToCreate.questions = [];
+      this.quizService.addQuiz(quizToCreate);
+    }
   }
 
 }

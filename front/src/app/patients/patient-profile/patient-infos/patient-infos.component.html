@@ -3,7 +3,7 @@
     <div class="card-header">
       <div class="row">
         <h1 id="recup" class="col-lg-8">{{patient.name}} {{patient.surname}}</h1>
-        <button class="btn btn-outline-dark col-lg-2 offset-1" routerLink="/patient-profile/{{patient.id}}">Retour Patient</button>
+        <button class="btn btn-outline-dark col-lg-2 offset-1" style="max-height: 48px" routerLink="/patient-profile/{{patient.id}}">Retour Patient</button>
       </div>
     </div>
     <div class="card-body">
@@ -16,7 +16,7 @@
         <div class="col-lg-8 text-center">
           <div class="card m-3">
             <div class="card-body">
-              <div>Âge : {{getAge(patient)}} ans</div>
+              <div>Âge : {{age}} ans</div>
               <div>Sexe : {{patient.sexe}}</div>
               <div>Personnalité : {{patient.personality}}</div>
               <div>Pathologie : {{patient.pathology}}</div><br>

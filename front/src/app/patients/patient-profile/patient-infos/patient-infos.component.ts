@@ -19,11 +19,13 @@ export interface DialogData {
 export class PatientInfosComponent implements OnInit {
 
   public patient: Patient;
+  public age;
   private result;
 
   constructor(public dialog: MatDialog, private route: ActivatedRoute, private patientService: PatientService, public router: Router) {
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
+      this.age = this.getAge(patient);
     });
   }
 

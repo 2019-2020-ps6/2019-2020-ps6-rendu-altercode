@@ -8,7 +8,7 @@ module.exports = new BaseModel('Patient', {
   sexe: Joi.string().required(),
   pathology: Joi.string().required(),
   personality: Joi.string().required(),
-  urlImg: Joi.string().empty(''),
+  urlImg: Joi.string(),
   style: Joi.array().empty(''),
   quizzes: Joi.array(),
   statistics: Joi.object(),

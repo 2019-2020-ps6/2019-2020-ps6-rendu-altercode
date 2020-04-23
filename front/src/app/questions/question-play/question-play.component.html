@@ -1,16 +1,18 @@
-<div class="row text-center mb-3">
-  <h2 class="col">{{question.label}}</h2>
-</div>
-<div class="row mb-3 justify-content-center" style="height: 300px" *ngIf="question.urlImgQ.length > 0">
-  <img src="{{question.urlImgQ}}" alt="Image question" class="img-thumbnail h-100">
-</div>
-<div class="row justify-content-center">
-  <a mat-raised-button (click)="checkIfGood(i,answer.id)" id="{{answer.id}}" class="col-lg-5 mr-3 mb-3" *ngFor="let answer of question.answers; let i=index">
-    <div class="row justify-content-center mt-2 mb2" style="height: 250px" *ngIf="answer.urlImg.length > 0">
-        <img src="{{answer.urlImg}}" alt="Image question" class="img-fluid h-100">
-    </div>
-    <div class="row" style="height: 100px; align-items: center;">
-      <div class="col-lg-12 text-center">{{answer.value}}</div>
-    </div>
-  </a>
+<div *ngIf="question !== undefined">
+  <div class="row text-center mb-3">
+    <h2 class="col">{{question.label}}</h2>
+  </div>
+  <div class="row mb-3 justify-content-center" style="height: 300px" *ngIf="question.urlImgQ.length > 0">
+    <img src="{{question.urlImgQ}}" alt="Image question" class="img-thumbnail h-100">
+  </div>
+  <div class="row justify-content-center">
+    <a mat-raised-button (click)="checkIfGood(i,answer.id)" id="{{answer.id}}" class="col-lg-5 mr-3 mb-3" *ngFor="let answer of question.answers; let i=index">
+      <div class="row justify-content-center mt-2 mb2" style="height: 250px" *ngIf="answer.urlImg.length > 0">
+          <img src="{{answer.urlImg}}" alt="Image question" class="img-fluid h-100">
+      </div>
+      <div class="row" style="height: 100px; align-items: center;">
+        <div class="col-lg-12 text-center">{{answer.value}}</div>
+      </div>
+    </a>
+  </div>
 </div>

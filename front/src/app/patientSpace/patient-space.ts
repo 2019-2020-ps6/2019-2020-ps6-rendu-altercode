@@ -34,6 +34,7 @@ export class PatientSpaceComponent implements OnInit {
     this.patientService.setSelectedPatient(id);
     this.patientService.patientSelected$.subscribe( (patient) => {
       this.patient = patient;
+      console.log(this.patient);
       this.colorP = this.patient.style[0].colorPolice;
       this.colorB = this.patient.style[0].colorBody;
       document.documentElement.style.setProperty('----bodyCouleur', this.colorB);

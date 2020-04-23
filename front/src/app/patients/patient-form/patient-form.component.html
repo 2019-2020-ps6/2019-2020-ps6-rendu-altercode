@@ -1,29 +1,34 @@
 <div class="card m-3">
-  <h2 class="card-header">Ajouter Patient</h2>
+  <div class="card-header">
+    <div class="row">
+      <h1 class="m-0 col-lg-2">Ajouter Patient</h1>
+      <div class="col-lg-2 offset-8 mb-0" style="text-align: right;">*Champ obligatoire</div>
+    </div>
+  </div>
   <div class="card-body">
-    <form class="patient-form" [formGroup]="patientForm">
+    <form class="patient-form was-validated" [formGroup]="patientForm">
       <div class="form-row">
         <div class="form-group col">
-          <label for="name"> Nom </label>
-          <input class="form-control" type="text" id="name" [formControlName]="'name'">
+          <label for="name"> Nom* </label>
+          <input class="form-control" type="text" id="name" [formControlName]="'name'" pattern="[a-zA-Z -]*" placeholder="Dupont" required>
         </div>
         <div class="form group col">
-          <label for="surname"> Prénom </label>
-          <input class="form-control" type="text" id="surname" [formControlName]="'surname'">
+          <label for="surname"> Prénom* </label>
+          <input class="form-control" type="text" id="surname" [formControlName]="'surname'" pattern="[a-zA-Z -]*" placeholder="Thomas" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col">
-          <label for="date"> Date de naissance </label>
-          <input class="form-control" type="text" id="date" [formControlName]="'date'" placeholder="YYYY-MM-DD">
+          <label for="date"> Date de naissance* </label>
+          <input class="form-control datepicker" type="date" id="date" [formControlName]="'date'" required>
         </div>
         <div class="form-group col">
           <label for="urlImg"> URL de la photo </label>
-          <input class="form-control" type="text" id="urlImg" [formControlName]="'urlImg'">
+          <input class="form-control" type="text" id="urlImg" [formControlName]="'urlImg'" placeholder="http://...">
         </div>
       </div>
       <div class="form-group text-center">
-        <label>Sexe</label>
+        <label>Sexe*</label>
         <div>
           <input type="radio" value="homme" [formControlName]="'sexe'"> Homme
           <input type="radio" value="femme" [formControlName]="'sexe'"> Femme
@@ -31,15 +36,15 @@
       </div>
       <div class="form-row">
         <div class="form-group col">
-          <label for="pathology">Pathologie</label>
-          <textarea id="pathology" class="form-control" [formControlName]="'pathology'"></textarea>
+          <label for="pathology">Pathologie*</label>
+          <textarea id="pathology" class="form-control" [formControlName]="'pathology'" pattern="([a-zA-Z]*[ ]*)*" required placeholder="Alzheimer"></textarea>
         </div>
         <div class="form-group col">
           <label for="personality">Personnalité</label>
-          <textarea id="personality" class="form-control" [formControlName]="'personality'"></textarea>
+          <textarea id="personality" class="form-control" [formControlName]="'personality'" required pattern="([a-zA-Z]*[ ]*)*" placeholder="Impatient et colérique"></textarea>
         </div>
       </div>
-      <div class="text-center">
+      <div class="row justify-content-center">
         <button type="submit" class="btn btn-success mr-1" (click)="addPatient()">Créer patient</button>
         <button class="btn btn-secondary" routerLink="/patient-list">Annuler</button>
       </div>

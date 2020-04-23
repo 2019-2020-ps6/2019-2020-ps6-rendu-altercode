@@ -1,0 +1,12 @@
+<div *ngIf="patient !== undefined && quiz !== undefined">
+  <div class="row" style="margin-top: 3%">
+    <h1 class="col-lg-12 text-center">Félicitations vous avez terminé le quiz : {{quiz.name}}</h1>
+  </div>
+  <div class="row justify-content-center mb-4" style="height: 400px">
+    <img src="https://www.stickpng.com/assets/images/585fc598cb11b227491c35a4.png" alt="Image de fin" class="h-100 col-lg-8 img-fluid">
+  </div>
+  <div class="row justify-content-center">
+    <button type="submit" class="btn btn-primary mr-1" routerLink="/patient/{{patient.id}}/play-quiz/{{quiz.id}}">Recommencer</button>
+    <button class="btn btn-success" routerLink="/patient-space/{{patient.id}}">Terminer</button>
+  </div>
+</div>

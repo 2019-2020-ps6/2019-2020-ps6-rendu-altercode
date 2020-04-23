@@ -25,7 +25,7 @@ export class PatientFormComponent implements OnInit {
       urlImg: [''],
       sexe: ['', Validators.required],
       pathology: ['', Validators.required],
-      personality: [''],
+      personality: ['', Validators.required],
       quizzes: [[]],
     });
   }
@@ -37,6 +37,9 @@ export class PatientFormComponent implements OnInit {
   addPatient() {
     if (this.patientForm.valid) {
       const patient = this.patientForm.getRawValue() as Patient;
+      if (patient.urlImg === '') {
+        patient.urlImg = 'https://thumbs.dreamstime.com/b/ic%C3%B4ne-noire-solide-d-avatar-de-profil-utilisateur-134114292.jpg';
+      }
       this.patientService.addPatient(patient);
       this.router.navigate(['/patient-list']);
     }

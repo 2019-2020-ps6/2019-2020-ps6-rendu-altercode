@@ -32,6 +32,7 @@ import {CreateAdminComponent} from './home/createAdmin/createAdmin';
 import {PopUpVerifComponent} from './patients/patient-profile/patient-infos/PopupVerif/pop-up.component';
 import {PatientSpaceComponent} from './patientSpace/patient-space';
 import {PopUpIdComponent} from './patientSpace/pop-up-id/pop-up-id.component';
+import {SuccessPageComponent} from './quizzes/play-quiz/success-page/success-page.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import {PopUpIdComponent} from './patientSpace/pop-up-id/pop-up-id.component';
     EditPatientComponent,
     CreateAdminComponent,
     PatientSpaceComponent,
+    SuccessPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -19,8 +19,6 @@ export class EditPatientComponent implements OnInit {
   constructor(public formBuilder: FormBuilder, private route: ActivatedRoute, public router: Router, private patientService: PatientService) {
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
-      this.color = this.patient.style[0].colorPolice;
-      document.documentElement.style.setProperty('--couleur', this.color);
       this.initializePatientForm();
     });
   }
@@ -33,7 +31,7 @@ export class EditPatientComponent implements OnInit {
       urlImg: [this.patient.urlImg],
       sexe: [this.patient.sexe, Validators.required],
       pathology: [this.patient.pathology, Validators.required],
-      personality: [this.patient.personality]
+      personality: [this.patient.personality, Validators.required]
     });
   }
 
@@ -45,6 +43,9 @@ export class EditPatientComponent implements OnInit {
   updatePatient() {
     if (this.patientForm.valid) {
       const patient = this.patientForm.getRawValue() as Patient;
+      if (patient.urlImg === '') {
+        patient.urlImg = 'https://thumbs.dreamstime.com/b/ic%C3%B4ne-noire-solide-d-avatar-de-profil-utilisateur-134114292.jpg';
+      }
       this.patientService.updatePatient(patient, this.patient.id);
       this.router.navigate(['patient-infos/' + this.patient.id]);
     }

@@ -1,18 +1,20 @@
 <div class="card-header">
   <div class="row">
-    <h2 class="col">Créer un quiz</h2>
+    <h1 class="m-0 col-lg-6">Créer un quiz</h1>
+    <div class="col-lg-6 mb-0" style="text-align: right;">*Champ obligatoire</div>
   </div>
 </div>
 <div class="card-body">
-  <form class="quiz-form" [formGroup]="quizForm">
+  <form class="quiz-form was-validated" [formGroup]="quizForm">
     <div class="form-row justify-content-lg-center">
       <div class="col-lg-auto text-center">
-        <label for="name">Titre</label>
-        <input class="form-control" type="text" id="name" [formControlName]="'name'">
+        <label for="name">Titre*</label>
+        <input class="form-control" type="text" id="name" [formControlName]="'name'" placeholder="Quiz 1" required>
+        <div class="invalid-feedback">Veuillez ajouter un titre</div>
       </div>
       <div class="col-lg-auto text-center mt-lg-1">
         <label for="urlImg">Url image</label>
-        <input class="form-control" type="text" id="urlImg" [formControlName]="'urlImg'">
+        <input class="form-control" type="text" id="urlImg" [formControlName]="'urlImg'" placeholder="http://...">
       </div>
     </div>
     <div class="row justify-content-lg-center">
