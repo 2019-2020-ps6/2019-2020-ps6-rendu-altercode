@@ -1,4 +1,4 @@
-import {Quiz} from './quiz.model';
+import {Statistics} from './statistics.model';
 
 export interface Style {
   colorBody: string;
@@ -20,5 +20,6 @@ export interface Patient {
   urlImg: string;
   style: Style;
   quizzes: string[];
+  statistics: Statistics[]
 }
 

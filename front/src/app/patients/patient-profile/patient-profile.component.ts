@@ -11,22 +11,9 @@ import {PatientService} from '../../../services/patient.service';
 export class PatientProfileComponent implements OnInit {
 
   public patient: Patient;
-<<<<<<< HEAD
-=======
-  private color;
-  private colorBody;
->>>>>>> 9077d43d889352819aca36af8e29f716752d97f4
-
   constructor(private route: ActivatedRoute, private patientService: PatientService) {
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
-<<<<<<< HEAD
-=======
-      this.color = this.patient.style[0].colorPolice;
-      document.documentElement.style.setProperty('--couleur', this.color);
-      this.colorBody = this.patient.style[0].colorBody;
-      document.documentElement.style.setProperty('--bodyCouleur', this.colorBody);
->>>>>>> 9077d43d889352819aca36af8e29f716752d97f4
     });
   }
 
