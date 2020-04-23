@@ -59,7 +59,7 @@ import {PopUpIdComponent} from './patientSpace/pop-up-id/pop-up-id.component';
     PatientProfileComponent,
     EditPatientComponent,
     CreateAdminComponent,
-    PatientSpaceComponent
+    PatientSpaceComponent,
   ],
   imports: [
     BrowserModule,

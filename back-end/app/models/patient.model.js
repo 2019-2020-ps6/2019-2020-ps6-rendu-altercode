@@ -11,4 +11,5 @@ module.exports = new BaseModel('Patient', {
   urlImg: Joi.string().empty(''),
   style: Joi.array().empty(''),
   quizzes: Joi.array(),
+  statistics: Joi.object(),
 })

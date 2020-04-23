@@ -4,6 +4,7 @@ const Quiz = require('./quiz.model.js')
 const Admin = require('./admin.model.js')
 const Patient = require('./patient.model.js')
 const Style = require('./style.model.js')
+const Statistics = require('./statistics.model')
 
 module.exports = {
   Answer,
@@ -12,4 +13,5 @@ module.exports = {
   Admin,
   Patient,
   Style,
+  Statistics,
 }
