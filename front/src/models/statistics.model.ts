@@ -1,7 +1,7 @@
 export interface Statistics {
   id: string;
   patientId: number;
-  nbQuizDone: number;
+  quizStat: quizStat[];
   nbMissClick: number;
   nbWrongAnswer: number;
   nbGoodAnswer: number;
