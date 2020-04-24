@@ -1,0 +1,7 @@
+$couleur : var(--couleur);
+$bodyCouleur : var(--bodyCouleur);
+
+#success {
+  background-color: $bodyCouleur;
+  color: $couleur;
+}

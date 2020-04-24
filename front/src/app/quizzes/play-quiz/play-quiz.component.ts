@@ -47,8 +47,10 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   }
 
   nextQuestionAuto(bool: boolean) {
-    const button = document.getElementById('button-end');
-    button.style.setProperty('visibility', 'visible');
+    if (this.index === this.quiz.questions.length -1){
+      const button = document.getElementById('button-end');
+      button.style.setProperty('visibility', 'visible');
+    }
     this.startTimer();
   }
 

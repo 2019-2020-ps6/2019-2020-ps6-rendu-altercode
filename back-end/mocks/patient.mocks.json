@@ -53,5 +53,36 @@
         "id": 601587637882754
       }
     ]
+  },
+  {
+    "name": "Guada",
+    "surname": "Cesar",
+    "date": "2020-04-02",
+    "urlImg": "https://scontent.fcdg2-1.fna.fbcdn.net/v/t1.0-9/s960x960/86601702_2587315104859041_7871286460576432128_o.jpg?_nc_cat=110&_nc_sid=85a577&_nc_ohc=RJGPaVLGOMAAX8iRDrq&_nc_ht=scontent.fcdg2-1.fna&_nc_tp=7&oh=34c6a9e48a9bcdee960821f9cf14851b&oe=5ECA367F",
+    "sexe": "homme",
+    "pathology": "Alzheimer",
+    "personality": "BG et malin",
+    "quizzes": [
+      1001587449298949
+    ],
+    "id": 601587737662935,
+    "statistics": {
+      "patientId": 0,
+      "nbQuizDone": 0,
+      "nbMissClick": 0,
+      "nbWrongAnswer": 0,
+      "nbGoodAnswer": 0,
+      "id": 301587737662950
+    },
+    "style": [
+      {
+        "typePolice": "Times New Roman",
+        "heightPolice": "50",
+        "colorBody": "#ffffff ",
+        "colorPolice": "#ff0000",
+        "patientId": 601587737662935,
+        "id": 401587737662948
+      }
+    ]
   }
 ]
