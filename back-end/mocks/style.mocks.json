@@ -1,34 +1,10 @@
 [
   {
     "typePolice": "Times New Roman",
-    "heightPolice": 50,
-    "colorBody": "#ffffff ",
-    "colorPolice": " #000000",
-    "patientId": 1001587629717436,
-    "id": 601587629717464
-  },
-  {
-    "typePolice": "Times New Roman",
-    "heightPolice": 50,
-    "colorBody": "#ffffff ",
-    "colorPolice": " #000000",
-    "patientId": 501587637619028,
-    "id": 401587637619031
-  },
-  {
-    "typePolice": "Times New Roman",
-    "heightPolice": 50,
-    "colorBody": "#ffffff ",
-    "colorPolice": " #000000",
-    "patientId": 901587637882751,
-    "id": 601587637882754
-  },
-  {
-    "typePolice": "Times New Roman",
     "heightPolice": "50",
-    "colorBody": "#ffffff ",
-    "colorPolice": "#ff0000",
-    "patientId": 601587737662935,
-    "id": 401587737662948
+    "colorBody": "#c0c0c0",
+    "colorPolice": "#0000ff",
+    "patientId": 401587833941182,
+    "id": 801587833941192
   }
 ]

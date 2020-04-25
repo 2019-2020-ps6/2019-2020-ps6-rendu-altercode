@@ -1,16 +1,21 @@
 const { Statistics } = require('../../../models')
+const { filterQuizStatsFromStat } = require('./quizStats/manager')
 
-/**
- * filterStatisticsFromQuizz.
- * This function filters among the statistics to return only the Statistics linked with the given patientId.
- * @param patientId
- */
-const filterStatisticsFromPatient = (patientId) => {
-  const statistics = Statistics.get()
-  const parsedId = parseInt(patientId, 10)
-  return statistics.filter((statistic) => statistic.patientId === parsedId)
+const filterStatFromPatient = (patientId) => Statistics.get().filter((stat) => (stat.patientId === patientId))
+
+const buildStat = (statisticsId) => {
+  const stat = Statistics.getById(statisticsId)
+  const quizStat = filterQuizStatsFromStat(stat.id)
+  return { ...stat, quizStat }
+}
+
+const buildStats = () => {
+  const stats = Statistics.get()
+  return stats.map((stat) => buildStat(stat.id))
 }
 
 module.exports = {
-  filterStatisticsFromPatient,
+  filterStatFromPatient,
+  buildStat,
+  buildStats,
 }

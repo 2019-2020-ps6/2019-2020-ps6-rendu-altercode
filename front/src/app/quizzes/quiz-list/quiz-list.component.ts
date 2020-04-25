@@ -18,10 +18,19 @@ export class QuizListComponent implements OnInit {
   public patient: Patient;
   public allCheck = false;
 
+  private quizIdForStatToAdd: string[] = [];
+  private quizIdForStatToDelete: string[] = [];
+  public quizzesO: string[] = [];
+
   // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService) {
     this.quizService.quizzes$.subscribe((quiz) => this.quizList = quiz);
-    this.patientService.patientSelected$.subscribe( (patient) => this.patient = patient);
+    this.patientService.patientSelected$.subscribe( (patient) => {
+      this.patient = patient;
+      this.patient.quizzes.forEach( (quizId) => {
+        this.quizzesO.push(quizId);
+      })
+    });
   }
 
   ngOnInit() {
@@ -37,21 +46,41 @@ export class QuizListComponent implements OnInit {
     }
   }
 
-  checkValue(isChecked: any, quizId: string) {
+  checkValue(isChecked: any, quiz: Quiz) {
     if (isChecked) {
-      this.patient.quizzes.push(quizId);
+      this.quizzesO.push(quiz.id);
+      this.quizIdForStatToAdd.push(quiz.id);
     } else {
-      const quiz = (element) => element === quizId;
-      this.patient.quizzes.splice(this.patient.quizzes.findIndex(quiz), 1);
+      if (this.patient.quizzes.find((element) => element === quiz.id) === quiz.id) {
+        this.quizIdForStatToDelete.push(quiz.id);
+      }
+      else {
+        this.quizIdForStatToAdd.splice(this.quizIdForStatToAdd.findIndex((element) => element === quiz.id), 1);
+      }
+      this.quizzesO.splice(this.quizzesO.findIndex((element) => element === quiz.id), 1);
     }
     if (this.patient.quizzes.length === this.quizList.length) {
       this.allCheck = true;
     } else {
       this.allCheck = false;
     }
+    console.log('add : ' + this.quizIdForStatToAdd);
+    console.log('delete : ' + this.quizIdForStatToDelete);
+    console.log('quizzes : ' + this.patient.quizzes);
   }
 
   valideQuizzes() {
+    if (this.quizIdForStatToAdd.length > 0) {
+      this.quizIdForStatToAdd.forEach((quizId) => {
+        this.patientService.addQuizStat(this.patient, this.patient.statistics[0], quizId);
+      });
+    }
+    if (this.quizIdForStatToDelete.length > 0) {
+      this.quizIdForStatToDelete.forEach((quizId) => {
+        this.patientService.deleteQuizStat(this.patient, this.patient.statistics[0], quizId);
+      });
+    }
+    this.patient.quizzes = this.quizzesO;
     this.patientService.updatePatient(this.patient, this.patient.id);
   }
 

@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {Patient, Style} from '../models/patient.model';
 import {BehaviorSubject, Subject} from 'rxjs';
+import {Statistics} from '../models/statistics.model';
+import {QuizStat} from '../models/quizStat.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,8 @@ export class PatientService {
   public patientSelected$: Subject<Patient> = new Subject();
   private httpOptions = httpOptionsBase;
   private patientUrl = serverUrl + '/patients';
+  private statUrl = 'statistics';
+  private quizStatUrl = 'quizStat';
 
   constructor(private http: HttpClient) {
     this.setPatientsFromUrl();
@@ -34,7 +38,6 @@ export class PatientService {
     this.http.get<Patient>(urlWithId).subscribe((patient) => {
       this.patientSelected$.next(patient);
     });
-    console.log('test');
   }
 
   deletePatient(patient: Patient) {
@@ -43,7 +46,6 @@ export class PatientService {
   }
 
   updatePatient(patient: Patient, patientId: string) {
-    console.log(patient);
     const urlWithId = this.patientUrl + '/' + patientId;
     this.http.put<Patient>(urlWithId, patient, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
   }
@@ -56,5 +58,42 @@ export class PatientService {
   updateConfig(style: Style, patient: Patient) {
     const urlWithId = this.patientUrl + '/' + patient.id + '/styles/' + patient.style[0].id;
     this.http.put<Style>(urlWithId, style, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
+  }
+
+  deleteStat(patient: Patient) {
+    const urlWithId = this.patientUrl + '/' + patient.id + '/statistics/' + patient.statistics[0].id;
+    this.deleteAllQuizStats(patient, patient.statistics[0]);
+    this.http.delete<Statistics>(urlWithId, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
+    console.log('Good delete stat');
+  }
+
+  deleteAllQuizStats(patient: Patient, stat: Statistics) {
+    const quizStatUrl = this.patientUrl + '/' + patient.id + '/' + this.statUrl + '/' + stat.id + '/' + this.quizStatUrl
+      + '/';
+    const lgth = stat.quizStat.length;
+    for (let i = lgth - 1; i >= 0 ; i--) {
+      this.http.delete<QuizStat>( quizStatUrl + stat.quizStat[i].id, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
+    }
+  }
+
+  deleteQuizStat(patient: Patient, stat: Statistics, quizId: string) {
+    const urlWithId = this.patientUrl + '/' + patient.id + '/statistics/' + stat.id + '/quiz/' + quizId + '/quizStat/';
+    const index = patient.statistics[0].quizStat.findIndex( (element) => element.quizId === quizId);
+    this.http.delete<QuizStat>( urlWithId + patient.statistics[0].quizStat[index].id, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
+  }
+
+  updateStat(stat: Statistics, patient: Patient) {
+    const urlWithId = this.patientUrl + '/' + patient.id + '/statistics/' + stat.id;
+    this.http.put<Statistics>(urlWithId, stat, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
+  }
+
+  updateQuizStat(quizStat: QuizStat, stat: Statistics, patient: Patient) {
+    const urlWithId = this.patientUrl + '/' + patient.id + '/statistics/' + stat.id + '/quizStat/' + quizStat.id;
+    this.http.put<QuizStat>(urlWithId, quizStat, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
+  }
+
+  addQuizStat(patient: Patient, stat: Statistics, quizId: string) {
+    const urlWithId = this.patientUrl + '/' + patient.id + '/statistics/' + stat.id + '/quiz/' + quizId + '/quizStat';
+    this.http.post(urlWithId, this.httpOptions).subscribe( () => this.setPatientsFromUrl());
   }
 }

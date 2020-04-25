@@ -1,14 +1,26 @@
 const { Router } = require('express')
-const { Patient, Statistics } = require('../../../models')
+const { Statistics } = require('../../../models')
 const manageAllErrors = require('../../../utils/routes/error-management')
-const { filterStatisticsFromPatient } = require('./manager')
+const { buildStat, buildStats, filterStatFromPatient } = require('./manager')
+const QuizStatRouter = require('./quizStats')
 
 const router = new Router({ mergeParams: true })
+router.use('/:statisticsId/quiz/:quizId/quizStat', QuizStatRouter)
 
 router.get('/', (req, res) => {
   try {
-    Patient.getById(req.params.patientId)
-    res.status(200).json(filterStatisticsFromPatient(req.params.patientId))
+    const stats = buildStats()
+    res.status(200).json(stats)
+    // res.status(200).json(filterStatisticsFromPatient(req.params.patientId))
+  } catch (err) {
+    manageAllErrors(res, err)
+  }
+})
+
+router.get('/:statisticsId/quizStat', (req, res) => {
+  try {
+    const stat = buildStat(req.params.statisticsId)
+    res.status(200).json(stat)
   } catch (err) {
     manageAllErrors(res, err)
   }
@@ -16,10 +28,8 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   try {
-    Patient.getById(req.params.patientId)
-    const patientId = parseInt(req.params.patientId, 10)
-    const statistics = Statistics.create({patientId, nbQuizDone: 0, nbMissClick: 0, nbWrongAnswer: 0, nbGoodAnswer: 0})
-    res.status(201).json(statistics)
+    const stat = Statistics.create({ ...req.body })
+    res.status(201).json(stat)
   } catch (err) {
     manageAllErrors(res, err)
   }
@@ -27,7 +37,7 @@ router.post('/', (req, res) => {
 
 router.put('/:statisticsId', (req, res) => {
   try {
-    const statistics = filterStatisticsFromPatient(req.params.patientId)
+    const statistics = filterStatFromPatient(req.params.patientId)
     const updatedStatistics = Statistics.update(req.params.statisticsId, { ...req.body, patientId: statistics.patientId })
     res.status(200).json(updatedStatistics)
   } catch (err) {
@@ -38,6 +48,15 @@ router.put('/:statisticsId', (req, res) => {
     } else {
       res.status(500).json(err)
     }
+  }
+})
+
+router.delete('/:statisticsId', (req, res) => {
+  try {
+    Statistics.delete(req.params.statisticsId)
+    res.status(204).end()
+  } catch (err) {
+    manageAllErrors(res, err)
   }
 })
 

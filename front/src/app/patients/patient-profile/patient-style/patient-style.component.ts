@@ -54,4 +54,3 @@ export class PatientStyleComponent implements OnInit {
     }
   }
 }
-

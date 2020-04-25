@@ -1,88 +1,15 @@
 [
   {
-    "name": "Nicaise",
-    "surname": "Alexandre",
-    "date": "1967-04-15",
-    "urlImg": "https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/s960x960/72630235_2399721696729921_5362428035272278016_o.jpg?_nc_cat=108&_nc_sid=85a577&_nc_ohc=KwL90bGTF9wAX_CMF_Z&_nc_ht=scontent-cdg2-1.xx&_nc_tp=7&oh=e8080b6b5bb399d99d27f46a0000ba9b&oe=5EBF5BAC",
+    "name": "Burette",
+    "surname": "Leo",
+    "date": "1780-04-15",
+    "urlImg": "https://thumbs.dreamstime.com/b/ic%C3%B4ne-noire-solide-d-avatar-de-profil-utilisateur-134114292.jpg",
     "sexe": "homme",
     "pathology": "Alzheimer",
     "personality": "Impatient",
-    "quizzes": [
-      801587403042715,
-      1001587449298949
-    ],
-    "id": 501587637619028,
-    "style": [
-      {
-        "typePolice": "Times New Roman",
-        "heightPolice": 50,
-        "colorBody": "#ffffff ",
-        "colorPolice": " #000000",
-        "patientId": 501587637619028,
-        "id": 401587637619031
-      }
-    ]
-  },
-  {
-    "name": "Burette",
-    "surname": "Léo",
-    "date": "1959-04-02",
-    "urlImg": "https://scontent.fcdg1-1.fna.fbcdn.net/v/t31.0-8/p960x960/11406593_120106168321744_1080553252874860740_o.jpg?_nc_cat=101&_nc_sid=7aed08&_nc_ohc=5gGW_n3tz1wAX-b-rqt&_nc_ht=scontent.fcdg1-1.fna&_nc_tp=6&oh=87d2362b00cf69f0f0c0dea59b169c92&oe=5EC0BAE1",
-    "sexe": "homme",
-    "pathology": "Alzheimer",
-    "personality": "Calme et réservé",
-    "quizzes": [
-      1001587449298949
-    ],
-    "id": 901587637882751,
-    "statistics": {
-      "patientId": 0,
-      "nbQuizDone": 0,
-      "nbMissClick": 0,
-      "nbWrongAnswer": 0,
-      "nbGoodAnswer": 0,
-      "id": 601587637882756
-    },
-    "style": [
-      {
-        "typePolice": "Times New Roman",
-        "heightPolice": 50,
-        "colorBody": "#ffffff ",
-        "colorPolice": " #000000",
-        "patientId": 901587637882751,
-        "id": 601587637882754
-      }
-    ]
-  },
-  {
-    "name": "Guada",
-    "surname": "Cesar",
-    "date": "2020-04-02",
-    "urlImg": "https://scontent.fcdg2-1.fna.fbcdn.net/v/t1.0-9/s960x960/86601702_2587315104859041_7871286460576432128_o.jpg?_nc_cat=110&_nc_sid=85a577&_nc_ohc=RJGPaVLGOMAAX8iRDrq&_nc_ht=scontent.fcdg2-1.fna&_nc_tp=7&oh=34c6a9e48a9bcdee960821f9cf14851b&oe=5ECA367F",
-    "sexe": "homme",
-    "pathology": "Alzheimer",
-    "personality": "BG et malin",
-    "quizzes": [
-      1001587449298949
-    ],
-    "id": 601587737662935,
-    "statistics": {
-      "patientId": 0,
-      "nbQuizDone": 0,
-      "nbMissClick": 0,
-      "nbWrongAnswer": 0,
-      "nbGoodAnswer": 0,
-      "id": 301587737662950
-    },
-    "style": [
-      {
-        "typePolice": "Times New Roman",
-        "heightPolice": "50",
-        "colorBody": "#ffffff ",
-        "colorPolice": "#ff0000",
-        "patientId": 601587737662935,
-        "id": 401587737662948
-      }
-    ]
+    "quizzes": [],
+    "style": [],
+    "statistics": [],
+    "id": 401587833941182
   }
 ]

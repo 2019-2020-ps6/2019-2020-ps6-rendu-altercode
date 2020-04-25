@@ -1,10 +1,17 @@
 const { Patient } = require('../../models')
-const { filterStylesFromPatient } = require('./styles/manager')
+const { filterStyleFromStyle } = require('./styles/manager')
+const { filterStatFromPatient } = require('./statistics/manager')
+const { filterQuizStatsFromStat } = require('./statistics/quizStats/manager')
 
 const buildPatient = (patientId) => {
   const patient = Patient.getById(patientId)
-  const style = filterStylesFromPatient(patient.id)
-  return { ...patient, style }
+  const style = filterStyleFromStyle(patient.id)
+  const statistics = filterStatFromPatient(patient.id)
+  const statisticsWithQuizStat = statistics.map((stat) => {
+    const quizStat = filterQuizStatsFromStat(stat.id)
+    return { ...stat, quizStat }
+  })
+  return { ...patient, statistics: statisticsWithQuizStat, style }
 }
 
 /**

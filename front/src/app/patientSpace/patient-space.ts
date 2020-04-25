@@ -25,13 +25,6 @@ export class PatientSpaceComponent implements OnInit {
     this.quizService.quizzes$.subscribe((quiz) => {
       this.quizListTot = quiz;
     });
-  }
-
-
-  ngOnInit() {
-    this.quizService.setQuizzesFromUrl();
-    const id = this.route.snapshot.paramMap.get('id');
-    this.patientService.setSelectedPatient(id);
     this.patientService.patientSelected$.subscribe( (patient) => {
       this.patient = patient;
       console.log(this.patient);
@@ -44,9 +37,14 @@ export class PatientSpaceComponent implements OnInit {
           this.quizList.push(x1);
         }
       });
-      console.log(this.quizList);
-      console.log(this.quizListTot);
     });
+  }
+
+
+  ngOnInit() {
+    this.quizService.setQuizzesFromUrl();
+    const id = this.route.snapshot.paramMap.get('id');
+    this.patientService.setSelectedPatient(id);
   }
 
   openPop() {
@@ -54,5 +52,9 @@ export class PatientSpaceComponent implements OnInit {
       width: '400px',
       data: {}
     });
+  }
+
+  startQuiz(quiz: Quiz) {
+    // this.patient.statistics[0].nbQuizDone += 1;
   }
 }

@@ -29,19 +29,15 @@ router.get('/:patientId', (req, res) => {
 
 router.post('/', (req, res) => {
   try {
-    const patient = Patient.create({ ...req.body })
+    const patient = Patient.create({ ...req.body, style: [], statistics: [] })
     // eslint-disable-next-line no-unused-vars
-    const style = Style.create({
-      typePolice: 'Times New Roman', heightPolice: 50, colorBody: '#ffffff ', colorPolice: ' #000000', patientId: patient.id,
+    Style.create({
+      typePolice: 'Times New Roman', heightPolice: '50', colorBody: '#ffffff ', colorPolice: ' #000000', patientId: parseInt(patient.id, 10),
     })
-    const stat = Statistics.create({
-      patientId: 0,
-      nbQuizDone: 0,
-      nbMissClick: 0,
-      nbWrongAnswer: 0,
-      nbGoodAnswer: 0,
+    Statistics.create({
+      patientId: patient.id,
+      quizStat: [],
     })
-    patient.statistics = stat
     res.status(201).json(patient)
   } catch (err) {
     manageAllErrors(res, err)
@@ -56,9 +52,9 @@ router.put('/:patientId', (req, res) => {
   }
 })
 
-router.delete('/:patientId', (req, res) => {
+router.delete('/:styleId', (req, res) => {
   try {
-    Patient.delete(req.params.patientId)
+    Patient.delete(req.params.styleId)
     res.status(204).end()
   } catch (err) {
     manageAllErrors(res, err)

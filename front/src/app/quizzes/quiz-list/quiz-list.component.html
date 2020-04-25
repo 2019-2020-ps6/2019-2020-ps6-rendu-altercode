@@ -50,8 +50,8 @@
                 <div class="card-body">
                   <app-quiz [quiz]="quiz"></app-quiz>
                   <div class="row form-check">
-                    <input #defaultCheck1 class="form-check-input" type="checkbox" (change)="checkValue(defaultCheck1.checked, quiz.id)" *ngIf="quizChecked(quiz)" checked>
-                    <input #defaultCheck2 class="form-check-input" type="checkbox" (change)="checkValue(defaultCheck2.checked, quiz.id)" *ngIf="!quizChecked(quiz)">
+                    <input #defaultCheck1 class="form-check-input" type="checkbox" (change)="checkValue(defaultCheck1.checked, quiz)" *ngIf="quizChecked(quiz)" checked>
+                    <input #defaultCheck2 class="form-check-input" type="checkbox" (change)="checkValue(defaultCheck2.checked, quiz)" *ngIf="!quizChecked(quiz)">
                     <label class="form-check-label">Utiliser ce quiz</label>
                   </div>
                 </div>

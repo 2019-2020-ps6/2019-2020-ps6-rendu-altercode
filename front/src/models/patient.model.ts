@@ -1,12 +1,12 @@
 import {Statistics} from './statistics.model';
 
 export interface Style {
+  id: string;
+  typePolice: string;
   colorBody: string;
   colorPolice: string;
-  heightPolice: number;
-  id: string;
-  patientId: string;
-  typePolice: string;
+  heightPolice: string;
+  patientId: number;
 }
 
 export interface Patient {
@@ -18,7 +18,7 @@ export interface Patient {
   pathology: string;
   personality: string;
   urlImg: string;
-  style: Style;
+  style: Style[];
   quizzes: string[];
   statistics: Statistics[];
 }
