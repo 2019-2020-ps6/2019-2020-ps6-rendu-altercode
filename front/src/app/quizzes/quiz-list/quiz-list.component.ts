@@ -36,12 +36,10 @@ export class QuizListComponent implements OnInit {
   ngOnInit() {
     this.quizService.setQuizzesFromUrl();
     if (this.router.url.includes('patient-quiz')) {
-      console.log('Nous sommes dans l écran de gestion des quiz.');
       const id = this.route.snapshot.paramMap.get('id');
       this.patientService.setSelectedPatient(id);
       this.mode = 'patient-quiz';
     } else if (this.router.url.includes('quiz-list')) {
-      console.log('Nous sommes dans l écran de la liste des quiz.');
       this.mode = 'quiz-list';
     }
   }
@@ -64,9 +62,6 @@ export class QuizListComponent implements OnInit {
     } else {
       this.allCheck = false;
     }
-    console.log('add : ' + this.quizIdForStatToAdd);
-    console.log('delete : ' + this.quizIdForStatToDelete);
-    console.log('quizzes : ' + this.patient.quizzes);
   }
 
   valideQuizzes() {
@@ -96,7 +91,6 @@ export class QuizListComponent implements OnInit {
   }
 
   deleteQuiz(quiz: Quiz) {
-    console.log(quiz);
     this.quizService.deleteQuestions(quiz);
     this.quizService.deleteQuiz(quiz);
   }

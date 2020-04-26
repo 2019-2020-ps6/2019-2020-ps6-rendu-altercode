@@ -32,11 +32,10 @@ router.get('/:quizStatId', (req, res) => {
   }
 })
 
-router.post('/', (req, res) => {
+router.post('/:quizId', (req, res) => {
   try {
     Statistics.getById(req.params.statisticsId)
     const statisticsId = parseInt(req.params.statisticsId, 10)
-    Quiz.getById(req.params.quizId)
     const quizId = parseInt(req.params.quizId, 10)
 
     const quizStats = QuizStat.create({

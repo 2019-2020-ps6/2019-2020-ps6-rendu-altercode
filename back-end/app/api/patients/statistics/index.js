@@ -5,7 +5,7 @@ const { buildStat, buildStats, filterStatFromPatient } = require('./manager')
 const QuizStatRouter = require('./quizStats')
 
 const router = new Router({ mergeParams: true })
-router.use('/:statisticsId/quiz/:quizId/quizStat', QuizStatRouter)
+router.use('/:statisticsId/quizStat', QuizStatRouter)
 
 router.get('/', (req, res) => {
   try {

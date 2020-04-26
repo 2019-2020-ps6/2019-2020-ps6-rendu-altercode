@@ -30,7 +30,6 @@ export class QuizFormComponent implements OnInit {
         // tslint:disable-next-line:max-line-length
         quizToCreate.urlImg = 'https://images.clipartlogo.com/files/istock/previews/1015/101577815-quiz-sign-icon-questions-and-answers-game.jpg';
       }
-      console.log('Add quiz: ', quizToCreate);
       quizToCreate.questions = [];
       this.quizService.addQuiz(quizToCreate);
     }

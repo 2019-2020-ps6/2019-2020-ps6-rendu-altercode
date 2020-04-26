@@ -29,8 +29,6 @@ export class HomeComponent implements OnInit {
   tryConnect() {
     const adminToConnect: Admin = this.connectForm.getRawValue() as Admin;
     for (const admin of this.adminList) {
-      console.log(admin.connectId + ' ' + admin.pwd);
-      console.log(adminToConnect.connectId + ' ' + adminToConnect.pwd);
       if (admin.connectId === adminToConnect.connectId && admin.pwd === adminToConnect.pwd) {
         this.router.navigate(['/patient-list']);
       }

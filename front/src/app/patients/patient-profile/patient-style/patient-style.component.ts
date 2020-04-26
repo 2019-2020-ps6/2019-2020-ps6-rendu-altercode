@@ -31,7 +31,6 @@ export class PatientStyleComponent implements OnInit {
   }
 
   private initializeConfigForm() {
-    console.log(this.patient.style[0].colorBody);
     this.configForm = this.formBuilder.group({
       typePolice: [this.patient.style[0].typePolice, Validators.required],
       heightPolice: [this.patient.style[0].heightPolice.toString(), Validators.required],
@@ -48,7 +47,6 @@ export class PatientStyleComponent implements OnInit {
   updateConfig() {
     if (this.configForm.valid) {
       const style = this.configForm.getRawValue() as Style;
-      console.log(style);
       this.patientService.updateConfig(style, this.patient);
       this.router.navigate(['/patient-profile/' + this.patient.id]);
     }

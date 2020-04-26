@@ -46,7 +46,6 @@ export class PatientInfosComponent implements OnInit {
         data: {name: this.patient.name + ' ' + this.patient.surname}
       });
       dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.result = result;
       this.deletePatient();
     });
