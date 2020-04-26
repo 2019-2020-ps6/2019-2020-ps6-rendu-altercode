@@ -10,11 +10,11 @@
       <div class="form-row">
         <div class="form-group col">
           <label for="name"> Nom* </label>
-          <input class="form-control" type="text" id="name" [formControlName]="'name'" pattern="[a-zA-Z -]*" placeholder="Dupont" required>
+          <input class="form-control" type="text" id="name" [formControlName]="'name'" pattern="[a-zA-Z -éèôï]*" placeholder="Dupont" required>
         </div>
         <div class="form group col">
           <label for="surname"> Prénom* </label>
-          <input class="form-control" type="text" id="surname" [formControlName]="'surname'" pattern="[a-zA-Z -]*" placeholder="Thomas" required>
+          <input class="form-control" type="text" id="surname" [formControlName]="'surname'" pattern="[a-zA-Z -éèôï]*" placeholder="Thomas" required>
         </div>
       </div>
       <div class="form-row">
@@ -37,11 +37,11 @@
       <div class="form-row">
         <div class="form-group col">
           <label for="pathology">Pathologie*</label>
-          <textarea id="pathology" class="form-control" [formControlName]="'pathology'" pattern="([a-zA-Z]*[ ]*)*" required placeholder="Alzheimer"></textarea>
+          <textarea id="pathology" class="form-control" [formControlName]="'pathology'" pattern="([a-zA-Z-éèôï']*[ ]*)*" required placeholder="Alzheimer"></textarea>
         </div>
         <div class="form-group col">
           <label for="personality">Personnalité</label>
-          <textarea id="personality" class="form-control" [formControlName]="'personality'" required pattern="([a-zA-Z]*[ ]*)*" placeholder="Impatient et colérique"></textarea>
+          <textarea id="personality" class="form-control" [formControlName]="'personality'" required pattern="([a-zA-Z-éèôï']*[ ]*)*" placeholder="Impatient et colérique"></textarea>
         </div>
       </div>
       <div class="row justify-content-center">
