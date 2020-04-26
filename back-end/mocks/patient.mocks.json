@@ -1,46 +1,5 @@
 [
   {
-    "name": "Dupont",
-    "surname": "Thomas",
-    "date": "1996-04-15",
-    "urlImg": "https://thumbs.dreamstime.com/b/ic%C3%B4ne-noire-solide-d-avatar-de-profil-utilisateur-134114292.jpg",
-    "sexe": "homme",
-    "pathology": "Alzheimer",
-    "personality": "Impatient",
-    "quizzes": [
-      1001587449298949
-    ],
-    "style": [
-      {
-        "typePolice": "Times New Roman",
-        "heightPolice": "50",
-        "colorBody": "#ffffff",
-        "colorPolice": "#ff0000",
-        "patientId": 601587887799320,
-        "id": 101587887799336
-      }
-    ],
-    "statistics": [
-      {
-        "patientId": 601587887799320,
-        "quizStat": [
-          {
-            "quizId": 801587403042715,
-            "statisticsId": 301587887799339,
-            "nbQuizDone": 0,
-            "nbQuizTry": 0,
-            "nbMissClick": 0,
-            "nbWrongAnswer": 0,
-            "nbGoodAnswer": 0,
-            "id": 401587888009804
-          }
-        ],
-        "id": 301587887799339
-      }
-    ],
-    "id": 601587887799320
-  },
-  {
     "name": "Burette",
     "surname": "Leo",
     "date": "1980-04-15",
