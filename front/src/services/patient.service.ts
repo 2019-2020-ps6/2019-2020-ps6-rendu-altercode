@@ -68,11 +68,11 @@ export class PatientService {
   }
 
   deleteAllQuizStats(patient: Patient, stat: Statistics) {
-    const quizStatUrl = this.patientUrl + '/' + patient.id + '/' + this.statUrl + '/' + stat.id + '/' + this.quizStatUrl
-      + '/';
+    const quizStatUrl = this.patientUrl + '/' + patient.id + '/statistics/' + stat.id + '/quiz/';
     const lgth = stat.quizStat.length;
     for (let i = lgth - 1; i >= 0 ; i--) {
-      this.http.delete<QuizStat>( quizStatUrl + stat.quizStat[i].id, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
+      const quizStatUrl2 = quizStatUrl + stat.quizStat[i].quizId + '/quizStat/' ;
+      this.http.delete<QuizStat>( quizStatUrl2 + stat.quizStat[i].id, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
     }
   }
 

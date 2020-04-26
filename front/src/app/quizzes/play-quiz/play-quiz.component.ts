@@ -42,12 +42,12 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
     if (this.index < this.quiz.questions.length - 1) {
       this.index++;
     } else {
-      this.router.navigate(['/patient/' + this.patient.id + '/play-quiz/' + this.quiz.id + '/success-page']);
+       this.router.navigate(['/patient/' + this.patient.id + '/play-quiz/' + this.quiz.id + '/success-page']);
     }
   }
 
   nextQuestionAuto(bool: boolean) {
-    if (this.index === this.quiz.questions.length -1){
+    if (this.index === this.quiz.questions.length - 1){
       const button = document.getElementById('button-end');
       button.style.setProperty('visibility', 'visible');
     }
@@ -67,6 +67,12 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
     if (this.timer) {
       clearTimeout(this.timer);
     }
+  }
+
+  updateStats() {
+    const i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id)
+    this.patient.statistics[0].quizStat[i].nbQuizDone += 1;
+    this.patientService.updateQuizStat(this.patient.statistics[0].quizStat[i], this.patient.statistics[0], this.patient);
   }
 }
 

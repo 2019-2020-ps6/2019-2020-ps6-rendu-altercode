@@ -29,7 +29,7 @@ export class QuizListComponent implements OnInit {
       this.patient = patient;
       this.patient.quizzes.forEach( (quizId) => {
         this.quizzesO.push(quizId);
-      })
+      });
     });
   }
 
@@ -83,7 +83,7 @@ export class QuizListComponent implements OnInit {
     this.patient.quizzes = this.quizzesO;
     this.patientService.updatePatient(this.patient, this.patient.id);
   }
-
+// update patient alors qu'il faut update juste le quizStat
   quizChecked(quiz: Quiz) {
     if (this.patient.quizzes.includes(quiz.id)) {
       return true;
