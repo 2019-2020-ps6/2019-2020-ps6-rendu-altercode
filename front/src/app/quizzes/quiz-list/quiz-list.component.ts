@@ -24,7 +24,9 @@ export class QuizListComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService) {
-    this.quizService.quizzes$.subscribe((quiz) => this.quizList = quiz);
+    this.quizService.quizzes$.subscribe((quiz) => {
+      this.quizList = quiz;
+    });
     this.patientService.patientSelected$.subscribe( (patient) => {
       this.patient = patient;
       this.patient.quizzes.forEach( (quizId) => {

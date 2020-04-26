@@ -1,4 +1,4 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {DialogData} from './question-play.component';
 
@@ -13,8 +13,15 @@ export class PopUpComponent implements OnInit, OnDestroy {
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
   }
 
+  @HostListener('click', ['$event.target'])
+  onClick() {
+    this.data.quizStat.nbMissClick++;
+    // console.log('Pop up ' + this.data.quizStat.nbMissClick);
+  }
+
   onNoClick(): void {
-    this.dialogRef.close();
+    this.data.quizStat.nbMissClick--;
+    this.dialogRef.close(this.timer);
   }
 
   ngOnInit() {

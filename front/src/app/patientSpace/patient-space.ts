@@ -54,6 +54,8 @@ export class PatientSpaceComponent implements OnInit {
   }
 
   startQuiz(quiz: Quiz) {
-    // this.patient.statistics[0].nbQuizDone += 1;
+    const i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === quiz.id);
+    this.patient.statistics[0].quizStat[i].nbQuizTry += 1;
+    this.patientService.updateQuizStat(this.patient.statistics[0].quizStat[i], this.patient);
   }
 }

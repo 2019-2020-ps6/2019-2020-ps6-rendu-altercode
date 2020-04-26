@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {QuizService} from '../../../services/quiz.service';
@@ -19,6 +19,15 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   public patient: Patient;
   public questions: Question[];
   index = 0;
+  private i;
+
+  @HostListener('click', ['$event.target'])
+  onClick() {
+    this.incrementMissClicks();
+    this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
+    // console.log('Quiz ' + this.patient.statistics[0].quizStat[this.i].nbMissClick);
+  }
+
 
   // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, private router: Router, private quizService: QuizService, public patientService: PatientService) {
@@ -40,9 +49,11 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   }
 
   nextQuestion() {
-    if (this.index < this.quiz.questions.length - 1) {
+     this.decrementMissClicks();
+     if (this.index < this.quiz.questions.length - 1) {
       this.index++;
     } else {
+       this.updateStats();
       this.router.navigate(['/patient/' + this.patient.id + '/play-quiz/' + this.quiz.id + '/success-page']);
     }
   }
@@ -70,10 +81,24 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
     }
   }
 
+  endQuiz() {
+    this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
+    this.patient.statistics[0].quizStat[this.i].nbQuizDone += 1;
+    this.updateStats();
+  }
+
   updateStats() {
-    const i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
-    this.patient.statistics[0].quizStat[i].nbQuizDone += 1;
-    this.patientService.updateQuizStat(this.patient.statistics[0].quizStat[i], this.patient);
+    this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
+    this.patientService.updateQuizStat(this.patient.statistics[0].quizStat[this.i], this.patient);
+  }
+
+  incrementMissClicks() {
+    this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
+    this.patient.statistics[0].quizStat[this.i].nbMissClick++;
+  }
+  decrementMissClicks() {
+    this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
+    this.patient.statistics[0].quizStat[this.i].nbMissClick--;
   }
 }
 
