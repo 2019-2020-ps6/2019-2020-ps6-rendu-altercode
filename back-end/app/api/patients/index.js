@@ -52,6 +52,17 @@ router.put('/:patientId', (req, res) => {
   }
 })
 
+router.put('/:patientId/quizzes', (req, res) => {
+  try {
+    const patient = req.body
+    patient.style = []
+    patient.statistics = []
+    res.status(200).json(Patient.update(req.params.patientId, patient))
+  } catch (err) {
+    manageAllErrors(res, err)
+  }
+})
+
 router.delete('/:styleId', (req, res) => {
   try {
     Patient.delete(req.params.styleId)

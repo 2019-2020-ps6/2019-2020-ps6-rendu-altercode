@@ -46,6 +46,7 @@ export class EditPatientComponent implements OnInit {
       if (patient.urlImg === '') {
         patient.urlImg = 'https://thumbs.dreamstime.com/b/ic%C3%B4ne-noire-solide-d-avatar-de-profil-utilisateur-134114292.jpg';
       }
+      console.log(patient);
       this.patientService.updatePatient(patient, this.patient.id);
       this.router.navigate(['patient-infos/' + this.patient.id]);
     }

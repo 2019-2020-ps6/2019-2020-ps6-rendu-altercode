@@ -81,7 +81,7 @@ export class QuizListComponent implements OnInit {
       });
     }
     this.patient.quizzes = this.quizzesO;
-    this.patientService.updatePatient(this.patient, this.patient.id);
+    this.patientService.updateQuizzes(this.patient);
   }
 // update patient alors qu'il faut update juste le quizStat
   quizChecked(quiz: Quiz) {

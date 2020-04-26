@@ -50,6 +50,11 @@ export class PatientService {
     this.http.put<Patient>(urlWithId, patient, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
   }
 
+  updateQuizzes(patient: Patient) {
+    const urlWithId = this.patientUrl + '/' + patient.id + '/quizzes';
+    this.http.put<Patient>(urlWithId, patient, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
+  }
+
   deleteStyle(patient: Patient) {
     const urlWithId = this.patientUrl + '/' + patient.id + '/styles/' + patient.style[0].id;
     this.http.delete<Style>(urlWithId, this.httpOptions).subscribe(() => this.setPatientsFromUrl());

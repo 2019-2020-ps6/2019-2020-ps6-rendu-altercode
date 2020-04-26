@@ -48,13 +48,11 @@ export class PatientInfosComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.result = result;
-      console.log(this.result);
       this.deletePatient();
     });
   }
 
   deletePatient() {
-    console.log(this.patient);
     if (this.result) {
       this.patientService.deleteStyle(this.patient);
       this.patientService.deleteStat(this.patient)
