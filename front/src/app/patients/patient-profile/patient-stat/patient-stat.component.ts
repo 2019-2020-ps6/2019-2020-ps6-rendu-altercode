@@ -3,8 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {PatientService} from '../../../../services/patient.service';
 import {Patient} from '../../../../models/patient.model';
 import {QuizService} from '../../../../services/quiz.service';
-import {Quiz} from "../../../../models/quiz.model";
-import {element} from "protractor";
+import {Quiz} from '../../../../models/quiz.model';
 
 
 @Component({
