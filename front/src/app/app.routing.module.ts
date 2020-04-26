@@ -13,6 +13,7 @@ import {PatientStyleComponent} from './patients/patient-profile/patient-style/pa
 import {CreateAdminComponent} from './home/createAdmin/createAdmin';
 import {PatientSpaceComponent} from './patientSpace/patient-space';
 import {SuccessPageComponent} from './quizzes/play-quiz/success-page/success-page.component';
+import {PatientStatComponent} from './patients/patient-profile/patient-stat/patient-stat.component';
 
 const routes: Routes = [
   {path: 'quiz-list', component: QuizListComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'patient-quiz/:id', component: QuizListComponent},
   {path: 'createAdmin', component: CreateAdminComponent},
   {path: 'patient-space/:id', component: PatientSpaceComponent},
+  {path: 'patient-stat/:id', component: PatientStatComponent},
   {path: 'patient/:patientId/play-quiz/:quizId/success-page', component: SuccessPageComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
