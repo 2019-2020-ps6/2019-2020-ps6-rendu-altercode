@@ -11,7 +11,7 @@
           <div class="row"><button class="btn btn-outline-primary btn-lg btn-block" routerLink="/patient-style/{{patient.id}}">Configuration apparence</button></div>
           <br><div class="row"><button class="btn btn-outline-secondary btn-lg btn-block" routerLink="/patient-infos/{{patient.id}}">Informations patient</button></div>
           <br><div class="row"><button class="btn btn-outline-primary btn-lg btn-block" routerLink="/patient-space/{{patient.id}}">Espace Patient</button></div>
-          <br><div class="row"><button class="btn btn-outline-secondary btn-lg btn-block" routerLink="/patient-stat">Statistiques</button></div>
+          <br><div class="row"><button class="btn btn-outline-secondary btn-lg btn-block" routerLink="/patient-stat/{{patient.id}}">Statistiques</button></div>
           <br><div class="row"><button class="btn btn-outline-primary btn-lg btn-block" routerLink="/patient-quiz/{{patient.id}}">Gestion Quiz Patient</button></div>
           <br><br>
           <div  class="row"><button [ngStyle]="{'color':'white'}" class="btn btn-dark btn-block" routerLink="/patient-list">Retour</button></div>

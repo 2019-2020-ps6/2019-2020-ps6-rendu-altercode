@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PatientService} from '../../../../services/patient.service';
 import {Patient} from '../../../../models/patient.model';
+import {QuizService} from '../../../../services/quiz.service';
+import {Quiz} from "../../../../models/quiz.model";
+import {element} from "protractor";
 
 
 @Component({
@@ -12,17 +15,28 @@ import {Patient} from '../../../../models/patient.model';
 export class PatientStatComponent implements OnInit {
   public patient: Patient;
   public color;
+  public stat;
+  public nbTotDone = 0;
+  public quizList: Quiz[] = [];
 
-  constructor(public router: Router, public patientService: PatientService) {
+  constructor(public router: Router, public patientService: PatientService, private route: ActivatedRoute, public quizService: QuizService) {
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
-      this.color = this.patient.style[0].colorPolice;
-      document.documentElement.style.setProperty('--couleur', this.color);
+      this.stat = patient.statistics[0].quizStat;
+      this.stat.forEach((stat) => {
+        this.nbTotDone = this.nbTotDone + stat.nbQuizDone;
+      });
     });
+    this.quizService.quizzes$.subscribe((quiz) => this.quizList = quiz);
     }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.patientService.setSelectedPatient(id);
+  }
 
+  nomById(id) {
+    return this.quizList.find(le => le.id === id).name;
   }
 }
 
