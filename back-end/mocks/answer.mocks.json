@@ -180,5 +180,19 @@
     "urlImg": "",
     "questionId": 301587465602867,
     "id": 201587465602993
+  },
+  {
+    "value": "avec ",
+    "isCorrect": true,
+    "urlImg": "https://img.lignes-formations.com/wp-content/uploads/sites/45/2019/05/formation-reportage-photo-niveau-1.jpg",
+    "questionId": 601588002499388,
+    "id": 1001588002499389
+  },
+  {
+    "value": "sans",
+    "isCorrect": true,
+    "urlImg": "",
+    "questionId": 601588002499388,
+    "id": 1001588002499390
   }
 ]

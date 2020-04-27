@@ -1,9 +1,16 @@
 [
   {
-    "heightPolice": 5,
-    "colorBody": "#ffffff",
+    "heightPolice": "5",
+    "colorBody": "#c2c2c2",
     "colorPolice": "#0000ff",
     "patientId": 801587891575651,
     "id": 801587891575654
+  },
+  {
+    "heightPolice": 1,
+    "colorBody": "#ffffff ",
+    "colorPolice": " #000000",
+    "patientId": 301587999671494,
+    "id": 801587999671498
   }
 ]
