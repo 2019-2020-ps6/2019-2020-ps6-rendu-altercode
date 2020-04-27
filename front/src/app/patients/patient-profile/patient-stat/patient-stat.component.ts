@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PatientService} from '../../../../services/patient.service';
 import {Patient} from '../../../../models/patient.model';
@@ -17,8 +17,10 @@ export class PatientStatComponent implements OnInit {
   public stat;
   public nbTotDone = 0;
   public quizList: Quiz[] = [];
+  chart = [];
 
-  // tslint:disable-next-line:max-line-length
+  // tslint:disable-next-line:max-line-length variable-name
+  private angular: any;
   constructor(public router: Router, public patientService: PatientService, private route: ActivatedRoute, public quizService: QuizService) {
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
@@ -35,8 +37,15 @@ export class PatientStatComponent implements OnInit {
     this.patientService.setSelectedPatient(id);
   }
 
+
   nomById(id) {
     return this.quizList.find(le => le.id === id).name;
   }
+
+  round(int) {
+    return Math.round(int * 100) / 100;
+  }
 }
+
+
 
