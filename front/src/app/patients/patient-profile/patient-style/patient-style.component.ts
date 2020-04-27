@@ -16,23 +16,22 @@ export class PatientStyleComponent implements OnInit {
   public configForm: FormGroup;
   private colorP;
   private colorB;
+  private heightP;
+  private heightString;
 
   // tslint:disable-next-line:max-line-length
   constructor(public formBuilder: FormBuilder, private route: ActivatedRoute, public router: Router, private patientService: PatientService) {
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
       this.initializeConfigForm();
-      this.colorP = this.patient.style[0].colorPolice;
-      document.documentElement.style.setProperty('--couleur', this.colorP);
-      this.colorB = this.patient.style[0].colorBody;
-      document.documentElement.style.setProperty('--bodyCouleur', this.colorB);
+      this.changeColorP();
+      this.changeColorB();
+      this.changeSize();
     });
-
   }
 
   private initializeConfigForm() {
     this.configForm = this.formBuilder.group({
-      typePolice: [this.patient.style[0].typePolice, Validators.required],
       heightPolice: [this.patient.style[0].heightPolice.toString(), Validators.required],
       colorBody: [this.patient.style[0].colorBody, Validators.required],
       colorPolice: [this.patient.style[0].colorPolice, Validators.required]
@@ -51,4 +50,23 @@ export class PatientStyleComponent implements OnInit {
       this.router.navigate(['/patient-profile/' + this.patient.id]);
     }
   }
+  changeSize() {
+      let height = parseInt(this.configForm.get('heightPolice').value, 10);
+      if (height === 0) {
+        height = 1;
+      } else {
+        height = 1 + height / 10;
+      }
+      this.heightString = height.toString() + 'rem';
+      document.documentElement.style.setProperty('--heightPolice', this.heightString);
+    }
+
+    changeColorP() {
+      document.documentElement.style.setProperty('--couleur', this.configForm.get('colorPolice').value);
+    }
+
+    changeColorB() {
+      document.documentElement.style.setProperty('--bodyCouleur', this.configForm.get('colorBody').value);
+    }
+
 }

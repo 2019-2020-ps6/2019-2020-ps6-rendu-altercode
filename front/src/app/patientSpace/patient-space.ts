@@ -15,6 +15,7 @@ import {PopUpIdComponent} from './pop-up-id/pop-up-id.component';
 export class PatientSpaceComponent implements OnInit {
   private colorP;
   private colorB;
+  private heightP;
   public quizListTot: Quiz[] = [];
   public quizList: Quiz[] = [];
   public isChecked: boolean;
@@ -31,6 +32,8 @@ export class PatientSpaceComponent implements OnInit {
       this.colorB = this.patient.style[0].colorBody;
       document.documentElement.style.setProperty('----bodyCouleur', this.colorB);
       document.documentElement.style.setProperty('--couleur', this.colorP);
+      this.changeSize();
+
       this.quizListTot.forEach( (x1) => {
         if (this.patient.quizzes.indexOf(x1.id) !== -1) {
           this.quizList.push(x1);
@@ -57,5 +60,16 @@ export class PatientSpaceComponent implements OnInit {
     const i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === quiz.id);
     this.patient.statistics[0].quizStat[i].nbQuizTry += 1;
     this.patientService.updateQuizStat(this.patient.statistics[0].quizStat[i], this.patient);
+  }
+
+  changeSize() {
+    let height = this.patient.style[0].heightPolice;
+    if (height === 0) {
+      height = 1;
+    } else {
+      height = 1 + height / 10;
+    }
+    const heightString = height.toString() + 'rem';
+    document.documentElement.style.setProperty('--heightPolice', heightString);
   }
 }

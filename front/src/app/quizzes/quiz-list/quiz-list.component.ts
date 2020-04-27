@@ -53,13 +53,12 @@ export class QuizListComponent implements OnInit {
     } else {
       if (this.patient.quizzes.find((element) => element === quiz.id) === quiz.id) {
         this.quizIdForStatToDelete.push(quiz.id);
-      }
-      else {
+      } else {
         this.quizIdForStatToAdd.splice(this.quizIdForStatToAdd.findIndex((element) => element === quiz.id), 1);
       }
       this.quizzesO.splice(this.quizzesO.findIndex((element) => element === quiz.id), 1);
     }
-    if (this.patient.quizzes.length === this.quizList.length) {
+    if (this.quizzesO.length === this.quizList.length) {
       this.allCheck = true;
     } else {
       this.allCheck = false;
@@ -80,9 +79,9 @@ export class QuizListComponent implements OnInit {
     this.patient.quizzes = this.quizzesO;
     this.patientService.updateQuizzes(this.patient);
   }
-// update patient alors qu'il faut update juste le quizStat
+
   quizChecked(quiz: Quiz) {
-    if (this.patient.quizzes.includes(quiz.id)) {
+    if (this.quizzesO.includes(quiz.id)) {
       return true;
     }
     return false;
@@ -99,11 +98,18 @@ export class QuizListComponent implements OnInit {
 
   checkAll() {
     if (this.allCheck) {
-      this.patient.quizzes.splice(0, this.patient.quizzes.length);
+      this.quizzesO.splice(0, this.quizzesO.length);
+      this.patient.quizzes.forEach( (quizId) => {
+          this.quizIdForStatToDelete.push(quizId);
+      });
+      this.quizIdForStatToAdd.splice(0, this.quizIdForStatToAdd.length);
       this.allCheck = false;
     } else {
       this.quizList.forEach((quiz) => {
-        this.patient.quizzes.push(quiz.id);
+        if (this.quizzesO.find((element) => element === quiz.id) !== quiz.id) {
+          this.quizzesO.push(quiz.id);
+          this.quizIdForStatToAdd.push(quiz.id);
+        }
       });
       this.allCheck = true;
     }

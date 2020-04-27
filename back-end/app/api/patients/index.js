@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
     const patient = Patient.create({ ...req.body, style: [], statistics: [] })
     // eslint-disable-next-line no-unused-vars
     Style.create({
-      typePolice: 'Times New Roman', heightPolice: '50', colorBody: '#ffffff ', colorPolice: ' #000000', patientId: parseInt(patient.id, 10),
+      heightPolice: 1, colorBody: '#ffffff ', colorPolice: ' #000000', patientId: parseInt(patient.id, 10),
     })
     Statistics.create({
       patientId: patient.id,

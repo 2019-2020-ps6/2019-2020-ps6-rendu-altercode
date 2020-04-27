@@ -12,7 +12,7 @@ import {PopUpComponent} from './pop-up.component';
 import {Patient} from '../../../models/patient.model';
 import {PatientService} from '../../../services/patient.service';
 import {Quiz} from '../../../models/quiz.model';
-import {QuizStat} from "../../../models/quizStat.model";
+import {QuizStat} from '../../../models/quizStat.model';
 
 export interface DialogData {
   questionString: string;

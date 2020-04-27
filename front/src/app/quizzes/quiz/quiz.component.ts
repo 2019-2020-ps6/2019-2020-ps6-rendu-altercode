@@ -12,6 +12,7 @@ export class QuizComponent implements OnInit {
   quiz: Quiz;
 
   constructor() {
+
   }
 
   ngOnInit() {

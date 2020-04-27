@@ -15,6 +15,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   timer;
   private colorP;
   private colorB;
+  private heightString;
   public quiz: Quiz;
   public patient: Patient;
   public questions: Question[];
@@ -38,6 +39,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
       this.colorB = this.patient.style[0].colorBody;
       document.documentElement.style.setProperty('----bodyCouleur', this.colorB);
       document.documentElement.style.setProperty('--couleur', this.colorP);
+      this.changeSize();
     });
   }
 
@@ -54,7 +56,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
       this.index++;
     } else {
        this.updateStats();
-      this.router.navigate(['/patient/' + this.patient.id + '/play-quiz/' + this.quiz.id + '/success-page']);
+       this.router.navigate(['/patient/' + this.patient.id + '/play-quiz/' + this.quiz.id + '/success-page']);
     }
   }
 
@@ -99,6 +101,16 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   decrementMissClicks() {
     this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
     this.patient.statistics[0].quizStat[this.i].nbMissClick--;
+  }
+  changeSize() {
+    let height = this.patient.style[0].heightPolice;
+    if (height === 0) {
+      height = 1;
+    } else {
+      height = 1 + height / 10;
+    }
+    this.heightString = height.toString() + 'rem';
+    document.documentElement.style.setProperty('--heightPolice', this.heightString);
   }
 }
 

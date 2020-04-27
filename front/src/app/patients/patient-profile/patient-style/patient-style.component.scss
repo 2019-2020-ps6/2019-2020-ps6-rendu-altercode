@@ -1,7 +1,10 @@
 $couleur : var(--couleur);
 $bodyCouleur : var(--bodyCouleur);
+$heightPolice : var(--heightPolice);
 
 .card-body :not(button){
   background-color: $bodyCouleur;
   color: $couleur;
+  font-size: $heightPolice;
+  line-height: $heightPolice;
 }

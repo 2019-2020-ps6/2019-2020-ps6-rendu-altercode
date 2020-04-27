@@ -2,10 +2,9 @@ import {Statistics} from './statistics.model';
 
 export interface Style {
   id: string;
-  typePolice: string;
   colorBody: string;
   colorPolice: string;
-  heightPolice: string;
+  heightPolice: number;
   patientId: number;
 }
 
