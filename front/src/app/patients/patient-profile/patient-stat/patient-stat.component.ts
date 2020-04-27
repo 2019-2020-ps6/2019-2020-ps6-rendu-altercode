@@ -18,6 +18,7 @@ export class PatientStatComponent implements OnInit {
   public nbTotDone = 0;
   public quizList: Quiz[] = [];
 
+  // tslint:disable-next-line:max-line-length
   constructor(public router: Router, public patientService: PatientService, private route: ActivatedRoute, public quizService: QuizService) {
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
