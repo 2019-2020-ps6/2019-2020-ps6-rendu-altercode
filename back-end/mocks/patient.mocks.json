@@ -7,19 +7,6 @@
     "sexe": "homme",
     "pathology": "Alzheimer",
     "personality": "Impatient",
-    "quizzes": [],
-    "style": [],
-    "statistics": [],
-    "id": 801587891575651
-  },
-  {
-    "name": "QXSDFW",
-    "surname": "DQSFS",
-    "date": "275760-09-04",
-    "urlImg": "https://thumbs.dreamstime.com/b/ic%C3%B4ne-noire-solide-d-avatar-de-profil-utilisateur-134114292.jpg",
-    "sexe": "femme",
-    "pathology": "QSDFSF",
-    "personality": "QDSFGS",
     "quizzes": [
       801587403042715,
       1001587449298949,
@@ -27,6 +14,6 @@
     ],
     "style": [],
     "statistics": [],
-    "id": 101587907370741
+    "id": 801587891575651
   }
 ]
