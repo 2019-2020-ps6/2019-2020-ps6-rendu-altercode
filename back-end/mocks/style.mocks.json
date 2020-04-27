@@ -1,6 +1,6 @@
 [
   {
-    "heightPolice": "0",
+    "heightPolice": 5,
     "colorBody": "#ffffff",
     "colorPolice": "#0000ff",
     "patientId": 801587891575651,
