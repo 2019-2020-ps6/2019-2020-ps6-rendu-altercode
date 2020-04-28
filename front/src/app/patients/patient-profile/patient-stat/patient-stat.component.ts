@@ -43,6 +43,8 @@ export class PatientStatComponent implements OnInit {
 
 
   nomById(id) {
+    console.log(id);
+    console.log(this.quizList.find(le => le.id === id).name);
     return this.quizList.find(le => le.id === id).name;
   }
 

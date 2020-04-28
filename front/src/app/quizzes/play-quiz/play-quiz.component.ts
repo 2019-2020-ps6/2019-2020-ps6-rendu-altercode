@@ -37,7 +37,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
       this.patient = patient;
       this.colorP = this.patient.style[0].colorPolice;
       this.colorB = this.patient.style[0].colorBody;
-      document.documentElement.style.setProperty('----bodyCouleur', this.colorB);
+      document.documentElement.style.setProperty('--bodyCouleur', this.colorB);
       document.documentElement.style.setProperty('--couleur', this.colorP);
       this.changeSize();
     });
