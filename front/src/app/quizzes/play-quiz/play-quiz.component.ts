@@ -37,7 +37,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
       this.patient = patient;
       this.colorP = this.patient.style[0].colorPolice;
       this.colorB = this.patient.style[0].colorBody;
-      document.documentElement.style.setProperty('----bodyCouleur', this.colorB);
+      document.documentElement.style.setProperty('--bodyCouleur', this.colorB);
       document.documentElement.style.setProperty('--couleur', this.colorP);
       this.changeSize();
     });
@@ -91,6 +91,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
 
   updateStats() {
     this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
+    this.patient.statistics[0].quizStat[this.i].nbQuizTry += 1;
     this.patientService.updateQuizStat(this.patient.statistics[0].quizStat[this.i], this.patient);
   }
 
