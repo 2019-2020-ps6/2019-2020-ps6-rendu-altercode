@@ -76,7 +76,7 @@ export class PatientService {
     const lgth = stat.quizStat.length;
     for (let i = lgth - 1; i >= 0 ; i--) {
       const quizStatUrl2 = quizStatUrl + stat.quizStat[i].id;
-      this.http.delete<QuizStat>( quizStatUrl2 + stat.quizStat[i].id, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
+      this.http.delete<QuizStat>( quizStatUrl2, this.httpOptions).subscribe(() => this.setPatientsFromUrl());
     }
   }
 

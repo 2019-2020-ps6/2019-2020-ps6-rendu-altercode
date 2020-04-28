@@ -1,16 +1,1 @@
-[
-  {
-    "value": "Réponse 1",
-    "isCorrect": true,
-    "urlImg": "",
-    "questionId": 701588057542290,
-    "id": 501588057542295
-  },
-  {
-    "value": "Réponse 2 ",
-    "isCorrect": false,
-    "urlImg": "",
-    "questionId": 701588057542290,
-    "id": 301588057542298
-  }
-]
+[]

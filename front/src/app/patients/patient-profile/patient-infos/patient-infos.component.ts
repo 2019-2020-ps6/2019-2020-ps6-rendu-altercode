@@ -54,7 +54,7 @@ export class PatientInfosComponent implements OnInit {
   deletePatient() {
     if (this.result) {
       this.patientService.deleteStyle(this.patient);
-      this.patientService.deleteStat(this.patient)
+      this.patientService.deleteStat(this.patient);
       this.patientService.deletePatient(this.patient);
       this.router.navigate(['/patient-list']);
     } else {
