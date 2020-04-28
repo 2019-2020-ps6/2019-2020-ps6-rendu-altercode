@@ -18,7 +18,7 @@
         <div class="col-lg-8 text-center">
           <div class="card m-3">
             <div *ngFor="let QS of stat">
-              <div> Nom du quiz : {{this.nomById(QS.quizId)}}</div>
+              <h3> Nom du quiz : {{this.nomById(QS.quizId)}}</h3>
               <div> Nombre de fois réalisé : {{QS.nbQuizDone}}</div>
               <div> Nombre de fois tenté : {{QS.nbQuizTry}}</div>
               <div> Soit un total de reussite de : {{round(QS.nbQuizDone / QS.nbQuizTry*100)}} %</div>
@@ -29,6 +29,7 @@
             </div>
           </div>
           <div> Nombre de quiz réalisé : {{nbTotDone}}</div>
+          <div> Pourcentage de bonne réponses : {{round(nbTotGoodAnswer/nbTotAnswer*100)}}%</div>
         </div>
       </div>
     </div>
