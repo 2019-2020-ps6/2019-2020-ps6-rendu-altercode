@@ -16,6 +16,8 @@ export class PatientStatComponent implements OnInit {
   public color;
   public stat;
   public nbTotDone = 0;
+  public nbTotGoodAnswer = 0;
+  public nbTotAnswer = 0;
   public quizList: Quiz[] = [];
   chart = [];
 
@@ -27,6 +29,8 @@ export class PatientStatComponent implements OnInit {
       this.stat = patient.statistics[0].quizStat;
       this.stat.forEach((stat) => {
         this.nbTotDone = this.nbTotDone + stat.nbQuizDone;
+        this.nbTotGoodAnswer = this.nbTotGoodAnswer + stat.nbGoodAnswer;
+        this.nbTotAnswer = this.nbTotAnswer + stat.nbGoodAnswer + stat.nbWrongAnswer;
       });
     });
     this.quizService.quizzes$.subscribe((quiz) => this.quizList = quiz);
