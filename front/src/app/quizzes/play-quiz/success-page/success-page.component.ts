@@ -19,13 +19,14 @@ export class SuccessPageComponent implements OnInit, OnDestroy {
   public questions: Question[];
   timer;
 
+  // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, public router: Router, private quizService: QuizService, public patientService: PatientService) {
     this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
       this.colorP = this.patient.style[0].colorPolice;
       this.colorB = this.patient.style[0].colorBody;
-      document.documentElement.style.setProperty('----bodyCouleur', this.colorB);
+      document.documentElement.style.setProperty('--bodyCouleur', this.colorB);
       document.documentElement.style.setProperty('--couleur', this.colorP);
     });
   }

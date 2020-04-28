@@ -91,6 +91,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
 
   updateStats() {
     this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
+    this.patient.statistics[0].quizStat[this.i].nbQuizTry += 1;
     this.patientService.updateQuizStat(this.patient.statistics[0].quizStat[this.i], this.patient);
   }
 
