@@ -20,7 +20,6 @@ import { PopUpComponent } from './questions/question-play/pop-up.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './home/home.component';
-import {PatientComponent} from './patients/patient/patient.component';
 import {PatientFormComponent} from './patients/patient-form/patient-form.component';
 import {PatientListComponent} from './patients/patient-list/patient-list.component';
 import {PatientStyleComponent} from './patients/patient-profile/patient-style/patient-style.component';
@@ -30,7 +29,7 @@ import {PatientProfileComponent} from './patients/patient-profile/patient-profil
 import {EditPatientComponent} from './patients/edit-patient/edit-patient.component';
 import {CreateAdminComponent} from './home/create-admin/create-admin.component';
 import {PopUpVerifComponent} from './patients/patient-profile/patient-infos/PopupVerif/pop-up.component';
-import {PatientSpaceComponent} from './patients/patient-space/patient-space';
+import {PatientSpaceComponent} from './patients/patient-space/patient-space.component';
 import {PopUpIdComponent} from './patients/patient-space/pop-up-id/pop-up-id.component';
 import {SuccessPageComponent} from './quizzes/play-quiz/success-page/success-page.component';
 
@@ -51,7 +50,6 @@ import {SuccessPageComponent} from './quizzes/play-quiz/success-page/success-pag
     PopUpVerifComponent,
     PopUpIdComponent,
     HomeComponent,
-    PatientComponent,
     PatientFormComponent,
     PatientListComponent,
     PatientStyleComponent,

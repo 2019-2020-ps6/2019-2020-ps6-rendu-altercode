@@ -9,8 +9,8 @@ import {PopUpIdComponent} from './pop-up-id/pop-up-id.component';
 
 @Component({
   selector: 'app-patient-space',
-  templateUrl: './patient-space.html',
-  styleUrls: ['./patient-space.scss']
+  templateUrl: './patient-space.component.html',
+  styleUrls: ['./patient-space.component.scss']
 })
 export class PatientSpaceComponent implements OnInit {
   private colorP;
