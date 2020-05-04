@@ -20,7 +20,6 @@ import { PopUpComponent } from './questions/question-play/pop-up.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './home/home.component';
-import {PatientComponent} from './patients/patient/patient.component';
 import {PatientFormComponent} from './patients/patient-form/patient-form.component';
 import {PatientListComponent} from './patients/patient-list/patient-list.component';
 import {PatientStyleComponent} from './patients/patient-profile/patient-style/patient-style.component';
@@ -51,7 +50,6 @@ import {SuccessPageComponent} from './quizzes/play-quiz/success-page/success-pag
     PopUpVerifComponent,
     PopUpIdComponent,
     HomeComponent,
-    PatientComponent,
     PatientFormComponent,
     PatientListComponent,
     PatientStyleComponent,
