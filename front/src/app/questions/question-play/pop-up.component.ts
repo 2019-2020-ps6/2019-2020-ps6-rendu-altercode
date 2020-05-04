@@ -31,7 +31,7 @@ export class PopUpComponent implements OnInit, OnDestroy {
   startTimer() {
     this.timer = setTimeout(() => {
       this.dialogRef.close();
-    }, 5000);
+    }, 10000);
   }
 
   ngOnDestroy() {

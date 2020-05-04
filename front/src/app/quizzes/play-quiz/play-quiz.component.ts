@@ -21,6 +21,8 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   public questions: Question[];
   index = 0;
   private i;
+  public s = 15;
+  public displayTimer = false;
 
   @HostListener('click', ['$event.target'])
   onClick() {
@@ -53,8 +55,11 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   nextQuestion() {
      this.decrementMissClicks();
      if (this.index < this.quiz.questions.length - 1) {
-      this.index++;
+       this.displayTimer = false;
+       this.index++;
     } else {
+       this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
+       this.patient.statistics[0].quizStat[this.i].nbQuizDone += 1;
        this.updateStats();
        this.router.navigate(['/patient/' + this.patient.id + '/play-quiz/' + this.quiz.id + '/success-page']);
     }
@@ -65,16 +70,21 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
       const button = document.getElementById('button-end');
       button.style.setProperty('visibility', 'visible');
     }
+    this.displayTimer = true;
     this.startTimer();
   }
 
   startTimer() {
     const ind = this.index;
+    const interval = setInterval(() => { this.s -= 1; }, 1000);
     this.timer = setTimeout(() => {
       if (this.index === ind ) {
+        this.displayTimer = false;
+        clearInterval(interval);
+        this.s = 15;
         this.nextQuestion();
       }
-    }, 10000);
+    }, 15000);
   }
 
   ngOnDestroy() {
@@ -84,6 +94,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   }
 
   endQuiz() {
+    // this.decrementMissClicks();
     this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
     this.patient.statistics[0].quizStat[this.i].nbQuizDone += 1;
     this.updateStats();
@@ -92,6 +103,9 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   updateStats() {
     this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
     this.patient.statistics[0].quizStat[this.i].nbQuizTry += 1;
+    if (this.patient.statistics[0].quizStat[0].nbMissClick < 0) {
+      this.patient.statistics[0].quizStat[0].nbMissClick = 0;
+    }
     this.patientService.updateQuizStat(this.patient.statistics[0].quizStat[this.i], this.patient);
   }
 
