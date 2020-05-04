@@ -11,8 +11,8 @@
       <div class="patient card col-lg-3 p-0" *ngFor="let patient of patientList" routerLink="/patient-profile/{{patient.id}}">
         <h2 class = "card-header text-center">{{patient.name}} {{patient.surname}}</h2>
         <div class="card-body">
-          <div class="row justify-content-center mb-2" style="height: 273px" *ngIf="patient.urlImg.length > 0">
-            <img src="{{patient.urlImg}}" alt="Image patient" class="h-100 col-lg-10 img-thumbnail" style="max-width: 273px;">
+          <div class="row justify-content-center mb-2" style="height: 200px" *ngIf="patient.urlImg.length > 0">
+            <img src="{{patient.urlImg}}" alt="Image patient" class="h-100 col-lg-10 img-thumbnail">
           </div>
           <div class="row justify-content-center">Age : {{getAge(patient)}} ans</div>
         </div>

@@ -41,7 +41,7 @@ export class SuccessPageComponent implements OnInit, OnDestroy {
   startTimer() {
     this.timer = setTimeout(() => {
       this.router.navigate(['/patient-space/' + this.patient.id]);
-    }, 20000);
+    }, 30000);
   }
 
   ngOnDestroy() {

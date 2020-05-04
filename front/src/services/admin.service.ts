@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {httpOptionsBase, serverUrl} from '../configs/server.config';
 import {Admin} from '../models/admin.model';
 import {BehaviorSubject} from 'rxjs';
-import {Patient} from "../models/patient.model";
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +17,13 @@ export class AdminService {
 
   }
 
-  getAdmins() {
+ /* getAdmins() {
     this.http.get<Admin[]>(this.adminUrl).subscribe((adminList) => {
       this.admins = adminList;
       this.admins$.next(this.admins);
     });
   }
+  */
 
   addAdmin(admin: Admin) {
     this.http.post<Admin>(this.adminUrl, admin, this.httpOptions).subscribe(() => this.setAdminFromUrl());

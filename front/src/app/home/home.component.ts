@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.adminService.getAdmins();
+    this.adminService.setAdminFromUrl();
   }
 
   tryConnect() {

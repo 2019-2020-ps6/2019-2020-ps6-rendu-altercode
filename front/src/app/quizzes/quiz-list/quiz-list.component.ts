@@ -14,7 +14,6 @@ export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
   public mode: string;
-  public isChecked: boolean;
   public patient: Patient;
   public allCheck = false;
 
@@ -45,12 +44,15 @@ export class QuizListComponent implements OnInit {
       this.mode = 'quiz-list';
     }
   }
-
+  // Met à jour la liste correspondante selon l'action qui est faite (coche/décoche)
   checkValue(isChecked: any, quiz: Quiz) {
+    // Si on coche : met à jour la liste temporaire de quiz d'un patient et la liste temporaire des quiz à ajouter au patient
     if (isChecked) {
       this.quizzesO.push(quiz.id);
       this.quizIdForStatToAdd.push(quiz.id);
-    } else {
+    } else
+    // Si on décoche : Met à jour les listes correspondantes si le quiz était déjà un quiz sélectionné pour ce patient ou pas
+      {
       if (this.patient.quizzes.find((element) => element === quiz.id) === quiz.id) {
         this.quizIdForStatToDelete.push(quiz.id);
       } else {
@@ -58,13 +60,32 @@ export class QuizListComponent implements OnInit {
       }
       this.quizzesO.splice(this.quizzesO.findIndex((element) => element === quiz.id), 1);
     }
-    if (this.quizzesO.length === this.quizList.length) {
-      this.allCheck = true;
-    } else {
+    this.allCheck = this.quizzesO.length === this.quizList.length;
+  }
+
+  // A pour même objectif que checkValue mais cette fois pour tous les quiz existants
+  checkAll() {
+    // Si on décoche tous les quiz
+    if (this.allCheck) {
+      this.quizzesO.splice(0, this.quizzesO.length);
+      this.patient.quizzes.forEach( (quizId) => {
+        this.quizIdForStatToDelete.push(quizId);
+      });
+      this.quizIdForStatToAdd.splice(0, this.quizIdForStatToAdd.length);
       this.allCheck = false;
+    } else // Si on coche tous les quiz
+    {
+      this.quizList.forEach((quiz) => {
+        if (this.quizzesO.find((element) => element === quiz.id) !== quiz.id) {
+          this.quizzesO.push(quiz.id);
+          this.quizIdForStatToAdd.push(quiz.id);
+        }
+      });
+      this.allCheck = true;
     }
   }
 
+  // Appelle les fonctions du service pour la création ou la suppression d'une stat de quiz et la mise à jour de la liste de quiz du patient
   valideQuizzes() {
     if (this.quizIdForStatToAdd.length > 0) {
       this.quizIdForStatToAdd.forEach((quizId) => {
@@ -87,32 +108,8 @@ export class QuizListComponent implements OnInit {
     return false;
   }
 
-  quizSelected(quizSelected: Quiz) {
-
-  }
-
   deleteQuiz(quiz: Quiz) {
     this.quizService.deleteQuestions(quiz);
     this.quizService.deleteQuiz(quiz);
-  }
-
-  checkAll() {
-    if (this.allCheck) {
-      this.quizzesO.splice(0, this.quizzesO.length);
-      this.patient.quizzes.forEach( (quizId) => {
-          this.quizIdForStatToDelete.push(quizId);
-      });
-      this.quizIdForStatToAdd.splice(0, this.quizIdForStatToAdd.length);
-      this.allCheck = false;
-    } else {
-      this.quizList.forEach((quiz) => {
-        if (this.quizzesO.find((element) => element === quiz.id) !== quiz.id) {
-          this.quizzesO.push(quiz.id);
-          this.quizIdForStatToAdd.push(quiz.id);
-        }
-      });
-      this.allCheck = true;
-    }
-
   }
 }
