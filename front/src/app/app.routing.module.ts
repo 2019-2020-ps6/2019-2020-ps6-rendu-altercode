@@ -11,7 +11,7 @@ import {PatientInfosComponent} from './patients/patient-profile/patient-infos/pa
 import {EditPatientComponent} from './patients/edit-patient/edit-patient.component';
 import {PatientStyleComponent} from './patients/patient-profile/patient-style/patient-style.component';
 import {CreateAdminComponent} from './home/createAdmin/createAdmin';
-import {PatientSpaceComponent} from './patientSpace/patient-space';
+import {PatientSpaceComponent} from './patients/patientSpace/patient-space';
 import {SuccessPageComponent} from './quizzes/play-quiz/success-page/success-page.component';
 import {PatientStatComponent} from './patients/patient-profile/patient-stat/patient-stat.component';
 

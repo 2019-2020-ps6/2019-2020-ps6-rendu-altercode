@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService } from '../../services/quiz.service';
-import { Quiz } from '../../models/quiz.model';
-import { Patient } from '../../models/patient.model';
+import { QuizService } from '../../../services/quiz.service';
+import { Quiz } from '../../../models/quiz.model';
+import { Patient } from '../../../models/patient.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import {PatientService} from '../../services/patient.service';
+import {PatientService} from '../../../services/patient.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {PopUpIdComponent} from './pop-up-id/pop-up-id.component';
 
