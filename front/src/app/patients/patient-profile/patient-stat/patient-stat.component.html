@@ -19,10 +19,12 @@
               <h3> Nom du quiz : {{this.nomById(QS.quizId)}}</h3>
               <div> Nombre de fois réalisé : {{QS.nbQuizDone}}</div>
               <div> Nombre de fois tenté : {{QS.nbQuizTry}}</div>
-              <div> Soit un total de reussite de : {{round(QS.nbQuizDone / QS.nbQuizTry*100)}} %</div>
+              <div *ngIf="QS.nbQuizTry !== 0"> Soit un total de reussite de : {{round(QS.nbQuizDone / QS.nbQuizTry*100)}} %</div>
+              <div *ngIf="QS.nbQuizTry == 0"> Soit un total de reussite de : 0 %</div>
               <div> Nombre de clique à coté : {{QS.nbMissClick}}</div>
               <div> Nombre de réponses juste : {{QS.nbGoodAnswer}}</div>
-              <div> Soit un total de : {{round(QS.nbGoodAnswer / (QS.nbGoodAnswer + QS.nbWrongAnswer) *100 )}}%</div>
+              <div *ngIf="QS.nbGoodAnswer !== 0 || QS.nbWrongAnswer !== 0"> Soit un total de : {{round(QS.nbGoodAnswer / (QS.nbGoodAnswer + QS.nbWrongAnswer) *100 )}}%</div>
+              <div *ngIf="QS.nbGoodAnswer == 0 && QS.nbWrongAnswer == 0"> Soit un total de : 0 %</div>
               <br>
             </div>
           </div>
