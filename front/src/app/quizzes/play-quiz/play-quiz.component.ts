@@ -13,6 +13,7 @@ import {Patient} from '../../../models/patient.model';
 })
 export class PlayQuizComponent implements OnInit, OnDestroy {
   timer;
+  interval;
   private colorP;
   private colorB;
   private heightString;
@@ -55,9 +56,12 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   nextQuestion() {
      this.decrementMissClicks();
      if (this.index < this.quiz.questions.length - 1) {
+       clearInterval(this.interval);
        this.displayTimer = false;
+       this.s = 15;
        this.index++;
     } else {
+       clearInterval(this.interval);
        this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
        this.patient.statistics[0].quizStat[this.i].nbQuizDone += 1;
        this.updateStats();
@@ -76,12 +80,12 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
 
   startTimer() {
     const ind = this.index;
-    const interval = setInterval(() => { this.s -= 1; }, 1000);
+    this.interval = setInterval(() => { this.s -= 1; }, 1000);
     this.timer = setTimeout(() => {
       if (this.index === ind ) {
         this.displayTimer = false;
-        clearInterval(interval);
         this.s = 15;
+        clearInterval(this.interval);
         this.nextQuestion();
       }
     }, 15000);

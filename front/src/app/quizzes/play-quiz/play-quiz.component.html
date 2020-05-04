@@ -5,7 +5,7 @@
   <div id="quiz" class="justify-content-center h-100">
         <app-question-play [question]="quiz.questions[index]" [patient]="patient" [quiz]="quiz" (nextQuestionAuto)="nextQuestionAuto($event)"></app-question-play>
         <div *ngIf="displayTimer" id="timer" class="row justify-content-center mb-2">
-          <p *ngIf="index < quiz.questions.length -1; else ElseT">Prochaine question</p><ng-template #ElseT>Fin du quiz</ng-template> dans {{s}}s !
+          <p *ngIf="index < quiz.questions.length -1; else ElseT">Prochaine question </p><ng-template #ElseT>Fin du quiz </ng-template><p> dans {{s}}s !</p>
         </div>
         <div class="row justify-content-center">
           <button *ngIf="index < quiz.questions.length - 1; else Else" class="btn btn-primary col-lg-3" (click) = "nextQuestion()">Suivant</button>

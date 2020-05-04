@@ -28,10 +28,10 @@ import {PatientInfosComponent} from './patients/patient-profile/patient-infos/pa
 import {PatientStatComponent} from './patients/patient-profile/patient-stat/patient-stat.component';
 import {PatientProfileComponent} from './patients/patient-profile/patient-profile.component';
 import {EditPatientComponent} from './patients/edit-patient/edit-patient.component';
-import {CreateAdminComponent} from './home/createAdmin/createAdmin';
+import {CreateAdminComponent} from './home/create-admin/create-admin.component';
 import {PopUpVerifComponent} from './patients/patient-profile/patient-infos/PopupVerif/pop-up.component';
-import {PatientSpaceComponent} from './patientSpace/patient-space';
-import {PopUpIdComponent} from './patientSpace/pop-up-id/pop-up-id.component';
+import {PatientSpaceComponent} from './patients/patient-space/patient-space';
+import {PopUpIdComponent} from './patients/patient-space/pop-up-id/pop-up-id.component';
 import {SuccessPageComponent} from './quizzes/play-quiz/success-page/success-page.component';
 
 @NgModule({

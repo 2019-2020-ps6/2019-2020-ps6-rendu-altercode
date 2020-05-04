@@ -6,9 +6,9 @@ import {AdminService} from '../../../services/admin.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'createAdmin',
-  templateUrl: './createAdmin.html',
-  styleUrls: ['./createAdmin.scss']
+  selector: 'create-admin',
+  templateUrl: './create-admin.component.html',
+  styleUrls: ['./create-admin.component.scss']
 })
 export class CreateAdminComponent implements OnInit {
   public adminForm: FormGroup;

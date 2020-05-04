@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   }
 
   goCreate() {
-    this.router.navigate(['/createAdmin']);
+    this.router.navigate(['/create-admin']);
   }
 }
 
