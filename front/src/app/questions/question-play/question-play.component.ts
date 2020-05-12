@@ -27,7 +27,7 @@ export interface DialogData {
 })
 
 export class QuestionPlayComponent implements OnInit {
-  private i; private nbMissclick = 0;
+  private i; private heightPolice;
   @Input()
   question: Question;
   @Input()
@@ -36,6 +36,8 @@ export class QuestionPlayComponent implements OnInit {
   patient: Patient;
   @Input()
   quiz: Quiz;
+  @Input()
+  heightStringTitle: string;
   @Output()
   nextQuestionAuto: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -45,6 +47,7 @@ export class QuestionPlayComponent implements OnInit {
   }
 
   constructor(private dialog: MatDialog, private patientService: PatientService) {
+        document.documentElement.style.setProperty('--heightTitle', this.heightStringTitle);
      }
 
   openDialog(i): void {

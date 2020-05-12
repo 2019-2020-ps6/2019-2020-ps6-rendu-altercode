@@ -17,6 +17,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   private colorP;
   private colorB;
   private heightString;
+  public heightStringTitle;
   public quiz: Quiz;
   public patient: Patient;
   public questions: Question[];
@@ -123,12 +124,16 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   }
   changeSize() {
     let height = this.patient.style[0].heightPolice;
+    let heightTitle = height;
     if (height === 0) {
       height = 1;
     } else {
       height = 1 + height / 10;
+      heightTitle = 2 + heightTitle / 10;
     }
     this.heightString = height.toString() + 'rem';
+    this.heightStringTitle = heightTitle.toString() + 'rem';
+    document.documentElement.style.setProperty('--heightTitle', this.heightStringTitle);
     document.documentElement.style.setProperty('--heightPolice', this.heightString);
   }
 }

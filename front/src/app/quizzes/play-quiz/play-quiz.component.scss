@@ -1,13 +1,19 @@
 $couleur : var(--couleur);
 $bodyCouleur : var(--bodyCouleur);
 $heightPolice : var(--heightPolice);
+$heightTitle : var(--heightTitle);
 
 #test :not(button){
   background-color: $bodyCouleur;
   color: $couleur;
 }
 
- h2, #quiz {
+ #quiz {
+  font-size: $heightPolice;
+  line-height: $heightPolice;
+}
+
+h1 {
   font-size: $heightPolice;
   line-height: $heightPolice;
 }

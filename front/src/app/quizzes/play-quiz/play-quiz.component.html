@@ -1,9 +1,9 @@
 <div *ngIf="quiz !== undefined && patient !== undefined">
   <div class="row text-center">
-    <h1 class="col">{{quiz.name}}</h1>
+    <h1 class="col mt-2 title_quiz">{{quiz.name}}</h1>
   </div>
   <div id="quiz" class="justify-content-center h-100">
-        <app-question-play [question]="quiz.questions[index]" [patient]="patient" [quiz]="quiz" (nextQuestionAuto)="nextQuestionAuto($event)"></app-question-play>
+        <app-question-play [heightStringTitle]="heightStringTitle" [question]="quiz.questions[index]" [patient]="patient" [quiz]="quiz" (nextQuestionAuto)="nextQuestionAuto($event)"></app-question-play>
         <div *ngIf="displayTimer" id="timer" class="row justify-content-center mb-2">
           <p *ngIf="index < quiz.questions.length -1; else ElseT">Prochaine question </p><ng-template #ElseT>Fin du quiz </ng-template><p> dans {{s}}s !</p>
         </div>
