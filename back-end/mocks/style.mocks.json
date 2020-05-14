@@ -14,7 +14,7 @@
     "id": 401588520002290
   },
   {
-    "heightPolice": 1,
+    "heightPolice": "1",
     "colorBody": "#ffffff ",
     "colorPolice": " #000000",
     "patientId": 101588520133828,
@@ -26,5 +26,12 @@
     "colorPolice": " #000000",
     "patientId": 301588520269249,
     "id": 801588520269252
+  },
+  {
+    "heightPolice": 1,
+    "colorBody": "#ffffff ",
+    "colorPolice": " #000000",
+    "patientId": 701589465301598,
+    "id": 501589465301599
   }
 ]

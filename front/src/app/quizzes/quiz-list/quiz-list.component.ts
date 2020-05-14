@@ -12,6 +12,7 @@ import {PatientService} from '../../../services/patient.service';
 })
 export class QuizListComponent implements OnInit {
 
+  public quizListBack: Quiz[] = [];
   public quizList: Quiz[] = [];
   public mode: string;
   public patient: Patient;
@@ -25,6 +26,7 @@ export class QuizListComponent implements OnInit {
   constructor(private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService) {
     this.quizService.quizzes$.subscribe((quiz) => {
       this.quizList = quiz;
+      this.quizListBack = quiz;
     });
     this.patientService.patientSelected$.subscribe( (patient) => {
       this.patient = patient;
@@ -50,9 +52,7 @@ export class QuizListComponent implements OnInit {
     if (isChecked) {
       this.quizzesO.push(quiz.id);
       this.quizIdForStatToAdd.push(quiz.id);
-    } else
-    // Si on décoche : Met à jour les listes correspondantes si le quiz était déjà un quiz sélectionné pour ce patient ou pas
-      {
+    } else {
       if (this.patient.quizzes.find((element) => element === quiz.id) === quiz.id) {
         this.quizIdForStatToDelete.push(quiz.id);
       } else {
@@ -73,8 +73,7 @@ export class QuizListComponent implements OnInit {
       });
       this.quizIdForStatToAdd.splice(0, this.quizIdForStatToAdd.length);
       this.allCheck = false;
-    } else // Si on coche tous les quiz
-    {
+    } else {
       this.quizList.forEach((quiz) => {
         if (this.quizzesO.find((element) => element === quiz.id) !== quiz.id) {
           this.quizzesO.push(quiz.id);
@@ -111,5 +110,20 @@ export class QuizListComponent implements OnInit {
   deleteQuiz(quiz: Quiz) {
     this.quizService.deleteQuestions(quiz);
     this.quizService.deleteQuiz(quiz);
+  }
+
+  search() {
+    const MotClef = (document.getElementById('motclef') as HTMLInputElement).value;
+    console.log('ok');
+    this.resetList();
+    this.quizList.forEach(q => {
+      if (!q.name.includes(MotClef)) {
+        this.quizList.splice(this.quizList.indexOf(q), 1, );
+      }
+    });
+  }
+
+  resetList() {
+    this.quizList = this.quizListBack.slice();
   }
 }
