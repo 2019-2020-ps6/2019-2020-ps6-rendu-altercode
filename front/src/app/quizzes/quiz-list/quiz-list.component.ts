@@ -114,9 +114,8 @@ export class QuizListComponent implements OnInit {
 
   search() {
     const MotClef = (document.getElementById('motclef') as HTMLInputElement).value;
-    console.log('ok');
     this.resetList();
-    this.quizList.forEach(q => {
+    this.quizListBack.forEach(q => {
       if (!q.name.includes(MotClef)) {
         this.quizList.splice(this.quizList.indexOf(q), 1, );
       }

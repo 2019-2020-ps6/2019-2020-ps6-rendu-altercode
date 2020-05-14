@@ -4,6 +4,10 @@
       <h1 class="col-lg-3">Gestion Patient</h1>
       <button type="submit" class="btn btn-outline-primary col-lg-2 offset-4" (click)="addPatient()">Ajouter Patient</button>
       <button type="submit" class="btn btn-outline-dark col-lg-2" style="margin-left: 10px" routerLink="/quiz-list">Gestion quiz</button>
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Mot-clefs" aria-label="Search" id="motclef">
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="search()">Rechercher</button>
+      </form>
     </div>
   </div>
   <div class="card-body">
