@@ -1,11 +1,19 @@
-<div *ngIf="quiz !== undefined && patient !== undefined">
-  <div class="row text-center">
-    <h1 class="col mt-2 title_quiz">{{quiz.name}}</h1>
+<div id="test" *ngIf="quiz !== undefined && patient !== undefined">
+  <div class="row mr-0 ml-0 mt-3 text-center">
+    <h1 class="title_quiz col mt-2">{{quiz.name}}</h1>
   </div>
-  <div id="quiz" class="justify-content-center h-100">
-        <app-question-play [heightStringTitle]="heightStringTitle" [question]="quiz.questions[index]" [patient]="patient" [quiz]="quiz" (nextQuestionAuto)="nextQuestionAuto($event)"></app-question-play>
+  <div id="quiz" class="container-fluid m-0 justify-content-center h-100">
+        <app-question-play class="row justify-content-center" [questionFinished]="questionFinished" [question]="quiz.questions[index]" [patient]="patient" [quiz]="quiz" [index]="index" (nextQuestionAuto)="nextQuestionAuto($event)" (wrongAnswer)="wrongAnswer($event)"></app-question-play>
         <div *ngIf="displayTimer" id="timer" class="row justify-content-center mb-2">
-          <p *ngIf="index < quiz.questions.length -1; else ElseT">Prochaine question </p><ng-template #ElseT>Fin du quiz </ng-template><p> dans {{s}}s !</p>
+          <p *ngIf="index < quiz.questions.length -1; else ElseT">
+            Prochaine question dans :
+          </p>
+          <ng-template #ElseT>
+            Fin du quiz dans :
+          </ng-template><p> {{s}}s !</p>
+        </div>
+        <div class="row justify-content-center" *ngIf="wrongA">
+          <p>Les réponses grisées sont fausses !</p>
         </div>
         <div class="row justify-content-center">
           <button *ngIf="index < quiz.questions.length - 1; else Else" class="btn btn-primary col-lg-3" (click) = "nextQuestion()">Suivant</button>

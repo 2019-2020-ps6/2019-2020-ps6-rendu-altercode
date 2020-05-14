@@ -4,6 +4,7 @@ import {DialogData} from './question-play.component';
 
 @Component({
   selector: 'app-pop-up',
+  styleUrls: ['./pop-up.component.scss'],
   templateUrl: './pop-up.component.html',
 })
 export class PopUpComponent implements OnInit, OnDestroy {

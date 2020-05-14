@@ -27,7 +27,8 @@ export interface DialogData {
 })
 
 export class QuestionPlayComponent implements OnInit {
-  private i; private heightPolice;
+  private i;
+  public clicked = false;
   @Input()
   question: Question;
   @Input()
@@ -37,9 +38,13 @@ export class QuestionPlayComponent implements OnInit {
   @Input()
   quiz: Quiz;
   @Input()
-  heightStringTitle: string;
+  questionFinished: boolean;
   @Output()
   nextQuestionAuto: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output()
+  wrongAnswer: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  private ind = 0;
 
   @HostListener('click', ['$event.target'])
   onClick() {
@@ -47,17 +52,17 @@ export class QuestionPlayComponent implements OnInit {
   }
 
   constructor(private dialog: MatDialog, private patientService: PatientService) {
-        document.documentElement.style.setProperty('--heightTitle', this.heightStringTitle);
-     }
+  }
 
   openDialog(i): void {
     const dialogRef = this.dialog.open(PopUpComponent, {
-      width: '450px',
+      width: '600px',
       data: {questionString: this.question.label, reponseString: this.question.answers[i].value,
         quizStat: this.patient.statistics[0].quizStat[this.i]}
     });
     dialogRef.afterClosed().subscribe(result => {
       this.nextQuestionAuto.emit(true);
+      this.wrongAnswer.emit(false);
     });
   }
 
@@ -74,16 +79,27 @@ export class QuestionPlayComponent implements OnInit {
   }
 
   checkIfGood(i, id) {
-    this.decrementMissClicks();
-    if (this.question.answers[parseInt(i, 10)].isCorrect === true) {
-      this.patient.statistics[0].quizStat[this.i].nbGoodAnswer++;
-      const monInput = document.getElementById(id);
-      monInput.style.setProperty('background-color', '#218838');
-      this.openDialog(i);
-    } else {
-      this.patient.statistics[0].quizStat[this.i].nbWrongAnswer++;
-      const monInput = document.getElementById(id);
-      monInput.parentNode.removeChild(monInput);
+    if (this.ind !== this.index) {
+      this.questionFinished = false;
+      this.ind = this.index;
+    }
+    console.log(this.ind);
+    if (!this.questionFinished) {
+      this.decrementMissClicks();
+      if (this.question.answers[parseInt(i, 10)].isCorrect === true) {
+        this.patient.statistics[0].quizStat[this.i].nbGoodAnswer++;
+        const monInput = document.getElementById(id);
+        monInput.style.setProperty('background-color', '#218838');
+        this.openDialog(i);
+        this.questionFinished = true;
+      } else {
+        this.patient.statistics[0].quizStat[this.i].nbWrongAnswer++;
+        const monInput = document.getElementById(id);
+        monInput.style.setProperty('background-color', '#CACACA');
+        monInput.removeEventListener('click', onclick, true);
+        this.wrongAnswer.emit(true);
+        // monInput.parentNode.removeChild(monInput);
+      }
     }
   }
 }

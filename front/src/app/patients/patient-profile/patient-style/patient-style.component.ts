@@ -33,7 +33,7 @@ export class PatientStyleComponent implements OnInit {
   private initializeConfigForm() {
     this.configForm = this.formBuilder.group({
       heightPolice: [this.patient.style[0].heightPolice.toString(), Validators.required],
-      colorBody: [this.patient.style[0].colorBody, Validators.required],
+      // colorBody: [this.patient.style[0].colorBody, Validators.required],
       colorPolice: [this.patient.style[0].colorPolice, Validators.required]
     });
   }
@@ -66,7 +66,7 @@ export class PatientStyleComponent implements OnInit {
     }
 
     changeColorB() {
-      document.documentElement.style.setProperty('--bodyCouleur', this.configForm.get('colorBody').value);
+       // document.documentElement.style.setProperty('--bodyCouleur', this.configForm.get('colorBody').value);
     }
 
 }

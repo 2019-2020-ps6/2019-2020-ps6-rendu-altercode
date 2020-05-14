@@ -1,19 +1,18 @@
 $couleur : var(--couleur);
 $bodyCouleur : var(--bodyCouleur);
 $heightPolice : var(--heightPolice);
-$heightTitle : var(--heightTitle);
+// $heightTitle : var(--heightTitle);
+
+.mat-typography {
+  background-color: $bodyCouleur !important;
+}
 
 #test :not(button){
-  background-color: $bodyCouleur;
+  // background-color: $bodyCouleur;
   color: $couleur;
 }
 
- #quiz {
-  font-size: $heightPolice;
-  line-height: $heightPolice;
-}
-
-h1 {
-  font-size: $heightPolice;
-  line-height: $heightPolice;
+ #quiz, h1, h2 {
+  font-size: $heightPolice !important;
+  line-height: $heightPolice !important;
 }

@@ -25,6 +25,8 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   private i;
   public s = 15;
   public displayTimer = false;
+  public wrongA = false;
+  public questionFinished = false;
 
   @HostListener('click', ['$event.target'])
   onClick() {
@@ -60,6 +62,8 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
        clearInterval(this.interval);
        this.displayTimer = false;
        this.s = 15;
+       this.questionFinished = false;
+       this.wrongA = false;
        this.index++;
     } else {
        clearInterval(this.interval);
@@ -77,6 +81,10 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
     }
     this.displayTimer = true;
     this.startTimer();
+  }
+
+  wrongAnswer(bool: boolean) {
+    this.wrongA = true;
   }
 
   startTimer() {
@@ -124,17 +132,17 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   }
   changeSize() {
     let height = this.patient.style[0].heightPolice;
-    let heightTitle = height;
     if (height === 0) {
       height = 1;
     } else {
       height = 1 + height / 10;
-      heightTitle = 2 + heightTitle / 10;
     }
     this.heightString = height.toString() + 'rem';
-    this.heightStringTitle = heightTitle.toString() + 'rem';
-    document.documentElement.style.setProperty('--heightTitle', this.heightStringTitle);
     document.documentElement.style.setProperty('--heightPolice', this.heightString);
+    // this.heightStringTitle = heightTitle.toString() + 'rem';
+   // this.heightString = (height + 1).toString() + 'rem';
+    // document.documentElement.style.setProperty('--heightTitle', this.heightString, 'important');
+
   }
 }
 
