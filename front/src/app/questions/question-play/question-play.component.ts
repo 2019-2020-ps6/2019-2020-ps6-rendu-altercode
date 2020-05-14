@@ -62,7 +62,6 @@ export class QuestionPlayComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.nextQuestionAuto.emit(true);
-      this.wrongAnswer.emit(false);
     });
   }
 
@@ -83,7 +82,6 @@ export class QuestionPlayComponent implements OnInit {
       this.questionFinished = false;
       this.ind = this.index;
     }
-    console.log(this.ind);
     if (!this.questionFinished) {
       this.decrementMissClicks();
       if (this.question.answers[parseInt(i, 10)].isCorrect === true) {

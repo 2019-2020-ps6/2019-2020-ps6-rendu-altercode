@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
       connectId: [''],
       pwd: [''],
     });
+    localStorage.clear();
   }
 
   ngOnInit() {
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
     const adminToConnect: Admin = this.connectForm.getRawValue() as Admin;
     for (const admin of this.adminList) {
       if (admin.connectId === adminToConnect.connectId && admin.pwd === adminToConnect.pwd) {
+        localStorage.setItem('user', 'Admin');
         this.router.navigate(['/patient-list']);
       }
     }

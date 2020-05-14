@@ -84,7 +84,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   }
 
   wrongAnswer(bool: boolean) {
-    this.wrongA = true;
+    this.wrongA = bool;
   }
 
   startTimer() {
