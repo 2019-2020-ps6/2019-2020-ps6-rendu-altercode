@@ -7,14 +7,15 @@
       </div>
     </div>
     <div class="card-body">
-      <form class="question-form row" [formGroup]="questionForm">
+      <form class="question-form row was-validated" [formGroup]="questionForm">
         <div class="col-lg-4">
           <div class="row mb-2">
-            <h2>Créer une nouvelle question</h2>
+            <h2>Modification de la question</h2>
           </div>
           <div class="row mb-2">
             <label for="label">Titre</label>
             <input class="form-control" type="text" id="label" [formControlName]="'label'" required>
+            <div class="invalid-feedback text-center">Veuillez ajouter un titre</div>
           </div>
           <div class="row mb-2">
             <label for="urlImgQ">URL de l'image</label>
@@ -28,7 +29,7 @@
               <button class="btn btn-primary" (click)="addAnswer()">Ajouter une réponse</button>
             </div>
           </div>
-          <div id="need" class="row mt-3 ml-2" style="color: red; visibility: hidden; font-size: 17px">*Il est nécessaire d'avoir au moins 1 réponse juste</div>
+          <div id="need" class="row mt-3 ml-2" style="color: red; visibility: hidden; font-size: 17px;">*Il est nécessaire d'avoir au moins 1 réponse juste</div>
         </div>
         <div class="answer col-lg-3 ml-3" [formArrayName]="'answers'" *ngFor="let address of answers.controls; let i = index">
           <div class="answer-form" [formGroupName]="i">
