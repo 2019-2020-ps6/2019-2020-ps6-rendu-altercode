@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Admin} from '../../models/admin.model';
 import {AdminService} from '../../services/admin.service';
@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   public connectForm: FormGroup;
   public adminList: Admin[] = [];
+  @Output() admin: EventEmitter<any> = new EventEmitter();
 
   constructor(public formBuilder: FormBuilder, public adminService: AdminService, public router: Router) {
     this.adminService.admins$.subscribe((admin) => this.adminList = admin);
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.adminService.setAdminFromUrl();
+    this.admin.emit(true);
   }
 
   tryConnect() {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Patient} from '../../../models/patient.model';
@@ -13,6 +13,7 @@ export class PatientListComponent implements OnInit {
 
   public patientListBack: Patient[] = [];
   public patientList: Patient[] = [];
+
 
   constructor(public formBuilder: FormBuilder, public router: Router, public patientService: PatientService) {
     this.patientService.patients$.subscribe((patient) => {
