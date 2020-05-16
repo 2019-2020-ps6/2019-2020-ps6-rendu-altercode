@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   public connectForm: FormGroup;
   public adminList: Admin[] = [];
   @Output() admin: EventEmitter<any> = new EventEmitter();
+  private input;
 
   constructor(public formBuilder: FormBuilder, public adminService: AdminService, public router: Router) {
     this.adminService.admins$.subscribe((admin) => this.adminList = admin);
@@ -21,7 +22,8 @@ export class HomeComponent implements OnInit {
       connectId: [''],
       pwd: [''],
     });
-    localStorage.clear();
+    this.input = document.getElementById('deco');
+    this.input.style.setProperty('visibility', 'hidden');
   }
 
   ngOnInit() {
@@ -33,7 +35,7 @@ export class HomeComponent implements OnInit {
     const adminToConnect: Admin = this.connectForm.getRawValue() as Admin;
     for (const admin of this.adminList) {
       if (admin.connectId === adminToConnect.connectId && admin.pwd === adminToConnect.pwd) {
-        localStorage.setItem('user', 'Admin');
+        this.input.style.setProperty('visibility', 'visible');
         this.router.navigate(['/patient-list']);
       }
     }
