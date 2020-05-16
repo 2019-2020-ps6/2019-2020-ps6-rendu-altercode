@@ -19,19 +19,5 @@
     "urlImg": "https://lemagdesanimaux.ouest-france.fr/images/dossiers/2020-04/hyene-1-151727.jpg",
     "questionId": 601589536576723,
     "id": 501589536576728
-  },
-  {
-    "value": "bbb",
-    "isCorrect": true,
-    "urlImg": "",
-    "questionId": 301589623689390,
-    "id": 601589624870700
-  },
-  {
-    "value": "bn",
-    "isCorrect": false,
-    "urlImg": "",
-    "questionId": 301589623689390,
-    "id": 501589624907960
   }
 ]

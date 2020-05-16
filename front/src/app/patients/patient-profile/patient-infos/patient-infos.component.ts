@@ -43,7 +43,7 @@ export class PatientInfosComponent implements OnInit {
   openPop(): void {
       const dialogRef = this.dialog.open(PopUpVerifComponent, {
         width: '250px',
-        data: {name: this.patient.name + ' ' + this.patient.surname}
+        data: {name: 'le patient'}
       });
       dialogRef.afterClosed().subscribe(result => {
       this.result = result;

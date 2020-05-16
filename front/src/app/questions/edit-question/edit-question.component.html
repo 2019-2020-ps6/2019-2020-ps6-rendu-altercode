@@ -28,6 +28,7 @@
               <button class="btn btn-primary" (click)="addAnswer()">Ajouter une réponse</button>
             </div>
           </div>
+          <div id="need" class="row mt-3 ml-2" style="color: red; visibility: hidden; font-size: 17px">*Il est nécessaire d'avoir au moins 1 réponse juste</div>
         </div>
         <div class="answer col-lg-3 ml-3" [formArrayName]="'answers'" *ngFor="let address of answers.controls; let i = index">
           <div class="answer-form" [formGroupName]="i">
@@ -47,7 +48,7 @@
               <input class="form-control" type="text" id="urlImg" [formControlName]="'urlImg'">
             </div>
             <div class="row mt-2 justify-content-center">
-              <button class="btn btn-danger" (click)="deleteAnswer(answers, i)">Supprimer</button>
+              <button class="btn btn-danger" (click)="openPop(answers, i)">Supprimer</button>
             </div>
           </div>
         </div>

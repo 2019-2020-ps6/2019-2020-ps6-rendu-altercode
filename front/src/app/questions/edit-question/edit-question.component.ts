@@ -4,6 +4,8 @@ import { QuizService } from '../../../services/quiz.service';
 import { Question} from '../../../models/question.model';
 import {Quiz} from '../../../models/quiz.model';
 import {ActivatedRoute, Router} from '@angular/router';
+import {PopUpVerifComponent} from "../../patients/patient-profile/patient-infos/PopupVerif/pop-up.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-edit-question',
@@ -20,8 +22,9 @@ export class EditQuestionComponent implements OnInit {
 
   public index = 1;
   public questionForm: FormGroup;
+  private result;
 
-  constructor(public formBuilder: FormBuilder, private quizService: QuizService, private route: ActivatedRoute, public router: Router) {
+  constructor(public dialog: MatDialog, public formBuilder: FormBuilder, private quizService: QuizService, private route: ActivatedRoute, public router: Router) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
       this.quizService.questionSelected$.subscribe((question) => {
@@ -97,15 +100,31 @@ export class EditQuestionComponent implements OnInit {
         this.quizService.updateQuestion(this.quiz, question, this.question.id);
         this.router.navigate(['/edit-quiz/' + this.quiz.id]);
       }
+    } else {
+        const input = document.getElementById('need');
+        input.style.setProperty('visibility', 'visible');
     }
   }
 
   deleteAnswer(answers: FormArray, i: number) {
-    if (this.question.answers.length > i) {
-      this.quizService.deleteAnswer(this.quiz, this.question, this.question.answers[i]);
-    } else {
-      answers.controls.splice(i, 1);
+    if (this.result) {
+      if (this.question.answers.length > i) {
+        this.quizService.deleteAnswer(this.quiz, this.question, this.question.answers[i]);
+      } else {
+        answers.controls.splice(i, 1);
+      }
     }
+  }
+
+  openPop(answers: FormArray, i: number): void {
+    const dialogRef = this.dialog.open(PopUpVerifComponent, {
+      width: '250px',
+      data: { name: 'la réponse'}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.result = result;
+      this.deleteAnswer(answers, i);
+    });
   }
 
 }

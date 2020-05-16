@@ -9,7 +9,7 @@
       <app-question [question] ="question"></app-question>
       <div class="form-row justify-content-center mt-3">
         <button class="btn btn-primary mr-1" routerLink="/quiz/{{quiz.id}}/edit-question/{{question.id}}">Modifier</button>
-        <button type="submit" class="btn btn-danger" (click) = "deleteQuestion(question)">Supprimer</button>
+        <button type="submit" class="btn btn-danger" (click) = "openPop(question)">Supprimer</button>
       </div>
     </div>
   </div>

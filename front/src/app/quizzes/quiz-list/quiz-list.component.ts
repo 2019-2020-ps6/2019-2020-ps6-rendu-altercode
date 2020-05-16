@@ -4,6 +4,9 @@ import { Quiz } from '../../../models/quiz.model';
 import { Patient } from '../../../models/patient.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PatientService} from '../../../services/patient.service';
+import {Question} from "../../../models/question.model";
+import {PopUpVerifComponent} from "../../patients/patient-profile/patient-infos/PopupVerif/pop-up.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-quiz-list',
@@ -21,9 +24,10 @@ export class QuizListComponent implements OnInit {
   private quizIdForStatToAdd: string[] = [];
   private quizIdForStatToDelete: string[] = [];
   public quizzesO: string[] = [];
+  private result;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService) {
+  constructor(public dialog: MatDialog, private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService) {
     this.quizService.quizzes$.subscribe((quiz) => {
       this.quizList = quiz;
       this.quizListBack = quiz;
@@ -108,8 +112,21 @@ export class QuizListComponent implements OnInit {
   }
 
   deleteQuiz(quiz: Quiz) {
-    this.quizService.deleteQuestions(quiz);
-    this.quizService.deleteQuiz(quiz);
+    if (this.result) {
+      this.quizService.deleteQuestions(quiz);
+      this.quizService.deleteQuiz(quiz);
+    }
+  }
+
+  openPop(quiz: Quiz): void {
+    const dialogRef = this.dialog.open(PopUpVerifComponent, {
+      width: '250px',
+      data: { name: 'le quiz'}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.result = result;
+      this.deleteQuiz(quiz);
+    });
   }
 
   search() {
