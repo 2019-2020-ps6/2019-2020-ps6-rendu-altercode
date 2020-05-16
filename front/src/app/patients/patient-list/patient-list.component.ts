@@ -37,16 +37,17 @@ export class PatientListComponent implements OnInit {
   }
 
   search() {
-    const MotClef = (document.getElementById('motclef') as HTMLInputElement).value;
-    this.resetList();
+    const MotClef = (document.getElementById('motclef') as HTMLInputElement).value.toUpperCase();
+    this.patientList = this.patientListBack.slice();
     this.patientListBack.forEach(q => {
-      if (!(q.name.includes(MotClef)) && !(q.surname.includes(MotClef))) {
+      if (!(q.name.toUpperCase().includes(MotClef)) && !(q.surname.toUpperCase().includes(MotClef))) {
         this.patientList.splice(this.patientList.indexOf(q), 1, );
       }
     });
   }
 
   resetList() {
+    (document.getElementById('motclef') as HTMLInputElement).value = '';
     this.patientList = this.patientListBack.slice();
   }
 }

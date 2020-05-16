@@ -132,16 +132,17 @@ export class QuizListComponent implements OnInit {
   }
 
   search() {
-    const MotClef = (document.getElementById('motclef') as HTMLInputElement).value;
-    this.resetList();
+    const MotClef = (document.getElementById('motclef') as HTMLInputElement).value.toUpperCase();
+    this.quizList = this.quizList.slice();
     this.quizListBack.forEach(q => {
-      if (!q.name.includes(MotClef)) {
+      if (!q.name.toUpperCase().includes(MotClef)) {
         this.quizList.splice(this.quizList.indexOf(q), 1, );
       }
     });
   }
 
   resetList() {
+    (document.getElementById('motclef') as HTMLInputElement).value = '';
     this.quizList = this.quizListBack.slice();
   }
 }
