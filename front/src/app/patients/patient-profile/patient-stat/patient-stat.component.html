@@ -1,4 +1,4 @@
-<div  *ngIf="patient !== undefined">
+<div *ngIf="patient !== undefined">
   <div class="card m-3">
     <div class="card-header">
       <div class="row">
@@ -14,23 +14,45 @@
             <div class="col-lg-12 mb-lg-2"><img src="{{patient.urlImg}}" alt="Image patient" class="img-thumbnail"></div>
           </div>
         </div>
-        <div class="col-lg-8 text-center">
+        <div class="col-lg-8">
           <div class="card m-3">
             <div *ngFor="let QS of stat">
-              <h3> Nom du quiz : {{this.nomById(QS.quizId)}}</h3>
-              <div> Nombre de fois réalisé : {{QS.nbQuizDone}}</div>
-              <div> Nombre de fois tenté : {{QS.nbQuizTry}}</div>
-              <div *ngIf="QS.nbQuizTry !== 0"> Soit un total de reussite de : {{round(QS.nbQuizDone / QS.nbQuizTry*100)}} %</div>
-              <div *ngIf="QS.nbQuizTry == 0"> Soit un total de reussite de : 0 %</div>
-              <div> Nombre de clique à coté : {{QS.nbMissClick}}</div>
-              <div> Nombre de réponses justes : {{QS.nbGoodAnswer}}</div>
-              <div *ngIf="QS.nbGoodAnswer !== 0 || QS.nbWrongAnswer !== 0"> Soit un total de : {{round(QS.nbGoodAnswer / (QS.nbGoodAnswer + QS.nbWrongAnswer) *100 )}}%</div>
-              <div *ngIf="QS.nbGoodAnswer == 0 && QS.nbWrongAnswer == 0"> Soit un total de : 0 %</div>
+              <div class="row justify-content-center">
+                <h1> Nom du quiz : {{this.nomById(QS.quizId)}}</h1>
+              </div>
+              <div class="row justify-content-center">
+                <h2> Nombre de quiz fois terminés : {{QS.nbQuizDone}}</h2>
+              </div>
+              <div class="row justify-content-center">
+                <h2> Nombre de quiz fois tentés : {{QS.nbQuizTry}}</h2>
+              </div>
+              <div *ngIf="QS.nbQuizTry !== 0" class="row justify-content-center">
+                <h2> Soit un total de réussite de : {{round(QS.nbQuizDone / QS.nbQuizTry*100)}} %</h2>
+              </div>
+              <div *ngIf="QS.nbQuizTry == 0" class="row justify-content-center">
+                <h2> Soit un total de réussite de : 0 %</h2>
+              </div>
+              <div class="row justify-content-center">
+                <h2> Nombre de cliques à côtés : {{QS.nbMissClick}}</h2>
+              </div>
+              <div class="row justify-content-center">
+                <h2> Nombre de réponses justes : {{QS.nbGoodAnswer}}</h2>
+              </div>
+              <div *ngIf="QS.nbGoodAnswer !== 0 || QS.nbWrongAnswer !== 0" class="row justify-content-center">
+                <h2> Soit un total de : {{round(QS.nbGoodAnswer / (QS.nbGoodAnswer + QS.nbWrongAnswer) *100 )}}%</h2>
+              </div>
+              <div *ngIf="QS.nbGoodAnswer == 0 && QS.nbWrongAnswer == 0" class="row justify-content-center">
+                <h2> Soit un total de : 0 %</h2>
+              </div>
               <br>
             </div>
           </div>
-          <div> Nombre de quiz réalisé : {{nbTotDone}}</div>
-          <div> Pourcentage de bonne réponses : {{round(nbTotGoodAnswer/nbTotAnswer*100)}}%</div>
+          <div class="row justify-content-center">
+            <h2> Nombre de quiz réalisés : {{nbTotDone}}</h2>
+          </div>
+          <div class="row justify-content-center">
+            <h2> Pourcentage de bonnes réponses : {{round(nbTotGoodAnswer/nbTotAnswer*100)}}%</h2>
+          </div>
         </div>
       </div>
     </div>
