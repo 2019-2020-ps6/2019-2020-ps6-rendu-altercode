@@ -5,13 +5,15 @@
       <div class="col offset-6" style="font-size: 25px; text-align: end;">Espace Admin <i class="fas fa-user-shield"></i></div>
     </div>
     <div class="row">
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Mots-clefs" aria-label="Search" id="motclef">
-        <button class="btn btn-outline-info my-2 my-sm-0 mr-2" type="submit" (click)="search()">Rechercher</button>
-        <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="resetList()">Réinitialiser</button>
-      </form>
-      <button type="submit" class="btn btn-outline-primary col-lg-2 offset-4" (click)="addPatient()">Ajouter Patient</button>
-      <button type="submit" class="btn btn-outline-dark col-lg-2" style="margin-left: 10px" routerLink="/quiz-list">Gestion quiz</button>
+      <div class="col-sm-5 col-md-6">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Mots-clefs" aria-label="Search" id="motclef">
+          <button class="btn btn-outline-info my-2 my-sm-0 mr-2" type="submit" (click)="search()">Rechercher</button>
+          <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="resetList()">Réinitialiser</button>
+        </form>
+      </div>
+        <button type="submit" class="btn btn-outline-primary col-sm-5 col-md-2 offset-md-0" style="margin-left: 15%" (click)="addPatient()">Ajouter Patient</button>
+        <button type="submit" class="btn btn-outline-dark col-sm-5 col-md-2 " style="margin-left: 10px" routerLink="/quiz-list">Gestion quiz</button>
     </div>
   </div>
   <div class="card-body">
