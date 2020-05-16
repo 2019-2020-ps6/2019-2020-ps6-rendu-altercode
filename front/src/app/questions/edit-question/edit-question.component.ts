@@ -4,10 +4,10 @@ import { QuizService } from '../../../services/quiz.service';
 import { Question} from '../../../models/question.model';
 import {Quiz} from '../../../models/quiz.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import {PopUpVerifComponent} from "../../patients/patient-profile/patient-infos/PopupVerif/pop-up.component";
-import {MatDialog} from "@angular/material/dialog";
-import {QuestionsService} from "../../../services/questions.services";
-import {AnswersService} from "../../../services/answers.service";
+import {PopUpVerifComponent} from '../../patients/patient-profile/patient-infos/PopupVerif/pop-up.component';
+import {MatDialog} from '@angular/material/dialog';
+import {QuestionsService} from '../../../services/questions.services';
+import {AnswersService} from '../../../services/answers.service';
 
 @Component({
   selector: 'app-edit-question',
@@ -29,7 +29,7 @@ export class EditQuestionComponent implements OnInit {
   constructor(public dialog: MatDialog, public formBuilder: FormBuilder, private quizService: QuizService, private route: ActivatedRoute, public router: Router, private questionsService: QuestionsService, private answersService: AnswersService) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
-      this.quizService.questionSelected$.subscribe((question) => {
+      this.questionsService.questionSelected$.subscribe((question) => {
         this.question = question;
         this.initializeQuestionForm();
         this.initializeAnswer();
@@ -103,8 +103,8 @@ export class EditQuestionComponent implements OnInit {
         this.router.navigate(['/edit-quiz/' + this.quiz.id]);
       }
     } else {
-        const input = document.getElementById('need');
-        input.style.setProperty('visibility', 'visible');
+      const input = document.getElementById('need');
+      input.style.setProperty('visibility', 'visible');
     }
   }
 

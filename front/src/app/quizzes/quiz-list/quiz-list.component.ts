@@ -4,7 +4,6 @@ import { Quiz } from '../../../models/quiz.model';
 import { Patient } from '../../../models/patient.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PatientService} from '../../../services/patient.service';
-import {Question} from '../../../models/question.model';
 import {PopUpVerifComponent} from '../../patients/patient-profile/patient-infos/PopupVerif/pop-up.component';
 import {MatDialog} from '@angular/material/dialog';
 import {QuestionsService} from '../../../services/questions.services';

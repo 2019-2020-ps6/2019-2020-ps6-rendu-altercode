@@ -65,6 +65,9 @@ export class QuestionFormComponent implements OnInit {
         this.questionsService.addQuestion(this.quiz, question);
         this.initializeQuestionForm();
       }
+    } else {
+      const input = document.getElementById('need');
+      input.style.setProperty('visibility', 'visible');
     }
   }
 
