@@ -4,9 +4,11 @@ import { Quiz } from '../../../models/quiz.model';
 import { Patient } from '../../../models/patient.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PatientService} from '../../../services/patient.service';
-import {Question} from "../../../models/question.model";
-import {PopUpVerifComponent} from "../../patients/patient-profile/patient-infos/PopupVerif/pop-up.component";
-import {MatDialog} from "@angular/material/dialog";
+import {Question} from '../../../models/question.model';
+import {PopUpVerifComponent} from '../../patients/patient-profile/patient-infos/PopupVerif/pop-up.component';
+import {MatDialog} from '@angular/material/dialog';
+import {QuestionsService} from '../../../services/questions.services';
+import {AnswersService} from "../../../services/answers.service";
 
 @Component({
   selector: 'app-quiz-list',
@@ -27,7 +29,7 @@ export class QuizListComponent implements OnInit {
   private result;
 
   // tslint:disable-next-line:max-line-length
-  constructor(public dialog: MatDialog, private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService) {
+  constructor(public dialog: MatDialog, private route: ActivatedRoute, public quizService: QuizService, public router: Router, public patientService: PatientService, private questionsService: QuestionsService, private answersService: AnswersService) {
     this.quizService.quizzes$.subscribe((quiz) => {
       this.quizList = quiz;
       this.quizListBack = quiz;
@@ -113,7 +115,8 @@ export class QuizListComponent implements OnInit {
 
   deleteQuiz(quiz: Quiz) {
     if (this.result) {
-      this.quizService.deleteQuestions(quiz);
+      this.answersService.deleteAnswerss(quiz);
+      this.questionsService.deleteQuestions(quiz);
       this.quizService.deleteQuiz(quiz);
     }
   }

@@ -6,6 +6,8 @@ import {Quiz} from '../../../models/quiz.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PopUpVerifComponent} from "../../patients/patient-profile/patient-infos/PopupVerif/pop-up.component";
 import {MatDialog} from "@angular/material/dialog";
+import {QuestionsService} from "../../../services/questions.services";
+import {AnswersService} from "../../../services/answers.service";
 
 @Component({
   selector: 'app-edit-question',
@@ -24,7 +26,7 @@ export class EditQuestionComponent implements OnInit {
   public questionForm: FormGroup;
   private result;
 
-  constructor(public dialog: MatDialog, public formBuilder: FormBuilder, private quizService: QuizService, private route: ActivatedRoute, public router: Router) {
+  constructor(public dialog: MatDialog, public formBuilder: FormBuilder, private quizService: QuizService, private route: ActivatedRoute, public router: Router, private questionsService: QuestionsService, private answersService: AnswersService) {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quiz = quiz;
       this.quizService.questionSelected$.subscribe((question) => {
@@ -49,7 +51,7 @@ export class EditQuestionComponent implements OnInit {
     const quizId = this.route.snapshot.paramMap.get('quizId');
     this.quizService.setSelectedQuiz(quizId);
     const questId = this.route.snapshot.paramMap.get('id');
-    this.quizService.setSelectedQuestion(quizId, questId);
+    this.questionsService.setSelectedQuestion(quizId, questId);
   }
 
   get answers() {
@@ -88,16 +90,16 @@ export class EditQuestionComponent implements OnInit {
       }
       const index = this.question.answers.findIndex((answer) => answer.id === element.id);
       if (index > -1) {
-        this.quizService.updateAnswer(element, this.question, this.quiz, this.question.answers[index].id);
+        this.answersService.updateAnswer(element, this.question, this.quiz, this.question.answers[index].id);
       } else {
-        this.quizService.addAnswer(element, this.question, this.quiz);
+        this.answersService.addAnswer(element, this.question, this.quiz);
       }
     });
     if (conti) {
       if (this.questionForm.valid) {
         const question = this.questionForm.getRawValue() as Question;
         console.log(question);
-        this.quizService.updateQuestion(this.quiz, question, this.question.id);
+        this.questionsService.updateQuestion(this.quiz, question, this.question.id);
         this.router.navigate(['/edit-quiz/' + this.quiz.id]);
       }
     } else {
@@ -109,7 +111,7 @@ export class EditQuestionComponent implements OnInit {
   deleteAnswer(answers: FormArray, i: number) {
     if (this.result) {
       if (this.question.answers.length > i) {
-        this.quizService.deleteAnswer(this.quiz, this.question, this.question.answers[i]);
+        this.answersService.deleteAnswer(this.quiz, this.question, this.question.answers[i]);
       } else {
         answers.controls.splice(i, 1);
       }

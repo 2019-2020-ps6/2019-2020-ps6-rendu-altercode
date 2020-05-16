@@ -4,6 +4,9 @@ import {QuizService} from '../../../services/quiz.service';
 import {Question} from '../../../models/question.model';
 import {PopUpVerifComponent} from '../../patients/patient-profile/patient-infos/PopupVerif/pop-up.component';
 import {MatDialog} from '@angular/material/dialog';
+import {Router} from "@angular/router";
+import {QuestionsService} from "../../../services/questions.services";
+import {AnswersService} from "../../../services/answers.service";
 
 @Component({
   selector: 'app-question-list',
@@ -17,15 +20,15 @@ export class QuestionListComponent implements OnInit {
 
   private result;
 
-  constructor(public dialog: MatDialog, private quizService: QuizService) { }
+  constructor(public dialog: MatDialog, private quizService: QuizService, private questionsService: QuestionsService, private answersService: AnswersService) { }
 
   ngOnInit() {
   }
 
   deleteQuestion(question: Question) {
     if (this.result) {
-      this.quizService.deleteAnswers(this.quiz, question);
-      this.quizService.deleteQuestion(this.quiz, question);
+      this.answersService.deleteAnswers(this.quiz, question);
+      this.questionsService.deleteQuestion(this.quiz, question);
     }
   }
 
