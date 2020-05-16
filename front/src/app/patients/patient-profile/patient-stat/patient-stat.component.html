@@ -2,8 +2,9 @@
   <div class="card m-3">
     <div class="card-header">
       <div class="row">
-        <h1 id="recup" class="col-lg-8">{{patient.name}} {{patient.surname}}</h1>
-        <button class="btn btn-outline-dark col-lg-2 offset-1" style="max-height: 48px" routerLink="/patient-profile/{{patient.id}}">Retour Patient</button>
+        <h1 id="recup" class="col-lg-4">{{patient.name}} {{patient.surname}}</h1>
+        <button class="btn btn-outline-dark col-lg-2 offset-4" style="max-height: 48px" routerLink="/patient-profile/{{patient.id}}">Retour Patient</button>
+        <div class="col" style="font-size: 25px; padding-top: 10px; text-align: end;">Espace Admin <i class="fas fa-user-shield"></i></div>
       </div>
     </div>
     <div class="card-body">
@@ -22,7 +23,7 @@
               <div *ngIf="QS.nbQuizTry !== 0"> Soit un total de reussite de : {{round(QS.nbQuizDone / QS.nbQuizTry*100)}} %</div>
               <div *ngIf="QS.nbQuizTry == 0"> Soit un total de reussite de : 0 %</div>
               <div> Nombre de clique à coté : {{QS.nbMissClick}}</div>
-              <div> Nombre de réponses juste : {{QS.nbGoodAnswer}}</div>
+              <div> Nombre de réponses justes : {{QS.nbGoodAnswer}}</div>
               <div *ngIf="QS.nbGoodAnswer !== 0 || QS.nbWrongAnswer !== 0"> Soit un total de : {{round(QS.nbGoodAnswer / (QS.nbGoodAnswer + QS.nbWrongAnswer) *100 )}}%</div>
               <div *ngIf="QS.nbGoodAnswer == 0 && QS.nbWrongAnswer == 0"> Soit un total de : 0 %</div>
               <br>

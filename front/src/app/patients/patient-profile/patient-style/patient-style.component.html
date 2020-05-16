@@ -1,7 +1,10 @@
 <div *ngIf="patient !== undefined">
   <div class="card m-3">
     <div class="card-header">
-      <h1>Configuration apparence</h1>
+      <div class="row">
+        <h1 class="mb-0">Configuration apparence</h1>
+        <div class="col offset-6" style="font-size: 25px; text-align: end;">Espace Admin <i class="fas fa-user-shield"></i></div>
+      </div>
     </div>
     <div class="card-body">
       <form class="config-form" [formGroup]="configForm">

@@ -1,4 +1,5 @@
-const { Quiz, Question } = require('../../../models')
+const { Question } = require('../../../models')
+const { filterAnswersFromQuestion } = require('./answers/manager')
 
 /**
  * Questions Manager.
@@ -10,28 +11,21 @@ const { Quiz, Question } = require('../../../models')
  * This function filters among the questions to return only the question linked with the given quizId.
  * @param quizId
  */
-const filterQuestionsFromQuizz = (quizId) => {
-  const questions = Question.get()
-  const parsedId = parseInt(quizId, 10)
-  return questions.filter((question) => question.quizId === parsedId)
+const filterQuestionsFromQuizz = (quizId) => Question.get().filter((quest) => (quest.quizId === quizId))
+
+const buildQuestion = (questionId) => {
+  const quest = Question.getById(questionId)
+  const answers = filterAnswersFromQuestion(quest.id)
+  return { ...quest, answers }
 }
 
-/**
- * getQuestionFromQuiz.
- * This function retrieves a question from a quiz. It will throw a not found exception if the quizId in the question is different from the one provided in parameter.
- * @param quizId
- * @param questionId
- */
-const getQuestionFromQuiz = (quizId, questionId) => {
-  // Check if quizId exists, if not it will throw a NotFoundError
-  const quiz = Quiz.getById(quizId)
-  const quizIdInt = parseInt(quizId, 10)
-  const question = Question.getById(questionId)
-  if (question.quizId !== quizIdInt) throw new NotFoundError(`${question.name} id=${questionId} was not found for ${quiz.name} id=${quiz.id} : not found`)
-  return question
+const buildQuestions = () => {
+  const questions = Question.get()
+  return questions.map((quest) => buildQuestion(quest.id))
 }
 
 module.exports = {
   filterQuestionsFromQuizz,
-  getQuestionFromQuiz,
+  buildQuestion,
+  buildQuestions,
 }

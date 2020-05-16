@@ -1,4 +1,4 @@
-<div class="question-list row">
+<div class="question-list row mr-0 ml-0">
   <div class="question card col-lg-4 p-0" *ngFor="let question of quiz.questions">
     <div class="card-header">
       <div class="row justify-content-center text-center">
@@ -8,6 +8,7 @@
     <div class="card-body">
       <app-question [question] ="question"></app-question>
       <div class="form-row justify-content-center mt-3">
+        <button class="btn btn-primary mr-1" routerLink="/quiz/{{quiz.id}}/edit-question/{{question.id}}">Modifier</button>
         <button type="submit" class="btn btn-danger" (click) = "deleteQuestion(question)">Supprimer</button>
       </div>
     </div>

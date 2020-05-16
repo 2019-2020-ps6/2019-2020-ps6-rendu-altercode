@@ -54,7 +54,8 @@ export class QuestionFormComponent implements OnInit {
       if (element.isCorrect) {
         conti = true;
       }
-    })
+    });
+    console.log(conti);
     if (conti) {
       if (this.questionForm.valid) {
         const question = this.questionForm.getRawValue() as Question;

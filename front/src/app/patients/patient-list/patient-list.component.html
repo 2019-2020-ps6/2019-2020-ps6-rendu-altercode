@@ -2,18 +2,21 @@
   <div class="card-header">
     <div class="row">
       <h1 class="col-lg-3">Gestion Patient</h1>
-      <button type="submit" class="btn btn-outline-primary col-lg-2 offset-4" (click)="addPatient()">Ajouter Patient</button>
-      <button type="submit" class="btn btn-outline-dark col-lg-2" style="margin-left: 10px" routerLink="/quiz-list">Gestion quiz</button>
+      <div class="col offset-6" style="font-size: 25px; text-align: end;">Espace Admin <i class="fas fa-user-shield"></i></div>
+    </div>
+    <div class="row">
       <form class="form-inline">
         <input class="form-control mr-sm-2" type="search" placeholder="Mot-clefs" aria-label="Search" id="motclef">
         <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="search()">Rechercher</button>
-        <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="resetList()">Reinitialiser</button>
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="resetList()">Réinitialiser</button>
       </form>
+      <button type="submit" class="btn btn-outline-primary col-lg-2 offset-4" (click)="addPatient()">Ajouter Patient</button>
+      <button type="submit" class="btn btn-outline-dark col-lg-2" style="margin-left: 10px" routerLink="/quiz-list">Gestion quiz</button>
     </div>
   </div>
   <div class="card-body">
     <div class="patient-list row justify-content-center">
-      <div class="patient card col-lg-3 p-0" *ngFor="let patient of patientList" routerLink="/patient-profile/{{patient.id}}">
+      <div id="patient" class="patient card col-lg-3 p-0" *ngFor="let patient of patientList" routerLink="/patient-profile/{{patient.id}}">
         <h2 class = "card-header text-center">{{patient.name}} {{patient.surname}}</h2>
         <div class="card-body">
           <div class="row justify-content-center mb-2" style="height: 200px" *ngIf="patient.urlImg.length > 0">

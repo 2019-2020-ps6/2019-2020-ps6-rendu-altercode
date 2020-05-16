@@ -3,12 +3,15 @@
       <div class="card-header">
         <div class="row">
           <h2 class = "col-lg-3">Gestion Quiz</h2>
-          <button type="submit" class="btn btn-outline-dark col-lg-2 offset-7" routerLink="/patient-list">Retour Accueil</button>
+          <div class="col offset-6" style="font-size: 25px; text-align: end;">Espace Admin <i class="fas fa-user-shield"></i></div>
+        </div>
+        <div class="row">
           <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="Mot-clefs" aria-label="Search" id="motclef">
             <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="search()">Rechercher</button>
-            <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="resetList()">Reinitialiser</button>
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="resetList()">Réinitialiser</button>
           </form>
+          <button type="submit" class="btn btn-outline-dark col-lg-2 offset-6" routerLink="/patient-list">Retour Accueil</button>
         </div>
       </div>
       <div class="card-body">
@@ -41,16 +44,17 @@
           <div class="card-header">
             <div class="row">
               <h2 class = "col-lg-3">Gestion Quiz</h2>
-              <button type="submit" class="btn btn-outline-success col-lg-2 offset-5" routerLink="/patient-profile/{{patient.id}}" (click)="valideQuizzes()">Valider</button>
-              <button type="submit" class="btn btn-outline-dark col-lg-2" routerLink="/patient-profile/{{patient.id}}">Retour</button>
-            </div>
+              <div class="col offset-6" style="font-size: 25px; text-align: end;">Espace Admin <i class="fas fa-user-shield"></i></div>
+              </div>
             <div class="row">
               <button type="submit" class="btn btn-outline-dark" (click)="checkAll()">Tout sélectionner / désélectionner</button>
               <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Mot-clefs" aria-label="Search" id="motclef">
                 <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="search()">Rechercher</button>
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="resetList()">Reinitialiser</button>
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="resetList()">Réinitialiser</button>
               </form>
+              <button type="submit" class="btn btn-outline-success col-lg-1 offset-3" routerLink="/patient-profile/{{patient.id}}" (click)="valideQuizzes()">Valider</button>
+              <button type="submit" class="btn btn-outline-dark col-lg-1 ml-2" routerLink="/patient-profile/{{patient.id}}">Retour</button>
             </div>
           </div>
           <div class="card-body">

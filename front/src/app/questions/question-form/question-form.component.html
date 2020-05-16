@@ -2,7 +2,8 @@
   <div class="card-header">
     <div class="row">
       <h1 class = "col-lg-6">{{quiz.name}}</h1>
-      <button class="btn btn-outline-dark col-lg-2 offset-4" routerLink="/quiz-list">Retour</button>
+      <button class="btn btn-outline-dark col-lg-2 offset-2" routerLink="/quiz-list">Retour</button>
+      <div class="col" style="font-size: 25px; padding-top: 10px; text-align: end;">Espace Admin <i class="fas fa-user-shield"></i></div>
     </div>
   </div>
   <div class="card-body">
@@ -12,7 +13,7 @@
           <h2>Créer une nouvelle question</h2>
         </div>
         <div class="row mb-2">
-          <label for="label">Title</label>
+          <label for="label">Titre</label>
           <input class="form-control" type="text" id="label" [formControlName]="'label'" required>
         </div>
         <div class="row mb-2">

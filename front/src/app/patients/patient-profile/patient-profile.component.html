@@ -2,7 +2,8 @@
   <div class="card m-3">
     <div class="card-header">
       <div class="row">
-        <h1 class="col text-center m-0">{{patient.name}} {{patient.surname}}</h1>
+        <h1 class="col text-center mt-0 mb-0 offset-1">{{patient.name}} {{patient.surname}}</h1>
+        <div class="col offset-6" style="font-size: 25px; text-align: end;">Espace Admin <i class="fas fa-user-shield"></i></div>
       </div>
     </div>
     <div class="card-body">
@@ -27,7 +28,7 @@
               <div class="row justify-content-center mb-2" style="height: 350px" *ngIf="patient.urlImg.length > 0">
                 <img src="{{patient.urlImg}}" alt="Image patient" class="h-100 col-lg-10 img-thumbnail" style="max-width: 350px;">
               </div>
-              <div class="row justify-content-lg-center">
+              <div class="row justify-content-lg-center" style="font-size: 20px;">
                 {{getAge(patient)}} ans
               </div>
             </div>

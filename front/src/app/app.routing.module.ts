@@ -14,6 +14,7 @@ import {CreateAdminComponent} from './home/create-admin/create-admin.component';
 import {PatientSpaceComponent} from './patients/patient-space/patient-space.component';
 import {SuccessPageComponent} from './quizzes/play-quiz/success-page/success-page.component';
 import {PatientStatComponent} from './patients/patient-profile/patient-stat/patient-stat.component';
+import {EditQuestionComponent} from './questions/edit-question/edit-question.component';
 
 const routes: Routes = [
   {path: 'quiz-list', component: QuizListComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'patient-space/:id', component: PatientSpaceComponent},
   {path: 'patient-stat/:id', component: PatientStatComponent},
   {path: 'patient/:patientId/play-quiz/:quizId/success-page', component: SuccessPageComponent},
+  {path: 'quiz/:quizId/edit-question/:id', component: EditQuestionComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
