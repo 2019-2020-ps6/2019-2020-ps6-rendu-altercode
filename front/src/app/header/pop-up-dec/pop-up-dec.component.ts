@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogClose, MatDialogRef} from '@angular/material/dialog';
-import {DialogData} from './header.component';
+import {DialogData} from '../header.component';
 
 @Component({
   selector: 'app-pop-up-dec-verif',

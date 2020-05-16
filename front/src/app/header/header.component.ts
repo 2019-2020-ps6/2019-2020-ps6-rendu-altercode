@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
-import {PopUpDecVerifComponent} from './pop-up-dec.component';
+import {PopUpDecVerifComponent} from './pop-up-dec/pop-up-dec.component';
 
 export interface DialogData {
   name: string;

@@ -17,7 +17,7 @@ import { PlayQuizComponent } from './quizzes/play-quiz/play-quiz.component';
 import { QuestionPlayComponent } from './questions/question-play/question-play.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PopUpComponent } from './questions/question-play/pop-up.component';
-import { PopUpDecVerifComponent} from './header/pop-up-dec.component';
+import { PopUpDecVerifComponent} from './header/pop-up-dec/pop-up-dec.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './home/home.component';
