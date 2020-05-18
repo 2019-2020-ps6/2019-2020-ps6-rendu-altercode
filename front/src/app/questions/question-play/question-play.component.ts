@@ -7,8 +7,8 @@ import {
   Output
 } from '@angular/core';
 import {Question} from '../../../models/question.model';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {PopUpComponent} from './pop-up.component';
+import {MatDialog} from '@angular/material/dialog';
+import {PopUpComponent} from './pop-up/pop-up.component';
 import {Patient} from '../../../models/patient.model';
 import {PatientService} from '../../../services/patient.service';
 import {Quiz} from '../../../models/quiz.model';
@@ -48,12 +48,11 @@ export class QuestionPlayComponent implements OnInit {
 
   @HostListener('click', ['$event.target'])
   onClick() {
-    // console.log('Question ' + this.patient.statistics[0].quizStat[this.i].nbMissClick);
-  }
+    }
 
   constructor(private dialog: MatDialog, private patientService: PatientService) {
   }
-
+  // Ouvre le pop-up de félicitation dans le cas d'une bonne réponse
   openDialog(i): void {
     const dialogRef = this.dialog.open(PopUpComponent, {
       width: '600px',
@@ -68,15 +67,11 @@ export class QuestionPlayComponent implements OnInit {
   ngOnInit() {
     this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
   }
-
-  incrementMissClicks() {
-    this.patient.statistics[0].quizStat[this.i].nbMissClick++;
-  }
-
+  // Gère le nombre de missClick effectué par le patient
   decrementMissClicks() {
     this.patient.statistics[0].quizStat[this.i].nbMissClick--;
   }
-
+  // Vérifie si la réonse choisie est juste
   checkIfGood(i, id) {
     if (this.ind !== this.index) {
       this.questionFinished = false;
@@ -96,7 +91,6 @@ export class QuestionPlayComponent implements OnInit {
         monInput.style.setProperty('background-color', '#CACACA');
         monInput.removeEventListener('click', onclick, true);
         this.wrongAnswer.emit(true);
-        // monInput.parentNode.removeChild(monInput);
       }
     }
   }

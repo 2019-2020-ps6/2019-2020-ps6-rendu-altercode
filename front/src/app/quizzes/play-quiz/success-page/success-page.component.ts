@@ -38,12 +38,14 @@ export class SuccessPageComponent implements OnInit, OnDestroy {
     this.patientService.setSelectedPatient(patientId);
     this.startTimer();
   }
+
+  // Créé un timer pour retourner sur le menu du jeu si le patient ne fait rien
   startTimer() {
     this.timer = setTimeout(() => {
       this.router.navigate(['/patient-space/' + this.patient.id]);
     }, 30000);
   }
-
+  // Supprime le timer
   ngOnDestroy() {
     if (this.timer) {
       clearTimeout(this.timer);

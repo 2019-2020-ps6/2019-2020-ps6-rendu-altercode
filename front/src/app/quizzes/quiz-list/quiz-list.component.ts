@@ -7,7 +7,7 @@ import {PatientService} from '../../../services/patient.service';
 import {PopUpVerifComponent} from '../../patients/patient-profile/patient-infos/PopupVerif/pop-up.component';
 import {MatDialog} from '@angular/material/dialog';
 import {QuestionsService} from '../../../services/questions.services';
-import {AnswersService} from "../../../services/answers.service";
+import {AnswersService} from '../../../services/answers.service';
 
 @Component({
   selector: 'app-quiz-list',
@@ -104,22 +104,22 @@ export class QuizListComponent implements OnInit {
     this.patient.quizzes = this.quizzesO;
     this.patientService.updateQuizzes(this.patient);
   }
-
+  // Vérifie si le quiz est coché
   quizChecked(quiz: Quiz) {
     if (this.quizzesO.includes(quiz.id)) {
       return true;
     }
     return false;
   }
-
+  // Supprime le quiz des données
   deleteQuiz(quiz: Quiz) {
     if (this.result) {
-      this.answersService.deleteAnswerss(quiz);
+      this.answersService.deleteAns(quiz);
       this.questionsService.deleteQuestions(quiz);
       this.quizService.deleteQuiz(quiz);
     }
   }
-
+  // Ouvre le pop-ip de confirmation de suppression d'un quiz
   openPop(quiz: Quiz): void {
     const dialogRef = this.dialog.open(PopUpVerifComponent, {
       width: '250px',
@@ -130,7 +130,7 @@ export class QuizListComponent implements OnInit {
       this.deleteQuiz(quiz);
     });
   }
-
+  // Recherce par nom un quiz
   search() {
     const MotClef = (document.getElementById('motclef') as HTMLInputElement).value;
     this.resetList();
@@ -140,7 +140,7 @@ export class QuizListComponent implements OnInit {
       }
     });
   }
-
+  // Réinitialise la recherche d'un quiz
   resetList() {
     this.quizList = this.quizListBack.slice();
   }

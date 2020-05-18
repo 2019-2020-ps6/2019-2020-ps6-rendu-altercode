@@ -16,7 +16,7 @@ export class PatientFormComponent implements OnInit {
   constructor(public formBuilder: FormBuilder, public router: Router, public patientService: PatientService) {
     this.initializePatientForm();
   }
-
+  // Initialise le formulaire de patient
   private initializePatientForm() {
     this.patientForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -33,7 +33,7 @@ export class PatientFormComponent implements OnInit {
   ngOnInit() {
 
   }
-
+  // Crée un nouveau patient avec les informations inscrites
   addPatient() {
     if (this.patientForm.valid) {
       const patient = this.patientForm.getRawValue() as Patient;

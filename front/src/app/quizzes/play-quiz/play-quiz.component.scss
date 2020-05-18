@@ -1,14 +1,12 @@
 $couleur : var(--couleur);
 $bodyCouleur : var(--bodyCouleur);
 $heightPolice : var(--heightPolice);
-// $heightTitle : var(--heightTitle);
 
 .mat-typography {
   background-color: $bodyCouleur !important;
 }
 
 #test :not(button){
-  // background-color: $bodyCouleur;
   color: $couleur;
 }
 

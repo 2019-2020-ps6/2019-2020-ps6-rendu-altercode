@@ -4,7 +4,7 @@ import { Quiz } from '../../../models/quiz.model';
 import { Patient } from '../../../models/patient.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PatientService} from '../../../services/patient.service';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {PopUpIdComponent} from './pop-up-id/pop-up-id.component';
 
 @Component({
@@ -15,10 +15,8 @@ import {PopUpIdComponent} from './pop-up-id/pop-up-id.component';
 export class PatientSpaceComponent implements OnInit {
   private colorP;
   private colorB;
-  private heightP;
   public quizListTot: Quiz[] = [];
   public quizList: Quiz[] = [];
-  public isChecked: boolean;
   public patient: Patient;
 
   // tslint:disable-next-line:max-line-length
@@ -42,25 +40,24 @@ export class PatientSpaceComponent implements OnInit {
     });
   }
 
-
   ngOnInit() {
     this.quizService.setQuizzesFromUrl();
     const id = this.route.snapshot.paramMap.get('id');
     this.patientService.setSelectedPatient(id);
   }
-
+  // Ouvre le pop-up de connexion pour se connecter à l'espace admin
   openPop() {
     const dialogRef = this.dialog.open(PopUpIdComponent, {
       width: '400px',
       data: {}
     });
   }
-
+  // Lance le quiz correspondant
   startQuiz(quiz: Quiz) {
     const i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === quiz.id);
     this.patientService.updateQuizStat(this.patient.statistics[0].quizStat[i], this.patient);
   }
-
+  // Modifie la taille de police selon la configuration visuelle choisie
   changeSize() {
     let height = this.patient.style[0].heightPolice;
     if (height === 0) {

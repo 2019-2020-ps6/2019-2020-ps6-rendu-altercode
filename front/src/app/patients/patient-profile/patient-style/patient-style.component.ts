@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {PatientService} from '../../../../services/patient.service';
 import {Patient, Style} from '../../../../models/patient.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-// import * as $ from 'jquery';
 
 @Component({
   selector: 'app-patient-style',
@@ -14,9 +13,6 @@ export class PatientStyleComponent implements OnInit {
 
   public patient: Patient;
   public configForm: FormGroup;
-  private colorP;
-  private colorB;
-  private heightP;
   private heightString;
 
   // tslint:disable-next-line:max-line-length
@@ -25,15 +21,13 @@ export class PatientStyleComponent implements OnInit {
       this.patient = patient;
       this.initializeConfigForm();
       this.changeColorP();
-      this.changeColorB();
       this.changeSize();
     });
   }
-
+  // Initialise le formulaire de configuration visuelle
   private initializeConfigForm() {
     this.configForm = this.formBuilder.group({
       heightPolice: [this.patient.style[0].heightPolice.toString(), Validators.required],
-      // colorBody: [this.patient.style[0].colorBody, Validators.required],
       colorPolice: [this.patient.style[0].colorPolice, Validators.required]
     });
   }
@@ -42,7 +36,7 @@ export class PatientStyleComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.patientService.setSelectedPatient(id);
   }
-
+  // Modifie la configuration visuelle du système de jeu d'un patient
   updateConfig() {
     if (this.configForm.valid) {
       const style = this.configForm.getRawValue() as Style;
@@ -50,6 +44,7 @@ export class PatientStyleComponent implements OnInit {
       this.router.navigate(['/patient-profile/' + this.patient.id]);
     }
   }
+  // Change la taille de la police pour faire un visuelle immédiat en temps réel
   changeSize() {
       let height = parseInt(this.configForm.get('heightPolice').value, 10);
       if (height === 0) {
@@ -60,13 +55,8 @@ export class PatientStyleComponent implements OnInit {
       this.heightString = height.toString() + 'rem';
       document.documentElement.style.setProperty('--heightPolice', this.heightString);
     }
-
+  // Change la couleur de la police pour un effet immédiat en temps réel
     changeColorP() {
       document.documentElement.style.setProperty('--couleur', this.configForm.get('colorPolice').value);
     }
-
-    changeColorB() {
-       // document.documentElement.style.setProperty('--bodyCouleur', this.configForm.get('colorBody').value);
-    }
-
 }

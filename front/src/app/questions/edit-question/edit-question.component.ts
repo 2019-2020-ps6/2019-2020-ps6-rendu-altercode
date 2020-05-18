@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import { QuizService } from '../../../services/quiz.service';
 import { Question} from '../../../models/question.model';
@@ -38,7 +38,7 @@ export class EditQuestionComponent implements OnInit {
       });
     });
   }
-
+  // Initialise le formulaire d'une question
   private initializeQuestionForm() {
     this.questionForm = this.formBuilder.group({
       label: [this.question.label, Validators.required],
@@ -57,7 +57,7 @@ export class EditQuestionComponent implements OnInit {
   get answers() {
     return this.questionForm.get('answers') as FormArray;
   }
-
+  // Initialise les réponses pré-remplies
   initializeAnswer() {
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.question.answers.length; i++) {
@@ -128,5 +128,4 @@ export class EditQuestionComponent implements OnInit {
       this.deleteAnswer(answers, i);
     });
   }
-
 }

@@ -17,7 +17,6 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   private colorP;
   private colorB;
   private heightString;
-  public heightStringTitle;
   public quiz: Quiz;
   public patient: Patient;
   public questions: Question[];
@@ -28,13 +27,12 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   public wrongA = false;
   public questionFinished = false;
 
+  // Place un écouteur sur la page pour gérer les missclick d'un patient
   @HostListener('click', ['$event.target'])
   onClick() {
     this.incrementMissClicks();
     this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
-    // console.log('Quiz ' + this.patient.statistics[0].quizStat[this.i].nbMissClick);
   }
-
 
   // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, private router: Router, private quizService: QuizService, public patientService: PatientService) {
@@ -55,7 +53,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
     const patientId = this.route.snapshot.paramMap.get('patientId');
     this.patientService.setSelectedPatient(patientId);
   }
-
+  // Passe à la question suivante ou à la page de fin de quiz
   nextQuestion() {
      this.decrementMissClicks();
      if (this.index < this.quiz.questions.length - 1) {
@@ -73,7 +71,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
        this.router.navigate(['/patient/' + this.patient.id + '/play-quiz/' + this.quiz.id + '/success-page']);
     }
   }
-
+  // Passe à la question automatiquement si le patient ne fait rien pendant un certains temps
   nextQuestionAuto(bool: boolean) {
     if (this.index === this.quiz.questions.length - 1) {
       const button = document.getElementById('button-end');
@@ -86,7 +84,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   wrongAnswer(bool: boolean) {
     this.wrongA = bool;
   }
-
+  // Lance le timer après une bonne réponse pour passer à la question suivante automatiquement
   startTimer() {
     const ind = this.index;
     this.interval = setInterval(() => { this.s -= 1; }, 1000);
@@ -99,20 +97,19 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
       }
     }, 15000);
   }
-
+  // Supprime le timer
   ngOnDestroy() {
     if (this.timer) {
       clearTimeout(this.timer);
     }
   }
-
+  // Met à jour les statistiques à la fin d'un quiz
   endQuiz() {
-    // this.decrementMissClicks();
     this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
     this.patient.statistics[0].quizStat[this.i].nbQuizDone += 1;
     this.updateStats();
   }
-
+  // Met à jour les statistiques d'un patient
   updateStats() {
     this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
     this.patient.statistics[0].quizStat[this.i].nbQuizTry += 1;
@@ -130,6 +127,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
     this.i = this.patient.statistics[0].quizStat.findIndex((element) => element.quizId === this.quiz.id);
     this.patient.statistics[0].quizStat[this.i].nbMissClick--;
   }
+  // Modifie la taille de la police selon la config visuelle
   changeSize() {
     let height = this.patient.style[0].heightPolice;
     if (height === 0) {
@@ -139,10 +137,6 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
     }
     this.heightString = height.toString() + 'rem';
     document.documentElement.style.setProperty('--heightPolice', this.heightString);
-    // this.heightStringTitle = heightTitle.toString() + 'rem';
-   // this.heightString = (height + 1).toString() + 'rem';
-    // document.documentElement.style.setProperty('--heightTitle', this.heightString, 'important');
-
   }
 }
 

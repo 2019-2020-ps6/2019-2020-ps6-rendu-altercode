@@ -21,11 +21,16 @@ export class PatientProfileComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.patientService.setSelectedPatient(id);
   }
-
+  // Calcul l'âge du patient
   getAge(patient: Patient) {
     const date1 = new Date();
     const date2 = new Date(patient.date);
     return ((date1.getTime() - date2.getTime()) / 31536000000).toFixed(0);
+  }
+
+  hide() {
+    const input = document.getElementById('deco');
+    input.style.setProperty('visibility', 'hidden');
   }
 }
 

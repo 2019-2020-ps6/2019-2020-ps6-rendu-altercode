@@ -1,6 +1,6 @@
 import {Component, HostListener, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {DialogData} from './question-play.component';
+import {DialogData} from '../question-play.component';
 
 @Component({
   selector: 'app-pop-up',
@@ -13,11 +13,10 @@ export class PopUpComponent implements OnInit, OnDestroy {
     public dialogRef: MatDialogRef<PopUpComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
   }
-
+  // Gère le nombre de missclick d'un patient
   @HostListener('click', ['$event.target'])
   onClick() {
     this.data.quizStat.nbMissClick++;
-    // console.log('Pop up ' + this.data.quizStat.nbMissClick);
   }
 
   onNoClick(): void {
@@ -28,13 +27,13 @@ export class PopUpComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.startTimer();
   }
-
+  // Lance le timer pour fermer le pop-up dans le cas où le patient ne fait rien
   startTimer() {
     this.timer = setTimeout(() => {
       this.dialogRef.close();
     }, 10000);
   }
-
+  // Supprime le timer si le patient n'attend pas le timer pour passer à la suite
   ngOnDestroy() {
     if (this.timer) {
       clearTimeout(this.timer);

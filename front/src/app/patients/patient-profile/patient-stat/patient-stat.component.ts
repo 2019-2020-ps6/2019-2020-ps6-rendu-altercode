@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PatientService} from '../../../../services/patient.service';
 import {Patient} from '../../../../models/patient.model';
@@ -22,7 +22,6 @@ export class PatientStatComponent implements OnInit {
   chart = [];
 
   // tslint:disable-next-line:max-line-length variable-name
-  private angular: any;
   constructor(public router: Router, public patientService: PatientService, private route: ActivatedRoute, public quizService: QuizService) {
     this.patientService.patientSelected$.subscribe((patient) => {
       this.patient = patient;
@@ -41,13 +40,10 @@ export class PatientStatComponent implements OnInit {
     this.patientService.setSelectedPatient(id);
   }
 
-
   nomById(id) {
-    console.log(id);
-    console.log(this.quizList.find(le => le.id === id).name);
     return this.quizList.find(le => le.id === id).name;
   }
-
+  // Crée un arrondi
   round(int) {
     return Math.round(int * 100) / 100;
   }

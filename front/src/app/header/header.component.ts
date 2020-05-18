@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Ouvre le pop-up de confirmation de déconnexion de l'utilisateur
   openPop(): void {
     const dialogRef = this.dialog.open(PopUpDecVerifComponent, {
       width: '300px',
@@ -33,7 +34,7 @@ export class HeaderComponent implements OnInit {
       this.deconnect();
     });
   }
-
+  // Déconnecte l'utilisateur de l'application
   deconnect() {
     if (this.result) {
       const input = document.getElementById('deco');

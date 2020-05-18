@@ -1,5 +1,5 @@
-import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogClose, MatDialogRef} from '@angular/material/dialog';
+import {Component} from '@angular/core';
+import {MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Admin} from '../../../../models/admin.model';
 import {AdminService} from '../../../../services/admin.service';
@@ -13,6 +13,7 @@ export class PopUpIdComponent {
   public connectForm: FormGroup;
   public adminList: Admin[] = [];
 
+  // tslint:disable-next-line:max-line-length
   constructor(public formBuilder: FormBuilder, public adminService: AdminService, public router: Router, public dialogRef: MatDialogRef<PopUpIdComponent>) {
     this.adminService.setAdminFromUrl();
     this.adminService.admins$.subscribe((admin) => this.adminList = admin);
@@ -26,13 +27,11 @@ export class PopUpIdComponent {
     const adminToConnect: Admin = this.connectForm.getRawValue() as Admin;
     for (const admin of this.adminList) {
       if (admin.connectId === adminToConnect.connectId && admin.pwd === adminToConnect.pwd) {
+        const input = document.getElementById('deco');
+        input.style.setProperty('visibility', 'visible');
         this.router.navigate(['/patient-list']);
         this.dialogRef.close();
       }
     }
-  }
-
-  goCreate() {
-    this.router.navigate(['/create-admin']);
   }
 }

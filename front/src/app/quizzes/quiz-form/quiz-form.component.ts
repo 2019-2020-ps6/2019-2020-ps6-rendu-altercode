@@ -22,7 +22,7 @@ export class QuizFormComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  // Ajoute le quiz dans les données
   addQuiz() {
     if (this.quizForm.valid) {
       const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
@@ -34,5 +34,4 @@ export class QuizFormComponent implements OnInit {
       this.quizService.addQuiz(quizToCreate);
     }
   }
-
 }

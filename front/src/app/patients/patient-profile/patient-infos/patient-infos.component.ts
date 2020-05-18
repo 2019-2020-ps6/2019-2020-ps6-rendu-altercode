@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Patient} from '../../../../models/patient.model';
 import {PatientService} from '../../../../services/patient.service';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {PopUpVerifComponent} from './PopupVerif/pop-up.component';
 import {Router} from '@angular/router';
 
@@ -33,13 +33,13 @@ export class PatientInfosComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.patientService.setSelectedPatient(id);
   }
-
+  // Calcul l'âge d'un patient
   getAge(patient: Patient) {
     const date1 = new Date();
     const date2 = new Date(patient.date);
     return ((date1.getTime() - date2.getTime()) / 31536000000).toFixed(0);
   }
-
+  // Ouvre le pop-up de confirmation de suppression d'un patient
   openPop(): void {
       const dialogRef = this.dialog.open(PopUpVerifComponent, {
         width: '250px',
@@ -50,7 +50,7 @@ export class PatientInfosComponent implements OnInit {
       this.deletePatient();
     });
   }
-
+  // Supprime le patient
   deletePatient() {
     if (this.result) {
       this.patientService.deleteStyle(this.patient);

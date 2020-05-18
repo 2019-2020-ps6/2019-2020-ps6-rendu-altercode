@@ -22,7 +22,7 @@ export class EditPatientComponent implements OnInit {
       this.initializePatientForm();
     });
   }
-
+  // Initialise le formulaire de patient et le pré rempli
   private initializePatientForm() {
     this.patientForm = this.formBuilder.group({
       name: [this.patient.name, Validators.required],
@@ -39,7 +39,7 @@ export class EditPatientComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.patientService.setSelectedPatient(id);
   }
-
+  // Modifie le patient avec les nouvelles informations
   updatePatient() {
     if (this.patientForm.valid) {
       const patient = this.patientForm.getRawValue() as Patient;

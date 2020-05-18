@@ -13,8 +13,8 @@ export class HomeComponent implements OnInit {
 
   public connectForm: FormGroup;
   public adminList: Admin[] = [];
-  @Output() admin: EventEmitter<any> = new EventEmitter();
   private input;
+  @Output() admin: EventEmitter<any> = new EventEmitter();
 
   constructor(public formBuilder: FormBuilder, public adminService: AdminService, public router: Router) {
     this.adminService.admins$.subscribe((admin) => this.adminList = admin);
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     this.adminService.setAdminFromUrl();
     this.admin.emit(true);
   }
-
+  // Vérifie le compte inscrit et le connecte s'il est validé
   tryConnect() {
     const adminToConnect: Admin = this.connectForm.getRawValue() as Admin;
     for (const admin of this.adminList) {
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
       }
     }
   }
-
+  //  Dirige vers la page de création de compte
   goCreate() {
     this.router.navigate(['/create-admin']);
   }

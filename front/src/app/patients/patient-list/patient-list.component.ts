@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Patient} from '../../../models/patient.model';
@@ -14,8 +14,7 @@ export class PatientListComponent implements OnInit {
   public patientListBack: Patient[] = [];
   public patientList: Patient[] = [];
 
-
-  constructor(public formBuilder: FormBuilder, public router: Router, public patientService: PatientService) {
+  constructor(public router: Router, public patientService: PatientService) {
     this.patientService.patients$.subscribe((patient) => {
       this.patientList = patient;
       this.patientListBack = patient;
@@ -29,13 +28,13 @@ export class PatientListComponent implements OnInit {
   addPatient() {
     this.router.navigate(['/patient-form']);
   }
-
+  // Calcul l'âge du patient
   getAge(patient: Patient) {
     const date1 = new Date();
     const date2 = new Date(patient.date);
     return ((date1.getTime() - date2.getTime()) / 31536000000).toFixed(0);
   }
-
+  // Recherche le patient correspondant selon son nom et prénom
   search() {
     const MotClef = (document.getElementById('motclef') as HTMLInputElement).value;
     this.resetList();
@@ -45,7 +44,7 @@ export class PatientListComponent implements OnInit {
       }
     });
   }
-
+  // Réinitialise la recherche
   resetList() {
     this.patientList = this.patientListBack.slice();
   }

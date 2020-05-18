@@ -16,19 +16,11 @@ export class AdminService {
   constructor(private http: HttpClient) {
 
   }
-
- /* getAdmins() {
-    this.http.get<Admin[]>(this.adminUrl).subscribe((adminList) => {
-      this.admins = adminList;
-      this.admins$.next(this.admins);
-    });
-  }
-  */
-
+  // Appelle la fonction http post pour créer un nouvel admin
   addAdmin(admin: Admin) {
     this.http.post<Admin>(this.adminUrl, admin, this.httpOptions).subscribe(() => this.setAdminFromUrl());
   }
-
+  // Appelle la fonction http get pour mettre à jour l'observable
   setAdminFromUrl() {
     this.http.get<Admin[]>(this.adminUrl).subscribe((adminList) => {
       this.admins = adminList;
