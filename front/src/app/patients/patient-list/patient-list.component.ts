@@ -36,16 +36,17 @@ export class PatientListComponent implements OnInit {
   }
   // Recherche le patient correspondant selon son nom et prénom
   search() {
-    const MotClef = (document.getElementById('motclef') as HTMLInputElement).value;
-    this.resetList();
+    const MotClef = (document.getElementById('motclef') as HTMLInputElement).value.toUpperCase();
+    this.patientList = this.patientListBack.slice();
     this.patientListBack.forEach(q => {
-      if (!(q.name.includes(MotClef)) && !(q.surname.includes(MotClef))) {
+      if (!(q.name.toUpperCase().includes(MotClef)) && !(q.surname.toUpperCase().includes(MotClef))) {
         this.patientList.splice(this.patientList.indexOf(q), 1, );
       }
     });
   }
   // Réinitialise la recherche
   resetList() {
+    (document.getElementById('motclef') as HTMLInputElement).value = '';
     this.patientList = this.patientListBack.slice();
   }
 }
