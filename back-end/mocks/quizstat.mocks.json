@@ -8,5 +8,35 @@
     "nbWrongAnswer": 3,
     "nbGoodAnswer": 3,
     "id": 801589885852160
+  },
+  {
+    "quizId": 101589885930719,
+    "statisticsId": 401589884270949,
+    "nbQuizDone": 0,
+    "nbQuizTry": 0,
+    "nbMissClick": 0,
+    "nbWrongAnswer": 0,
+    "nbGoodAnswer": 0,
+    "id": 501589890534298
+  },
+  {
+    "quizId": 501589888845081,
+    "statisticsId": 401589884270949,
+    "nbQuizDone": 0,
+    "nbQuizTry": 0,
+    "nbMissClick": 0,
+    "nbWrongAnswer": 0,
+    "nbGoodAnswer": 0,
+    "id": 801589890534308
+  },
+  {
+    "quizId": 901589889353710,
+    "statisticsId": 401589884270949,
+    "nbQuizDone": 1,
+    "nbQuizTry": 1,
+    "nbMissClick": 0,
+    "nbWrongAnswer": 2,
+    "nbGoodAnswer": 5,
+    "id": 601589890534313
   }
 ]
