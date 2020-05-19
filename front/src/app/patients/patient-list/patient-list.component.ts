@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Patient} from '../../../models/patient.model';
 import {PatientService} from '../../../services/patient.service';
